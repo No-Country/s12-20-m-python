@@ -1,4 +1,4 @@
-import Component1 from './components/Component1/Component1';
+/* import Component1 from './components/Component1/Component1'; */
 import Component2 from './components/Component2/Component2';
 import Map from './components/Map/Map';
 
@@ -15,21 +15,21 @@ function App() {
     {
       name: 'Place One',
       location: {
-        lat: '-34.5898345',
-        lng: '-58.4644084',
+        lat: '-34.5900000',
+        lng: '-58.4900000',
       },
     },
     {
       name: 'Place Two',
       location: {
-        lat: '-34.547406',
-        lng: '-58.5947558',
+        lat: '-34.6000',
+        lng: '-58.547558',
       },
     },
     {
       name: 'Place Three',
       location: {
-        lat: '-34.6399712',
+        lat: '-34.6199712',
         lng: '-58.5347848',
       },
     },
@@ -41,7 +41,7 @@ function App() {
 
       <h2>Leaflet Map</h2>
       <Map mainLocation={mainLocation} places={places} />
-      <Component1 />
+    
       <Component2 />
     </>
   );

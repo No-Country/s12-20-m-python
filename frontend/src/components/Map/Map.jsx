@@ -1,4 +1,4 @@
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer, Polygon } from 'react-leaflet';
 import L from 'leaflet';
 import TreeIcon from '../../assets/tree-icon.svg';
 
@@ -7,7 +7,13 @@ import './Map.css';
 
 const Map = ({ mainLocation, places }) => {
   const { location, zoom } = mainLocation;
-
+  const purpleOptions = { color: 'purple' }
+  const polygon = [
+    [-34.5898345, -58.4644084],
+    [-34.547406, -58.5947558],
+    [-34.6399712, -58.5347848],
+    
+  ]
   const customIcon = L.icon({
     iconUrl: TreeIcon,
     iconSize: [24, 24],
@@ -23,6 +29,9 @@ const Map = ({ mainLocation, places }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
+
+      <Polygon pathOptions={purpleOptions} positions={polygon} />
+
       {places.map((place, idx) => {
         return (
           <Marker
