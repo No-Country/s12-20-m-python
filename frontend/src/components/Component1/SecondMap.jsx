@@ -1,4 +1,3 @@
-import styles from './Component1.module.css';
 import { MapContainer, Polyline, Polygon, Popup, TileLayer, Rectangle, Circle, CircleMarker } from 'react-leaflet';
 
 const center = [51.505, -0.09]
@@ -52,10 +51,10 @@ const limeOptions = { color: 'lime' }
 const purpleOptions = { color: 'purple' }
 const redOptions = { color: 'red' }
 
-const Component1 = () => {
 
-return(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
+const SecondMap = () => {
+  return (
+    <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -70,6 +69,7 @@ return(
     <Polygon pathOptions={purpleOptions} positions={multiPolygon} />
     <Rectangle bounds={rectangle} pathOptions={blackOptions} />
   </MapContainer>
-)
+  )
 }
-export default Component1
+
+export default SecondMap
