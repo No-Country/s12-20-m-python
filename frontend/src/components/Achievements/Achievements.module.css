@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.container > div {
+  text-align: center;
+}
+
+p {
+  white-space: pre-line;
+}

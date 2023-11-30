@@ -1,0 +1,21 @@
+.visions-container {
+  padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.vision {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+}
+
+.vision h3 {
+  color: #333;
+}
+
+.vision p {
+  color: #666;
+}
