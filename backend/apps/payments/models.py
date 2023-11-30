@@ -9,10 +9,12 @@ class Pay(models.Model):
     cod_card = models.SmallIntegerField(null=False)
     number_trees = models.IntegerField(null=False)
     cost = models.IntegerField(null=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     # adoption_id = models.ForeignKey(Adoption, on_delete=models.CASCADE)
 
 
 class Voucher(models.Model):
-    pass
     # pay_id = models.ForeignKey(Pay, on_delete=models.CASCADE)
-    # adoption_id = models.ForeignKey(Adoption, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
