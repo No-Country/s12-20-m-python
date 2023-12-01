@@ -1,27 +1,22 @@
-import { MapContainer, Marker, Popup, TileLayer, Polygon } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
 import L from 'leaflet';
 import TreeIcon from '../../assets/tree-icon.svg';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
-const Map = ({ mainLocation, places }) => {
+const Map = ({ mainLocation, places, handleClick }) => {
   const { location, zoom } = mainLocation;
-  const purpleOptions = { color: 'purple' }
-  const polygon = [
-    [-34.5898345, -58.4644084],
-    [-34.547406, -58.5947558],
-    [-34.6399712, -58.5347848],
-    
-  ]
+
+
   const customIcon = L.icon({
     iconUrl: TreeIcon,
     iconSize: [24, 24],
   });
 
-  const handleClick = (name) => {
+ /*  const handleClick = (name) => {
     alert(`click on ${name}`);
-  };
+  }; */
 
   return (
     <MapContainer center={location} zoom={zoom} scrollWheelZoom={true}>
@@ -30,7 +25,7 @@ const Map = ({ mainLocation, places }) => {
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
 
-      <Polygon pathOptions={purpleOptions} positions={polygon} />
+    {/*   <Polygon pathOptions={purpleOptions} positions={polygon} /> */}
 
       {places.map((place, idx) => {
         return (
@@ -43,9 +38,10 @@ const Map = ({ mainLocation, places }) => {
             <Popup>
               <h3>Planta un árbol aquí:</h3>
               <h4>{place.name}</h4>
+              <p>Tipos de árboles: {place.trees}</p>
               <p>Latitud: {place.location.lat}</p>
               <p>Longitud: {place.location.lng}</p>
-              <button onClick={() => handleClick(place.name)}>click</button>
+              <button onClick={(e) => handleClick(e)}>click</button>
             </Popup>
           </Marker>
         );
