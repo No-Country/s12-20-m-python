@@ -1,0 +1,25 @@
+.header {
+  background-color: #eee;
+  height: 80px;
+}
+
+.headerContent {
+  max-width: 1200px;
+  height: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.openMenu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .openMenu {
+    display: block;
+    cursor: pointer;
+  }
+}
