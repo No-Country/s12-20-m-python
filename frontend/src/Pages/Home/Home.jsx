@@ -2,6 +2,7 @@ import LatestPlantings from '../../components/LatestPlantings/LatestPlantings';
 import Vision from '../../components/Vision/Vision';
 import Achievements from '../../components/Achievements/Achievements';
 import styles from './home.module.css';
+import {Link} from 'react-router-dom'
 
 
 function Home() {
@@ -19,7 +20,7 @@ function Home() {
           líderes en la promoción de prácticas responsables y la creación de un
           impacto duradero en la salud de nuestro planeta
         </p>
-        <button>CTA</button>
+        <Link to={'/adoption'}><button>CTA</button></Link>
       </div>
       <div>
         <Vision />
