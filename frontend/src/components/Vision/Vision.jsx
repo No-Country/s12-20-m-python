@@ -1,5 +1,4 @@
-import styles from '../Vision/vision.module.css';
-
+import styles from '../Vision/Vision.module.css';
 
 function Vision() {
   return (
