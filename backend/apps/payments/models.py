@@ -2,7 +2,7 @@ from django.db import models
 # models utils
 from model_utils.models import TimeStampedModel
 # external models
-# from users.models import Adoption
+from apps.users.models import Adoption
 
 
 class Payment(TimeStampedModel):
@@ -13,7 +13,7 @@ class Payment(TimeStampedModel):
     cod_card = models.PositiveSmallIntegerField('code card')
     number_trees = models.PositiveSmallIntegerField('total trees')
     cost = models.PositiveBigIntegerField('price')
-    # adoption_id = models.ForeignKey(Adoption, related_name='payment_adoption', on_delete=models.CASCADE)
+    adoption_id = models.ForeignKey(Adoption, related_name='payment_adoption', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Payment'

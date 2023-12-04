@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import User, Country, Adoption, FollowUp
+from .models import User, Country, Adoption, FollowUp
 # Register your models here.
 
 models_to_register = (User, Country, Adoption, FollowUp)

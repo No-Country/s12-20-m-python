@@ -1,5 +1,7 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
+# Land
+from apps.land.models import Land, Tree
 
 class Country(TimeStampedModel):
     country = models.CharField(max_length=100, unique=True)
@@ -28,8 +30,8 @@ class User(TimeStampedModel):
 
 class Adoption(TimeStampedModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    land = models.ForeignKey("Land", on_delete=models.CASCADE)
-    tree = models.ForeignKey("Tree", on_delete=models.CASCADE)
+    land = models.ForeignKey(Land , on_delete=models.CASCADE)
+    tree = models.ForeignKey(Tree, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
 
     class Meta:
@@ -41,7 +43,7 @@ class Adoption(TimeStampedModel):
 
 class FollowUp(TimeStampedModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tree = models.ForeignKey("Tree", on_delete=models.CASCADE)
+    tree = models.ForeignKey(Tree, on_delete=models.CASCADE)
     description = models.TextField(max_length=255)
 
     class Meta:
