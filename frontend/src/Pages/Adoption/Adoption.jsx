@@ -1,64 +1,100 @@
 import Map from '../../components/Map/Map';
 import { useState } from 'react';
-import styles from '../Home/Home.module.css';
+import styles from './Adoption.module.css';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 const Adoption = () => {
-const [showDetail, setShowDetail]= useState(false)
-
-    const handleClick = () => {
-   setShowDetail(true)
+  const handleSearch = (term) => {
+    //lógica del buscador
+    console.log(`Buscando: ${term}`);
   };
-    const mainLocation = {
-        location: {
-          lat: '-34.5694991',
-          lng: '-58.591387',
-        },
-        zoom: 11,
-      };
-    
-      const places = [
-        {
-          name: 'Place One',
-          trees: 'pinos, algarrobos, ñires',
-          location: {
-            lat: '-34.5900000',
-            lng: '-58.4900000',
-          },
-        },
-        {
-          name: 'Place Two',
-          trees: 'cedros, álamos, espinillos',
-          location: {
-            lat: '-34.6000',
-            lng: '-58.547558',
-          },
-        },
-        {
-          name: 'Place Three',
-          trees: 'robles, álamos, lapachos',
-          location: {
-            lat: '-34.6199712',
-            lng: '-58.5347848',
-          },
-        },
-      ];
-    
-      return (
-        <>
-          <h1>client</h1>
-          <h2>Leaflet Map</h2>
-          <Map mainLocation={mainLocation} places={places} handleClick={handleClick}/>
-          {showDetail===true && 
+
+  const [showDetail, setShowDetail] = useState(false);
+
+  const handleClick = () => {
+    setShowDetail(true);
+  };
+  const mainLocation = {
+    location: {
+      lat: '-34.5694991',
+      lng: '-58.591387',
+    },
+    zoom: 11,
+  };
+
+  const places = [
+    {
+      name: 'Place One',
+      trees: 'pinos, algarrobos, ñires',
+      location: {
+        lat: '-34.5900000',
+        lng: '-58.4900000',
+      },
+    },
+    {
+      name: 'Place Two',
+      trees: 'cedros, álamos, espinillos',
+      location: {
+        lat: '-34.6000',
+        lng: '-58.547558',
+      },
+    },
+    {
+      name: 'Place Three',
+      trees: 'robles, álamos, lapachos',
+      location: {
+        lat: '-34.6199712',
+        lng: '-58.5347848',
+      },
+    },
+  ];
+
+  return (
+    <div className={styles.adoptioncontainer}>
+      <div className={styles.leftcontainer}>
+        <h1>Adopta un Árbol</h1>
+        <SearchInput onSearch={handleSearch} />
+        <p>Seleccioná un árbol y mirá donde estamos reforestando.</p>
+
+        <Map
+          mainLocation={mainLocation}
+          places={places}
+          handleClick={handleClick}
+        />
+        {showDetail === true && (
           <div className={styles.whyadopt}>
             <h4>Selection Zone</h4>
             <p>Acá se selecciona los árboles a adoptar</p>
-            </div>}
-        </>
-      );
-    }
-    
+          </div>
+        )}
+        <div className={styles.loremtree}>
+          <h2>Lorem ipsum</h2>
+          <h4>Tipos de árboles:</h4>
+          <p>Arboles plantados</p>
+        </div>
+      </div>
+      <div className={styles.rigthcontainer}>
+        <h2>Zona elegida por el usuario</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+          dignissimos debitis ea perferendis iste doloremque nisi corporis
+          aspernatur non culpa, recusandae mollitia tenetur ut nostrum aut eos
+          possimus pariatur odio.
+        </p>
+        <h4>Selecciona el tipo de árbol</h4>
+        <div>
+          <img src='' alt='' />
+          <img src='' alt='' />
+          <img src='' alt='' />
+        </div>
+        <div>
+          <p>Cantidad</p>
+          <p>Precio</p>
+        </div>
+        <button>CTA</button>
+      </div>
+    </div>
+  );
+};
 
-
-export default Adoption
-
-
+export default Adoption;
