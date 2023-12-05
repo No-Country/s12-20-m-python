@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link} from 'react-router-dom'
 
 const TreePurchaseForm = () => {
   const [treeTypes, setTreeTypes] = useState({
@@ -26,10 +27,10 @@ const TreePurchaseForm = () => {
     setTotal(newTotal);
   };
 
-  const handleCompraClick = () => {
+/*   const handleCompraClick = () => {
     // Aquí puedes agregar la lógica para realizar la compra, por ejemplo, enviar una solicitud al servidor, etc.
     alert('¡Compra realizada con éxito!');
-  };
+  }; */
 
   return (
     <div>
@@ -52,7 +53,10 @@ const TreePurchaseForm = () => {
       <div>
         <h4>Total: ${total}</h4>
       </div>
-      <button onClick={handleCompraClick}>Continuar</button>
+      <Link to='/login'>
+      <button /* onClick={handleCompraClick} */>Continuar</button>
+      </Link>
+     
     </div>
   );
 };

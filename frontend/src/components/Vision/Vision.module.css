@@ -1,21 +1,20 @@
-.visions-container {
+.visionContainer {
+  width: 90%;
+  margin: 0 auto;
   padding: 2em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
   gap: 20px;
 }
 
-.vision {
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f8f8f8;
-}
-
-.vision h3 {
+.visionCard h3 {
   color: #333;
+  font-size: 20px;
 }
 
-.vision p {
+.visionCard p {
   color: #666;
+  font-size: 16px;
+  width: 270px;
+  margin: 0 auto;
 }

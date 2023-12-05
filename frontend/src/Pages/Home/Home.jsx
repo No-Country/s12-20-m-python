@@ -1,14 +1,19 @@
-import LatestPlantings from '../../components/LatestPlantings/LatestPlantings';
-import Vision from '../../components/Vision/Vision';
-import Achievements from '../../components/Achievements/Achievements';
-import styles from './Home.module.css';
-import { Link } from 'react-router-dom';
+/* import LatestPlantings from "../../components/LatestPlantings/LatestPlantings"; */
+import Vision from "../../components/Vision/Vision";
+import Achievements from "../../components/Achievements/Achievements";
+import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
+import HomeVideo from "../../assets/video-header.mp4";
+import HomeImage from "../../assets/image-home.jpg";
 
 function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.ourvision}>
-        <p>
+        <video className={styles.homeVideo}>
+          <source src={HomeVideo} type="video/mp4" />
+        </video>
+        {/* <p>
           Nosotros visualizamos un futuro donde nuestro proyecto de siembra de
           árboles no solo reduce la huella de carbono, sino que también actúa
           como un catalizador para la regeneración ambiental. Buscamos crear un
@@ -18,34 +23,49 @@ function Home() {
           través de la colaboración y la innovación constante, aspiramos a ser
           líderes en la promoción de prácticas responsables y la creación de un
           impacto duradero en la salud de nuestro planeta
-        </p>
-        <Link to={'/adoption'}>
-          <button>CTA</button>
-        </Link>
+        </p> */}
+        <div className={styles.titleBox}>
+          <h2>Vos también podes ser parte</h2>
+          <Link to={"/adoption"}>
+            <button className={styles.adoptButton}>Adoptá un árbol</button>
+          </Link>
+        </div>
       </div>
+
       <div>
         <Vision />
       </div>
       <div className={styles.whyadopt}>
-        <h1>¿Por qué adoptar un árbol?</h1>
-        <p>
-          Al adoptar un árbol en nuestro proyecto de siembra, no solo estás
-          comprometiéndote con la sostenibilidad y la responsabilidad ambiental,
-          sino que también estás contribuyendo activamente a la creación de un
-          futuro más verde. Tu adopción no solo reduce tu huella de carbono
-          personal, sino que también forma parte de un esfuerzo colectivo para
-          preservar nuestro entorno natural y promover la biodiversidad. Al
-          unirte a nosotros, no solo adoptas un árbol, sino que también adoptas
-          un compromiso compartido de construir un mundo más saludable y
-          sostenible para las generaciones futuras. Únete a nosotros en esta
-          emocionante jornada hacia un planeta más verde y próspero.
-        </p>
+        <div className={styles.adopyTexts}>
+          <h2>¿Por qué adoptar un árbol?</h2>
+          <p>
+            La deforestación es una de las principales amenazas ambientales a
+            las que se enfrenta nuestro planeta, ya que reduce los beneficios
+            que los árboles proporcionan. Cada año, se pierden millones de
+            hectáreas de bosques debido a la tala indiscriminada, entre otras
+            actividades.
+          </p>
+          <p>
+            Adoptar un árbol es una forma sencilla y gratificante de ayudar al
+            medio ambiente, es una forma de conectarse con la naturaleza y hacer
+            una diferencia positiva en el mundo. Al adoptar un árbol, ayudas a
+            financiar la plantación de un nuevo árbol en un área que ha sido
+            deforestada o degradada. También puede ayudar a proporcionar
+            mantenimiento al árbol durante su vida útil.
+          </p>
+          <Link to={"/adoption"}>
+            <button className={styles.secondButton}>Adoptá un árbol</button>
+          </Link>
+        </div>
+        <div>
+          <img src={HomeImage} alt="" />
+        </div>
       </div>
       <div>
         <Achievements />
       </div>
       <div>
-        <LatestPlantings />
+       {/*  <LatestPlantings /> */}
       </div>
     </div>
   );
