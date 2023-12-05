@@ -1,0 +1,44 @@
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  border: solid 1px;
+  padding: 1rem;
+}
+
+.form label {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.form p {
+  color: darkred;
+}
+
+.checklistPassword {
+  border: solid 1px;
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.checklistPassword > p {
+  color: #000;
+}
+
+.default::before {
+  padding-right: 10px;
+  content: '✗';
+  color: red;
+}
+
+.passReq::before {
+  padding-right: 8px;
+  content: '✓';
+  color: green;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
