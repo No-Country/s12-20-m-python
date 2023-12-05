@@ -2,6 +2,7 @@ import Map from '../../components/Map/Map';
 import { useState } from 'react';
 import styles from './Adoption.module.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
+import TreePurchaseForm from '../../components/TreePurchaseForm/TreePurchaseForm';
 
 const Adoption = () => {
   const handleSearch = (term) => {
@@ -81,17 +82,7 @@ const Adoption = () => {
           aspernatur non culpa, recusandae mollitia tenetur ut nostrum aut eos
           possimus pariatur odio.
         </p>
-        <h4>Selecciona el tipo de árbol</h4>
-        <div>
-          <img src='' alt='' />
-          <img src='' alt='' />
-          <img src='' alt='' />
-        </div>
-        <div>
-          <p>Cantidad</p>
-          <p>Precio</p>
-        </div>
-        <button>CTA</button>
+        <TreePurchaseForm />
       </div>
     </div>
   );
