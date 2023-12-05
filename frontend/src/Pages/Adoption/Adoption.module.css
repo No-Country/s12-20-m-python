@@ -1,0 +1,17 @@
+.adoptioncontainer {
+  margin: 2em;
+    display: flex;
+    flex-direction: row;
+}
+
+.rigthcontainer {
+    padding: 3em;
+    flex-direction: column;
+}
+
+.loremtree {
+  margin-top: 2em;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
