@@ -52,16 +52,15 @@
     font-size: 14px;
   }
   
-  button {
+/*   button {
+    background-color: #31572C;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #636363;
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-bottom: 1em;
-  }
+  } */
   
   button:hover {
     background-color: #868686;

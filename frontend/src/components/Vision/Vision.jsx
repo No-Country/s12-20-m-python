@@ -1,48 +1,38 @@
 import styles from '../Vision/Vision.module.css';
+import Compromiso from "../../assets/HomeIllustrations/compromiso.png"
+import Responsabilidad from "../../assets/HomeIllustrations/consciencia-ambiental.png"
+import Participacion from "../../assets/HomeIllustrations/participacion-comunitaria.png"
+import Respeto from "../../assets/HomeIllustrations/respeto.png"
 
 function Vision() {
   return (
-    <div className={styles['visions-container']}>
-      <div className='vision'>
-        <h3>Sostenibilidad</h3>
+    <div className={styles.visionContainer}>
+      <div className={styles.visionCard}>
+        <img src={Compromiso} alt="" />
+        <h3>Compromiso</h3>
         <p>
-          Compromiso con prácticas que aseguren la viabilidad a largo plazo del
-          ecosistema y la comunidad.
+        con la preservación de especies nativas.
         </p>
       </div>
-      <div className='vision'>
-        <h3>Responsabilidad Ambiental</h3>
+      <div className={styles.visionCard}>
+      <img src={Participacion} alt="" />
+        <h3>Participación Comunitaria</h3>
         <p>
-          Reconocimiento de la importancia de cuidar y preservar el entorno
-          natural.
+        como forma de trabajo para lograr un bien común.
         </p>
       </div>
-      <div className='vision'>
-        <h3>Colaboración</h3>
-        <p>
-          Trabajo conjunto con comunidades locales, organizaciones y partes
-          interesadas para maximizar el impacto positivo.
-        </p>
-      </div>
-      <div className='vision'>
-        <h3>Transparencia</h3>
-        <p>
-          Comunicación abierta y honesta sobre las acciones y resultados del
-          proyecto.
-        </p>
-      </div>
-      <div className='vision'>
-        <h3>Innovación</h3>
-        <p>
-          Búsqueda constante de nuevas formas de mejorar la eficiencia y la
-          efectividad en la plantación y cuidado de árboles.
-        </p>
-      </div>
-      <div className='vision'>
+      <div className={styles.visionCard}>
+      <img src={Respeto} alt="" />
         <h3>Respeto</h3>
         <p>
-          Trato respetuoso hacia la biodiversidad, las comunidades locales y la
-          diversidad cultural.
+        por el planeta y todas sus formas de vida.
+        </p>
+      </div>
+      <div className='vision'>
+      <img src={Responsabilidad} alt="" />
+        <h3>Responsabilidad</h3>
+        <p>
+        y consciencia ambiental.
         </p>
       </div>
     </div>
