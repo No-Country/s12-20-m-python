@@ -1,0 +1,16 @@
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  border: solid 1px;
+  padding: 1rem;
+}
+
+.form label {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.form label p {
+  color: darkred;
+}
