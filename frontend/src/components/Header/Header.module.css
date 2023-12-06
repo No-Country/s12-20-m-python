@@ -1,6 +1,13 @@
 .header {
-  background-color: #eee;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(3, 3, 3, 0.4);
   height: 80px;
+}
+
+.headerBackground {
+  background-color: var(--white);
 }
 
 .headerContent {
@@ -21,5 +28,13 @@
   .openMenu {
     display: block;
     cursor: pointer;
+  }
+
+  .openMenuIcon {
+    color: var(--white);
+  }
+
+  .openMenuIconDark {
+    color: var(--dark);
   }
 }
