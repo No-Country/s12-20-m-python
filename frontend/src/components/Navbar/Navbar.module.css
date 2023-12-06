@@ -2,17 +2,20 @@
   display: flex;
   list-style: none;
   gap: 1.5rem;
-  background-color: #eee;
 }
 
 .navLink {
   text-decoration: none;
-  color: #555;
+  color: var(--white);
   transition: color 0.5s ease;
 }
 
+.navLinkDark {
+  color: var(--dark);
+}
+
 .navLink:hover {
-  color: #000;
+  color: var(--grayB);
 }
 
 .closeMenu {
@@ -27,7 +30,7 @@
     bottom: 0;
     left: 0;
     z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--primary);
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.5s ease, opacity 0.5s ease;
@@ -47,12 +50,12 @@
     cursor: pointer;
   }
 
+  .closeMenuIcon {
+    color: var(--white);
+  }
+
   .navList {
-    width: 50%;
     height: 100%;
-    position: absolute;
-    right: 0;
-    min-width: 300px;
     flex-direction: column;
     align-items: center;
     gap: 3rem;
@@ -69,11 +72,13 @@
 
   .navList li {
     width: 100%;
+    text-align: center;
   }
 
   .navLink {
     display: block;
     padding-left: 3rem;
     width: 100%;
+    color: var(--white);
   }
 }

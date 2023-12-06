@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link} from 'react-router-dom'
 
 const TreePurchaseForm = () => {
   const [treeTypes, setTreeTypes] = useState({
@@ -59,7 +60,10 @@ const TreePurchaseForm = () => {
       <div>
         <h4>Total: ${total}</h4>
       </div>
+      <Link to='/login'>
       <button onClick={handleCompraClick}>Continuar</button>
+      </Link>
+     
     </div>
   );
 };
