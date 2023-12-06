@@ -36,11 +36,11 @@ const Map = ({ mainLocation, places, handleClick }) => {
             // eventHandlers={{ click: () => handleClick(place.name) }}
           >
             <Popup>
-              <h3>Planta un árbol aquí:</h3>
-              <h4>{place.name}</h4>
-              <p>Tipos de árboles: {place.trees}</p>
-              <p>Latitud: {place.location.lat}</p>
-              <p>Longitud: {place.location.lng}</p>
+              <h4>Planta un árbol aquí:</h4>
+              <h3>{place.name}</h3>
+              <p >Tipos de árboles: {place.trees}</p>
+              {/* <p>Latitud: {place.location.lat}</p>
+              <p>Longitud: {place.location.lng}</p> */}
               <button onClick={(e) => handleClick(e)}>click</button>
             </Popup>
           </Marker>
