@@ -10,7 +10,7 @@ function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.ourvision}>
-        <video className={styles.homeVideo}>
+        <video autoPlay playsInline muted className={styles.homeVideo}>
           <source src={HomeVideo} type="video/mp4" />
         </video>
         <div className={styles.titleBox}>
