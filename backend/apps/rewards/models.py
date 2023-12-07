@@ -1,6 +1,6 @@
 from django.db import models
 # Users 
-from apps.users.models import User
+from apps.users.models import UserProfile
 
 # Create your models here.
 class Achievement(models.Model):
@@ -9,4 +9,4 @@ class Achievement(models.Model):
 
 class AchievementAssignment(models.Model):
   achievement_id = models.ForeignKey(Achievement, on_delete=models.CASCADE)
-  user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+  user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

@@ -1,11 +1,11 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
 # Users 
-from apps.users.models import User
+from apps.users.models import UserProfile
 # Create your models here.
 
 class Post(TimeStampedModel):
-    users_id = models.ForeignKey(User,on_delete=models.CASCADE )
+    users_id = models.ForeignKey(UserProfile,on_delete=models.CASCADE )
 
     class Meta:
         verbose_name = 'Post'
