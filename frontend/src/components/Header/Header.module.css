@@ -4,6 +4,7 @@
   width: 100%;
   background-color: rgba(3, 3, 3, 0.4);
   height: 80px;
+  z-index: 100;
 }
 
 .headerBackground {

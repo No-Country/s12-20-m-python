@@ -1,4 +1,15 @@
-.leaflet-container{
+.leaflet-container {
   width: 500px;
   height: 300px;
+}
+
+.leaflet-control {
+  z-index: 0 !important;
+}
+.leaflet-pane {
+  z-index: 0 !important;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 0 !important;
 }
