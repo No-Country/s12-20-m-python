@@ -9,6 +9,7 @@ const TreePurchaseForm = () => {
   });
 
   const [total, setTotal] = useState(0);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   const handleQuantityChange = (type, quantity) => {
     const updatedTreeTypes = {
@@ -27,14 +28,20 @@ const TreePurchaseForm = () => {
     setTotal(newTotal);
   };
 
-/*   const handleCompraClick = () => {
-    // Aquí puedes agregar la lógica para realizar la compra, por ejemplo, enviar una solicitud al servidor, etc.
-    alert('¡Compra realizada con éxito!');
-  }; */
+  const handleCompraClick = () => {
+    if (isUserLoggedIn) {
+      // Enviar información al backend y realizar la compra
+      alert('Compra realizada con éxito. Se ha enviado la información al backend.');
+    } else {
+      // Mostrar formulario de registro o inicio de sesión
+      alert('Usuario no registrado. Mostrar formulario de registro o inicio de sesión.');
+      // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
+    }
+  };
 
   return (
     <div>
-      <h2>Elegí tus árboles.</h2>
+      
       {Object.keys(treeTypes).map((type) => (
         <div key={type}>
           <label>
@@ -54,7 +61,7 @@ const TreePurchaseForm = () => {
         <h4>Total: ${total}</h4>
       </div>
       <Link to='/login'>
-      <button /* onClick={handleCompraClick} */>Continuar</button>
+      <button onClick={handleCompraClick}>Continuar</button>
       </Link>
      
     </div>
