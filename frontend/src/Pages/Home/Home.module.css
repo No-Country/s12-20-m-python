@@ -38,6 +38,11 @@ body {
   width: 100vw;
   
   }
+  .titleBox h2{
+    color: #fff;
+    font-weight: 600;
+    font-size: 36px;
+  }
   .whyadopt{
     max-width: 1440px;
     width: 80%;
@@ -54,6 +59,7 @@ body {
   .adopyTexts h2{
     font-size: 36px;
     padding: 1rem 0 2rem 0;
+    color: #fff;
   }
   .adopyTexts p{
     text-align: left;
@@ -79,12 +85,6 @@ body {
     margin-top: 60px;
   }
 
-/* h2{
-  font-size: 36px;
-  color: #fff;
-  font-weight: 600;
-
-} */
   p {
     line-height: 1.6;
   }
