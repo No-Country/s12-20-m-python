@@ -62,12 +62,7 @@ const Adoption = () => {
           places={places}
           handleClick={handleClick}
         />
-        {showDetail === true && (
-          <div className={styles.whyadopt}>
-            <h4>Selection Zone</h4>
-            <p>Acá se selecciona los árboles a adoptar</p>
-          </div>
-        )}
+
         <div className={styles.loremtree}>
           <h2>Lorem ipsum</h2>
           <h4>Tipos de árboles:</h4>
@@ -75,13 +70,15 @@ const Adoption = () => {
         </div>
       </div>
       <div className={styles.rigthcontainer}>
-        <h2>Zona elegida por el usuario</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-          dignissimos debitis ea perferendis iste doloremque nisi corporis
-          aspernatur non culpa, recusandae mollitia tenetur ut nostrum aut eos
-          possimus pariatur odio.
-        </p>
+        <h3>Zona elegida:</h3>
+        {showDetail === true && (
+          <div className={styles.whyadopt}>
+            <h4>*Zona Elegida*</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <h3>Elegí tus árboles:</h3>
+          </div>
+        )}
+
         <TreePurchaseForm />
       </div>
     </div>

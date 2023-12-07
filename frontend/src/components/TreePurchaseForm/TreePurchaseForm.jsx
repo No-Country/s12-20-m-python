@@ -41,7 +41,7 @@ const TreePurchaseForm = () => {
 
   return (
     <div>
-      <h2>Elegí tus árboles.</h2>
+      
       {Object.keys(treeTypes).map((type) => (
         <div key={type}>
           <label>
