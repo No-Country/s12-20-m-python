@@ -5,11 +5,34 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from model_utils.models import TimeStampedModel
 
 
+
+class TypeTree (TimeStampedModel):
+    """ Model that represents the Type Tree """
+
+    typetree = models.CharField(
+        'Type of tree', 
+        max_length=50
+    )
+
+
+    class Meta:
+        """Meta definition for Type Tree."""
+
+        verbose_name = 'Type Tree'
+        verbose_name_plural = 'Type Trees'
+
+
+    def __str__(self):
+        """Unicode representation of Type Tree."""
+
+        return str( self.typetree)
+
+
 class Land (TimeStampedModel):
     """ Model that represents the Land """
 
     place = models.CharField(
-        'Location of the land', 
+        'Location of the land',
         max_length=50
     )
     ammount = models.IntegerField('Number of trees')
@@ -24,7 +47,7 @@ class Land (TimeStampedModel):
         max_digits=9,
         decimal_places=6,
         validators=[
-            MinValueValidator(-90), 
+            MinValueValidator(-90),
             MaxValueValidator(90)
             ]
         )
@@ -32,10 +55,13 @@ class Land (TimeStampedModel):
         max_digits=9,
         decimal_places=6,
         validators=[
-            MinValueValidator(-90), 
+            MinValueValidator(-90),
             MaxValueValidator(90)
             ]
         )
+    type_tree = models.ManyToManyField(TypeTree)
+
+
     class Meta:
         """Meta definition for Land."""
 
@@ -60,13 +86,14 @@ class Tree (TimeStampedModel):
     )
     land = models.ForeignKey(
         Land,
-        related_name='lands',
+        related_name='tree',
         on_delete=models.CASCADE
     )
     typetree = models.CharField(
         'type of trees', 
         max_length=50
     )
+
 
     class Meta:
         """Meta definition for Tree."""
@@ -78,28 +105,3 @@ class Tree (TimeStampedModel):
         """Unicode representation of Tree."""
         return self.name + '-' + self.land.place
 
-
-class TypeTree (TimeStampedModel):
-    """ Model that represents the Type Tree """
-
-    typetree = models.CharField(
-        'Type of tree', 
-        max_length=50
-    )
-    land = models.ForeignKey(
-        Land,
-        related_name='land',
-        on_delete=models.CASCADE
-    )
-
-    class Meta:
-        """Meta definition for Type Tree."""
-
-        verbose_name = 'Type Tree'
-        verbose_name_plural = 'Type Trees'
-
-
-    def __str__(self):
-        """Unicode representation of Type Tree."""
-
-        return str( self.typetree)
