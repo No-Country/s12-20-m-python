@@ -17,35 +17,35 @@ const Adoption = () => {
   };
   const mainLocation = {
     location: {
-      lat: '-34.5694991',
-      lng: '-58.591387',
+      lat: '-32.607455',
+      lng: '-63.850605',
     },
-    zoom: 11,
+    zoom: 7,
   };
 
   const places = [
     {
-      name: 'Place One',
-      trees: 'pinos, algarrobos, ñires',
+      name: 'Calamuchita',
+      trees: 'olmos, algarrobos, ñires',
       location: {
-        lat: '-34.5900000',
-        lng: '-58.4900000',
+        lat: '-32.130287',
+        lng: '-64.688381',
       },
     },
     {
-      name: 'Place Two',
+      name: 'Punta del Agua',
       trees: 'cedros, álamos, espinillos',
       location: {
-        lat: '-34.6000',
-        lng: '-58.547558',
+        lat: '-32.605444',
+        lng: '-63.792494',
       },
     },
     {
-      name: 'Place Three',
+      name: 'Carrilobo',
       trees: 'robles, álamos, lapachos',
       location: {
-        lat: '-34.6199712',
-        lng: '-58.5347848',
+        lat: '-31.964673',
+        lng: '-63.208347',
       },
     },
   ];
@@ -62,12 +62,7 @@ const Adoption = () => {
           places={places}
           handleClick={handleClick}
         />
-        {showDetail === true && (
-          <div className={styles.whyadopt}>
-            <h4>Selection Zone</h4>
-            <p>Acá se selecciona los árboles a adoptar</p>
-          </div>
-        )}
+
         <div className={styles.loremtree}>
           <h2>Lorem ipsum</h2>
           <h4>Tipos de árboles:</h4>
@@ -75,13 +70,15 @@ const Adoption = () => {
         </div>
       </div>
       <div className={styles.rigthcontainer}>
-        <h2>Zona elegida por el usuario</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-          dignissimos debitis ea perferendis iste doloremque nisi corporis
-          aspernatur non culpa, recusandae mollitia tenetur ut nostrum aut eos
-          possimus pariatur odio.
-        </p>
+        <h3>Zona elegida:</h3>
+        {showDetail === true && (
+          <div className={styles.whyadopt}>
+            <h4>*Zona Elegida*</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <h3>Elegí tus árboles:</h3>
+          </div>
+        )}
+
         <TreePurchaseForm />
       </div>
     </div>

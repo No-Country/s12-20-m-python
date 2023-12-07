@@ -1,7 +1,7 @@
 .adoptioncontainer {
-  margin: 2em;
-    display: flex;
-    flex-direction: row;
+  margin: 7em;
+  display: flex;
+  flex-direction: row;
 }
 
 @media (max-width: 900px) {
@@ -13,8 +13,8 @@
 }
 
 .rigthcontainer {
-    padding: 3em;
-    flex-direction: column;
+  padding-left: 3em;
+  flex-direction: column;
 }
 
 .loremtree {

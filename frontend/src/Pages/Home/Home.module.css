@@ -39,6 +39,7 @@ body {
   
   }
   .whyadopt{
+    max-width: 1440px;
     width: 80%;
     margin: 0 auto;
     background-color: #31572C;
@@ -78,16 +79,65 @@ body {
     margin-top: 60px;
   }
 
-h2{
+/* h2{
   font-size: 36px;
   color: #fff;
   font-weight: 600;
 
-}
+} */
   p {
     line-height: 1.6;
   }
 
-/*   button:hover {
+  .secondButton:hover {
     background-color: #868686;
-  } */
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px){
+    .whyadopt{
+      width: 100%;
+      flex-direction: column;
+      height: 600px;
+      margin-bottom: 720px;
+    }
+    .adopyTexts h2{
+      font-size: 20px;
+    }
+    .adopyTexts p{
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .whyadopt img{
+      padding: 0 16px ;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .homeVideo{
+      width: 100%;
+    }
+    .titleBox h2{
+      font-size: 20px;
+    }
+    .adoptButton{
+      width: 165px;
+    }
+    .whyadopt{
+      width: 100%;
+      flex-direction: column;
+      height: 600px;
+      margin-bottom: 420px;
+    }
+    .adopyTexts h2{
+      font-size: 20px;
+    }
+    .adopyTexts p{
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .whyadopt img{
+      padding: 0 16px ;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }

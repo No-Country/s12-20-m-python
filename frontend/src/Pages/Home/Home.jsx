@@ -1,4 +1,4 @@
-/* import LatestPlantings from "../../components/LatestPlantings/LatestPlantings"; */
+import LatestPlantings from "../../components/LatestPlantings/LatestPlantings";
 import Vision from "../../components/Vision/Vision";
 import Achievements from "../../components/Achievements/Achievements";
 import styles from "./Home.module.css";
@@ -10,20 +10,9 @@ function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.ourvision}>
-        <video className={styles.homeVideo}>
+        <video autoPlay playsInline muted className={styles.homeVideo}>
           <source src={HomeVideo} type="video/mp4" />
         </video>
-        {/* <p>
-          Nosotros visualizamos un futuro donde nuestro proyecto de siembra de
-          árboles no solo reduce la huella de carbono, sino que también actúa
-          como un catalizador para la regeneración ambiental. Buscamos crear un
-          entorno sostenible y equilibrado, donde los árboles no solo se
-          consideran sumideros de carbono, sino también protectores de la
-          biodiversidad y recursos vitales para las comunidades locales. A
-          través de la colaboración y la innovación constante, aspiramos a ser
-          líderes en la promoción de prácticas responsables y la creación de un
-          impacto duradero en la salud de nuestro planeta
-        </p> */}
         <div className={styles.titleBox}>
           <h2>Vos también podes ser parte</h2>
           <Link to={"/adoption"}>
@@ -65,7 +54,7 @@ function Home() {
         <Achievements />
       </div>
       <div>
-       {/*  <LatestPlantings /> */}
+        <LatestPlantings />
       </div>
     </div>
   );
