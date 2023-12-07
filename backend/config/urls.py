@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
- 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('user/', include('apps.users.router')),
@@ -26,4 +26,4 @@ urlpatterns = [
     path('post/', include('apps.post.router')),
     path('payment/', include('apps.payments.router')),
     path('land/', include('apps.land.router'))
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
