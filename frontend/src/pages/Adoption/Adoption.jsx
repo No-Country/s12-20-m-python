@@ -3,8 +3,14 @@ import { useState } from 'react';
 import styles from './Adoption.module.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import TreePurchaseForm from '../../components/TreePurchaseForm/TreePurchaseForm';
+import { useUser } from '../../context/UserContext';
+import { useLand } from '../../context/LandContext';
 
 const Adoption = () => {
+  // const { user } = useContext(UserContext);
+  const { user } = useUser();
+  const { land } = useLand();
+
   const handleSearch = (term) => {
     //lógica del buscador
     console.log(`Buscando: ${term}`);
@@ -54,6 +60,8 @@ const Adoption = () => {
     <div className={styles.adoptioncontainer}>
       <div className={styles.leftcontainer}>
         <h1>Adopta un Árbol</h1>
+        <h2>{user.name}</h2>
+        <h2>{land.name}</h2>
         <SearchInput onSearch={handleSearch} />
         <p>Seleccioná un árbol y mirá donde estamos reforestando.</p>
 
