@@ -11,3 +11,4 @@ python manage.py migrate
 
 cd config/
 pwd
+ls
