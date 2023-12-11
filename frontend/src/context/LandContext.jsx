@@ -14,7 +14,7 @@ export const useLand = () => {
 };
 
 export const LandProvider = ({ children }) => {
-  const [land, setLand] = useState({ name: 'land1' });
+  const [land, setLand] = useState(null);
 
   const getLandReq = async () => {
     try {
