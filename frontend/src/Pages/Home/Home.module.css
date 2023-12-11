@@ -15,7 +15,7 @@ body {
     background: rgb(177, 177, 177); 
   }
   .homeVideo{
-    width: 1440px;
+    width: 100%;
     height: 412px;
     object-fit: cover;
 
@@ -113,9 +113,6 @@ body {
     }
   }
   @media screen and (max-width: 767px) {
-    .homeVideo{
-      width: 100%;
-    }
     .titleBox h2{
       font-size: 20px;
     }
