@@ -14,7 +14,7 @@ function Home() {
           <source src={HomeVideo} type="video/mp4" />
         </video>
         <div className={styles.titleBox}>
-          <h2>Vos también podes ser parte</h2>
+          <h2>Vos también podés ser parte</h2>
           <Link to={"/adoption"}>
             <button className={styles.adoptButton}>Adoptá un árbol</button>
           </Link>
@@ -39,8 +39,7 @@ function Home() {
             medio ambiente, es una forma de conectarse con la naturaleza y hacer
             una diferencia positiva en el mundo. Al adoptar un árbol, ayudas a
             financiar la plantación de un nuevo árbol en un área que ha sido
-            deforestada o degradada. También puede ayudar a proporcionar
-            mantenimiento al árbol durante su vida útil.
+            deforestada o degradada. También podés colaborar para darle los cuidados necesarios durante todo su ciclo de vida, para que tu árbol crezca sano y fuerte.
           </p>
           <Link to={"/adoption"}>
             <button className={styles.secondButton}>Adoptá un árbol</button>
