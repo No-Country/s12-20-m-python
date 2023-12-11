@@ -1,34 +1,22 @@
-"""
-Tener em cuemta que para que funcione de en Local 
-Decomentar las lineas :  9 a la 27 
-Comentar las lineas : 36  y 72
-Modificar asgi.py  wsgi.py manage.py
-"""
-
+from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
 import os
+import environ
 
-""" Descomentar para conf locales """
-from django.core.exceptions import ImproperlyConfigured
-import json
-# 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
-with open("secret.json") as f:
-    secret = json.loads(f.read())
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-def get_secret(secret_name, secrets=secret):
-    try:
-        return secrets[secret_name]
-    except:
-        msg = "la variable %s no existe" % secret_name
-    raise ImproperlyConfigured(msg)
-
-SECRET_KEY = get_secret('SECRET_KEY')
-
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+DEBUG = 'RENDER' not in os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -70,7 +58,7 @@ INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     'corsheaders.middleware.CorsMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -134,4 +122,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-# 
+#
