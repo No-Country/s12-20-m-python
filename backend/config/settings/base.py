@@ -1,6 +1,6 @@
 """
 Tener em cuemta que para que funcione de en Local 
-Decomentar las lineas :  9 a la 23 
+Decomentar las lineas :  9 a la 27 
 Comentar las lineas : 36  y 72
 Modificar asgi.py  wsgi.py manage.py
 """
@@ -9,22 +9,22 @@ from pathlib import Path
 import os
 
 """ Descomentar para conf locales """
-# from django.core.exceptions import ImproperlyConfigured
-# import json
+from django.core.exceptions import ImproperlyConfigured
+import json
+# 
+
+with open("secret.json") as f:
+    secret = json.loads(f.read())
 
 
-# with open("secret.json") as f:
-#     secret = json.loads(f.read())
+def get_secret(secret_name, secrets=secret):
+    try:
+        return secrets[secret_name]
+    except:
+        msg = "la variable %s no existe" % secret_name
+    raise ImproperlyConfigured(msg)
 
-
-# def get_secret(secret_name, secrets=secret):
-#     try:
-#         return secrets[secret_name]
-#     except:
-#         msg = "la variable %s no existe" % secret_name
-#     raise ImproperlyConfigured(msg)
-
-# SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+# SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -70,7 +70,7 @@ INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",

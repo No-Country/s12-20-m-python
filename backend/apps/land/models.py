@@ -38,7 +38,8 @@ class Land (TimeStampedModel):
     ammount = models.IntegerField('Number of trees')
     img = models.ImageField(
         'Image',
-        upload_to='Land',
+        upload_to='land',
+        default= 'land/default.jpg',
         blank=True,
         null=True
     )
@@ -51,7 +52,7 @@ class Land (TimeStampedModel):
             MaxValueValidator(90)
             ]
         )
-    length = models.DecimalField(
+    longitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
         validators=[
@@ -74,7 +75,7 @@ class Land (TimeStampedModel):
 
     def __str__(self):
         """Unicode representation of Land."""
-        return str(self.place)
+        return str(self.place) +  str(self.ammount) 
 
 
 class Tree (TimeStampedModel):
