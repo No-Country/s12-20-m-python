@@ -202,6 +202,8 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+migrations
+__pycache__
 
 # Flask stuff:
 instance/
@@ -310,4 +312,8 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+secret.json
 # End of https://www.toptal.com/developers/gitignore/api/python,node
+
+#
+Land/
