@@ -1,17 +1,28 @@
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa6';
 import styles from './Navbar.module.css';
+import { useUser } from '../../context/UserContext';
 
 const Navbar = ({ handleCloseMenu, openMenu, isHomePage }) => {
-  const menuItems = [
-    { label: 'Inicio', path: '/' },
-    { label: 'Nosotros', path: '/about' },
-    { label: 'Adopta', path: '/adoption' },
-    { label: 'Actividades', path: '/activities' },
-    { label: 'Perfil', path: '/profile' },
-    { label: 'Iniciar Sesión', path: '/login' },
-    { label: 'Registrarse', path: '/register' },
-  ];
+  const { isAuth } = useUser();
+
+  const menuItems = isAuth
+    ? [
+        { label: 'Inicio', path: '/' },
+        { label: 'Nosotros', path: '/about' },
+        { label: 'Adopta', path: '/adoption' },
+        { label: 'Actividades', path: '/activities' },
+        { label: 'Perfil', path: '/profile' },
+        { label: 'Salir', path: '/' },
+      ]
+    : [
+        { label: 'Inicio', path: '/' },
+        { label: 'Nosotros', path: '/about' },
+        { label: 'Adopta', path: '/adoption' },
+        { label: 'Actividades', path: '/activities' },
+        { label: 'Iniciar Sesión', path: '/login' },
+        { label: 'Registrarse', path: '/register' },
+      ];
 
   return (
     <nav
