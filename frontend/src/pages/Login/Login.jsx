@@ -3,9 +3,9 @@ import styles from './Login.module.css';
 
 const Login = () => {
   return (
-    <section>
+    <section className={styles.loginSection}>
       <div className={styles.loginContent}>
-        <h2>Login</h2>
+     {/*    <h2>Login</h2> */}
         <LoginForm />
       </div>
     </section>
