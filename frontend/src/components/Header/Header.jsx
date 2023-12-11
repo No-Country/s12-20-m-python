@@ -14,11 +14,11 @@ const Header = () => {
   const handleCloseMenu = () => setOpenMenu(false);
 
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
+  const isHomePage = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register';
+  
   return (
     <header
-      className={`${styles.header} ${!isHomePage && styles.headerBackground}`}
+      className={`${styles.header} ${!isHomePage && styles.headerBackground} `}
     >
       <section className={styles.headerContent}>
         <div>
