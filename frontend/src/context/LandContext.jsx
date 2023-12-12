@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { getLand } from '../api/land';
 
 export const LandContext = createContext();
@@ -14,7 +14,23 @@ export const useLand = () => {
 };
 
 export const LandProvider = ({ children }) => {
-  const [land, setLand] = useState(null);
+  const [land, setLand] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await getLand();
+        console.log(res);
+        if (res.status === 200) {
+          setLand(res.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getData();
+  }, []);
 
   const getLandReq = async () => {
     try {

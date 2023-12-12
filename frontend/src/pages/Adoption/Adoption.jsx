@@ -1,5 +1,5 @@
 import Map from '../../components/Map/Map';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './Adoption.module.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import TreePurchaseForm from '../../components/TreePurchaseForm/TreePurchaseForm';
@@ -9,7 +9,7 @@ import { useLand } from '../../context/LandContext';
 const Adoption = () => {
   // const { user } = useContext(UserContext);
   const { user } = useUser();
-  const { getLandReq } = useLand();
+  const { land } = useLand();
 
   const handleSearch = (term) => {
     //lógica del buscador
@@ -17,16 +17,6 @@ const Adoption = () => {
   };
 
   const [showDetail, setShowDetail] = useState(false);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await getLandReq();
-
-      console.log(res);
-    };
-
-    getData();
-  }, [getLandReq]);
 
   const handleClick = () => {
     setShowDetail(true);
