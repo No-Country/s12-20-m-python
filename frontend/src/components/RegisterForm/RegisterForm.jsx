@@ -7,8 +7,10 @@ const RegisterForm = () => {
     handleSubmit,
     watch,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
+
+  const submitButtonClass = isValid ? styles.submitButtonValid : styles.submitButton;
 
   const onSubmit = handleSubmit((data) => {
     const newData = {
@@ -28,12 +30,14 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
-      <label htmlFor='name'>
-        Nombre:
+      <h3>Registro</h3>
+       <div className={styles.firstAndLastName}>
+     <label htmlFor='name'>
         <input
           id='name'
           type='text'
           name='name'
+          placeholder='Nombre'
           {...register('name', {
             validate: {
               required: (value) =>
@@ -54,11 +58,12 @@ const RegisterForm = () => {
       </label>
 
       <label htmlFor='lastName'>
-        Apellido:
+      
         <input
           id='lastName'
           type='text'
           name='lastName'
+          placeholder='Apellido'
           {...register('lastName', {
             validate: {
               required: (value) =>
@@ -77,13 +82,13 @@ const RegisterForm = () => {
         />
         {errors.lastName && <p>{errors.lastName.message}</p>}
       </label>
-
+      </div>
       <label htmlFor='email'>
-        Email:
         <input
           id='email'
           type='email'
           name='email'
+          placeholder='Correo electrónico'
           {...register('email', {
             validate: {
               required: (value) =>
@@ -98,11 +103,11 @@ const RegisterForm = () => {
       </label>
 
       <label htmlFor='birth'>
-        Fecha de Nacimiento:
         <input
           id='birth'
           type='date'
           name='birth'
+          placeholder='Fecha de nacimiento'
           {...register('birth', {
             validate: {
               required: (value) =>
@@ -125,13 +130,20 @@ const RegisterForm = () => {
         />
         {errors.birth && <p>{errors.birth.message}</p>}
       </label>
+      <label htmlFor='pais'>
+        <select id='pais' name='country' {...register('country')}>
+          <option value="" >País</option>
+          <option value='AR'>Argentina</option>
+        </select>
+      </label>
 
       <label htmlFor='password'>
-        Contraseña:
+        
         <input
           id='password'
           type='password'
           name='password'
+          placeholder='Contraseña'
           {...register('password', {
             validate: {
               required: (value) =>
@@ -195,11 +207,12 @@ const RegisterForm = () => {
       </label>
 
       <label htmlFor='confirmPassword'>
-        Confirmar Contraseña:
+      
         <input
           id='confirmPassword'
           type='password'
           name='confirmPassword'
+          placeholder='Confirmar contraseña'
           {...register('confirmPassword', {
             validate: {
               required: (value) =>
@@ -212,17 +225,11 @@ const RegisterForm = () => {
         />
         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       </label>
-
-      <label htmlFor='pais'>
-        País:
-        <select id='pais' name='country' {...register('country')}>
-          <option value='AR'>Argentina</option>
-        </select>
-      </label>
-
+      
+     
       <div className={styles.buttons}>
-        <input type='reset' value={'Limpiar'} />
-        <input type='submit' value={'Registrar'} />
+        {/* <input type='reset' value={'Limpiar'} /> */}
+        <input type='submit' value={'Registrarse'} className={submitButtonClass}/>
       </div>
       {/* <div>{JSON.stringify(watch())}</div> */}
     </form>

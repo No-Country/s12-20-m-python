@@ -5,15 +5,15 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from model_utils.models import TimeStampedModel
 
 
-
 class TypeTree (TimeStampedModel):
     """ Model that represents the Type Tree """
 
-    typetree = models.CharField(
-        'Type of tree', 
+    name = models.CharField(
+        'Type of tree',
         max_length=50
     )
-
+    common_name = models.CharField(max_length=70)
+    scientific_name = models.CharField(max_length=70)
 
     class Meta:
         """Meta definition for Type Tree."""
@@ -21,11 +21,10 @@ class TypeTree (TimeStampedModel):
         verbose_name = 'Type Tree'
         verbose_name_plural = 'Type Trees'
 
-
     def __str__(self):
         """Unicode representation of Type Tree."""
 
-        return str( self.typetree)
+        return str(self.name)
 
 
 class Land (TimeStampedModel):
@@ -38,7 +37,8 @@ class Land (TimeStampedModel):
     ammount = models.IntegerField('Number of trees')
     img = models.ImageField(
         'Image',
-        upload_to='Land',
+        upload_to='land',
+        default='land/default.jpg',
         blank=True,
         null=True
     )
@@ -49,18 +49,17 @@ class Land (TimeStampedModel):
         validators=[
             MinValueValidator(-90),
             MaxValueValidator(90)
-            ]
-        )
-    length = models.DecimalField(
+        ]
+    )
+    longitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
         validators=[
             MinValueValidator(-90),
             MaxValueValidator(90)
-            ]
-        )
+        ]
+    )
     type_tree = models.ManyToManyField(TypeTree)
-
 
     class Meta:
         """Meta definition for Land."""
@@ -68,20 +67,20 @@ class Land (TimeStampedModel):
         verbose_name = 'Land'
         verbose_name_plural = 'Lands'
 
-    def get_coordinated (self):
+    def get_coordinated(self):
         """ Coordinated """
-        return [self.latitude, self.length]
+        return [self.latitude, self.longitude]
 
     def __str__(self):
         """Unicode representation of Land."""
-        return str(self.place)
+        return str(self.place) + str(self.ammount)
 
 
 class Tree (TimeStampedModel):
     """ Model that represents the Tree """
 
     name = models.CharField(
-        'Name', 
+        'Name',
         max_length=50
     )
     land = models.ForeignKey(
@@ -90,10 +89,9 @@ class Tree (TimeStampedModel):
         on_delete=models.CASCADE
     )
     typetree = models.CharField(
-        'type of trees', 
+        'type of trees',
         max_length=50
     )
-
 
     class Meta:
         """Meta definition for Tree."""
@@ -104,4 +102,3 @@ class Tree (TimeStampedModel):
     def __str__(self):
         """Unicode representation of Tree."""
         return self.name + '-' + self.land.place
-

@@ -32,7 +32,7 @@ function Vision() {
       <img src={Responsabilidad} alt="" />
         <h3>Responsabilidad</h3>
         <p>
-        y consciencia ambiental.
+        y conciencia ambiental.
         </p>
       </div>
     </div>
