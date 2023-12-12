@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken import views
+from apps.users.viewset import Logout
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,5 +27,7 @@ urlpatterns = [
     path('reward/', include('apps.rewards.router')),
     path('post/', include('apps.post.router')),
     path('payment/', include('apps.payments.router')),
-    path('land/', include('apps.land.router'))
+    path('land/', include('apps.land.router')),
+    path('api_generate_token/', views.obtain_auth_token),
+    path('logout/', Logout.as_view(), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
