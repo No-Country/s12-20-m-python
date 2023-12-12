@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { FiPlusCircle } from 'react-icons/fi';
+import { BiMinusCircle } from 'react-icons/bi';
+import styles from './TreePurchaseForm.module.css';
 
 const TreePurchaseForm = () => {
   const [treeTypes, setTreeTypes] = useState({
@@ -31,40 +34,64 @@ const TreePurchaseForm = () => {
   const handleCompraClick = () => {
     if (isUserLoggedIn) {
       // Enviar información al backend y realizar la compra
-      alert('Compra realizada con éxito. Se ha enviado la información al backend.');
+      alert(
+        'Compra realizada con éxito. Se ha enviado la información al backend.',
+      );
     } else {
       // Mostrar formulario de registro o inicio de sesión
-      alert('Usuario no registrado. Mostrar formulario de registro o inicio de sesión.');
+      alert(
+        'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
+      );
       // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
     }
   };
 
   return (
-    <div>
-      
-      {Object.keys(treeTypes).map((type) => (
-        <div key={type}>
-          <label>
-            {treeTypes[type].name} - ${treeTypes[type].price} por árbol:
-            <input
-              type='number'
-              min='0'
-              value={treeTypes[type].quantity}
-              onChange={(e) =>
-                handleQuantityChange(type, parseInt(e.target.value, 10))
-              }
-            />
-          </label>
-        </div>
-      ))}
-      <div>
-        <h4>Total: ${total}</h4>
+    <>
+      <div className={styles.containerTree}>
+        {Object.keys(treeTypes).map((type) => (
+          <div key={type}>
+            <div className={styles.treeContainer}>
+              <img
+                src='ruta_de_imagen_1'
+                alt='Imagen'
+                className={styles.imgadoption}
+              />
+              <label>
+                <p>{treeTypes[type].name}</p>${treeTypes[type].price}
+                <div className={styles.counterContainer}>
+                  <button
+                    onClick={() =>
+                      handleQuantityChange(type, treeTypes[type].quantity - 1)
+                    }
+                    className={styles.buttonCounterMinus}
+                  >
+                    <BiMinusCircle size={'24px'} color={'#31572C'} />
+                  </button>
+                  <span>{treeTypes[type].quantity}</span>
+                  <button
+                    onClick={() =>
+                      handleQuantityChange(type, treeTypes[type].quantity + 1)
+                    }
+                    className={styles.buttonCounterPlus}
+                  >
+                    <FiPlusCircle size={'24px'} color={'#31572C'} />
+                  </button>
+                </div>
+              </label>
+            </div>
+          </div>
+        ))}
       </div>
-      <Link to='/login'>
-      <button onClick={handleCompraClick}>Continuar</button>
-      </Link>
-     
-    </div>
+      <div>
+        <h4>Subtotal: ${total}</h4>
+        <Link to='/login'>
+          <button className={styles.purchaseButton} onClick={handleCompraClick}>
+            Adoptar
+          </button>
+        </Link>
+      </div>
+    </>
   );
 };
 
