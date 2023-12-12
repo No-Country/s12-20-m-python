@@ -70,24 +70,23 @@ const Adoption = () => {
           places={places}
           handleClick={handleClick}
         />
-
-        <div className={styles.loremtree}>
-          <h2>Lorem ipsum</h2>
-          <h4>Tipos de árboles:</h4>
-          <p>Arboles plantados</p>
-        </div>
       </div>
       <div className={styles.rigthcontainer}>
-        <h3>Zona elegida:</h3>
+        
         {showDetail === true && (
-          <div className={styles.whyadopt}>
-            <h4>*Zona Elegida*</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <h3>Elegí tus árboles:</h3>
+          <div className={styles.loremtree}>
+            <div>
+            <h3>*Zona Elegida*</h3>
+            <p>A los alrededores de la Laguna Rosales en Neuquén nos pusimos como objetivo sembrar 200 árboles de 3 especies de árboles nativos, Ñire (Nothofagus antarctica), Maitén (Maytenus boaria) y Coihue (Nothofagus dombeyi).</p>
+            <p>Seleccioná el/los árbol/es que querés adoptar</p>
+            </div>
+            
+            <TreePurchaseForm />
           </div>
+          
         )}
 
-        <TreePurchaseForm />
+        
       </div>
     </div>
   );
