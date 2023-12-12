@@ -1,8 +1,8 @@
 .form {
   max-width: 500px;
-  margin: 4rem auto;
+  margin: 2.5rem auto;
   border: solid 1px;
-  padding: 5rem;
+  padding: 3rem 5rem 2rem;
   background-color: #fff;
   border-radius: 15px;
   height: 90%;
@@ -32,6 +32,9 @@
   padding: .5rem;
   border:1px solid #ccc ;
 }
+label p{
+ font-size: 10px;
+}
 .checklistPassword {
   border: solid 1px;
   list-style: none;
@@ -47,7 +50,12 @@
   content: '✗';
   color: red;
 }
-
+.passReq{
+  font-size: 10px;
+}
+.default{
+  font-size: 10px;
+}
 .passReq::before {
   padding-right: 8px;
   content: '✓';
@@ -55,7 +63,7 @@
 }
 
 .buttons {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 .submitButtonValid{
   background-color: #31572C;
