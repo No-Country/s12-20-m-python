@@ -1,0 +1,23 @@
+.loginSection{
+  margin: -80px 0 0;
+}
+.registerContent {
+  margin: 0 auto;
+  margin-top: 5rem;
+  padding: 4rem 1rem 3rem;
+  background-image: url('../../assets/bosque.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+  max-width: 1440px;
+}
+
+.registerContent h2 {
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .registerContent{
+    background-image: none;
+  }
+}
