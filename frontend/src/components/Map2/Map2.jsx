@@ -3,10 +3,15 @@ import L from 'leaflet';
 import TreeIcon from '../../assets/tree-icon.svg';
 
 import 'leaflet/dist/leaflet.css';
-import './Map.css';
+import './Map2.css';
+import { useLand } from '../../context/LandContext';
 
-const Map = ({ mainLocation, places, handleClick }) => {
-  const { location, zoom } = mainLocation;
+const Map2 = ({ handleClick }) => {
+  const { land } = useLand();
+
+  if (!land) return <div>Cargando Mapa...</div>;
+
+  const { get_coordinated: location } = land[0];
 
   const customIcon = L.icon({
     iconUrl: TreeIcon,
@@ -18,7 +23,7 @@ const Map = ({ mainLocation, places, handleClick }) => {
   }; */
 
   return (
-    <MapContainer center={location} zoom={zoom} scrollWheelZoom={true}>
+    <MapContainer center={location} zoom={7} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -26,20 +31,22 @@ const Map = ({ mainLocation, places, handleClick }) => {
 
       {/*   <Polygon pathOptions={purpleOptions} positions={polygon} /> */}
 
-      {places.map((place, idx) => {
+      {land.map((place) => {
         return (
           <Marker
-            key={idx}
-            position={place.location}
+            key={place.id}
+            position={place.get_coordinated}
             icon={customIcon}
             // eventHandlers={{ click: () => handleClick(place.name) }}
           >
             <Popup>
               <h4>Planta un árbol aquí:</h4>
-              <h3>{place.name}</h3>
-              <p>Tipos de árboles: {place.trees}</p>
-              {/* <p>Latitud: {place.location.lat}</p>
-              <p>Longitud: {place.location.lng}</p> */}
+              <h3>{place.place}</h3>
+              <p>
+                Tipos de árboles:{' '}
+                {place.type_tree.map((type) => type.name).join(', ')}
+              </p>
+
               <button onClick={(e) => handleClick(e)}>click</button>
             </Popup>
           </Marker>
@@ -49,4 +56,4 @@ const Map = ({ mainLocation, places, handleClick }) => {
   );
 };
 
-export default Map;
+export default Map2;

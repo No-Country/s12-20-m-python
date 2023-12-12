@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getLand } from '../api/land';
+import { getJson, getLand } from '../api/land';
 
 export const LandContext = createContext();
 
@@ -16,15 +16,16 @@ export const useLand = () => {
 export const LandProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [land, setLand] = useState([]);
+  const [land, setLand] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await getLand();
-        // console.log(res);
+        // const res = await getLand();
+        const res = await getJson();
+        console.log(res);
         if (res.status === 200) {
           setLand(res.data);
         }

@@ -5,6 +5,7 @@ import SearchInput from '../../components/SearchInput/SearchInput';
 import TreePurchaseForm from '../../components/TreePurchaseForm/TreePurchaseForm';
 import { useUser } from '../../context/UserContext';
 import { useLand } from '../../context/LandContext';
+import Map2 from '../../components/Map2/Map2';
 
 const Adoption = () => {
   // const { user } = useContext(UserContext);
@@ -70,7 +71,7 @@ const Adoption = () => {
           ) : error ? (
             <div>{JSON.stringify(error)}</div>
           ) : (
-            <div>{JSON.stringify(land)}</div>
+            <div>Datos obtenidos</div>
           )}
         </div>
 
@@ -79,6 +80,7 @@ const Adoption = () => {
           places={places}
           handleClick={handleClick}
         />
+        <Map2 handleClick={handleClick} />
 
         <div className={styles.loremtree}>
           <h2>Lorem ipsum</h2>
