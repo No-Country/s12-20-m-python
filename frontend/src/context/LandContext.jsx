@@ -14,18 +14,27 @@ export const useLand = () => {
 };
 
 export const LandProvider = ({ children }) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [land, setLand] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const res = await getLand();
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           setLand(res.data);
         }
       } catch (error) {
-        console.log(error);
+        setError({
+          status: error.response.status,
+          message: error.response.statusMessage || 'Error...',
+        });
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -41,7 +50,7 @@ export const LandProvider = ({ children }) => {
     }
   };
 
-  const values = { land, getLandReq };
+  const values = { getLandReq, land, loading, error };
 
   return <LandContext.Provider value={values}>{children}</LandContext.Provider>;
 };

@@ -9,7 +9,7 @@ import { useLand } from '../../context/LandContext';
 const Adoption = () => {
   // const { user } = useContext(UserContext);
   const { user } = useUser();
-  const { land } = useLand();
+  const { land, loading, error } = useLand();
 
   const handleSearch = (term) => {
     //lógica del buscador
@@ -63,6 +63,16 @@ const Adoption = () => {
         <h2>{user.name}</h2>
         <SearchInput onSearch={handleSearch} />
         <p>Seleccioná un árbol y mirá donde estamos reforestando.</p>
+
+        <div>
+          {loading ? (
+            <p>Cargando datos...</p>
+          ) : error ? (
+            <div>{JSON.stringify(error)}</div>
+          ) : (
+            <div>{JSON.stringify(land)}</div>
+          )}
+        </div>
 
         <Map
           mainLocation={mainLocation}

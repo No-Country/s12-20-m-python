@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import styles from './RegisterForm.module.css';
+import { useUser } from '../../context/UserContext';
 
 const RegisterForm = () => {
   const {
@@ -10,7 +11,9 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = handleSubmit((data) => {
+  const { registerReq, loading, error } = useUser();
+
+  const onSubmit = handleSubmit(async (data) => {
     const newData = {
       name: trimmedValue(data.name),
       lastName: trimmedValue(data.lastName),
@@ -21,6 +24,9 @@ const RegisterForm = () => {
     };
     alert(`datos: ${JSON.stringify(newData)}`);
     console.log(newData);
+
+    await registerReq(newData);
+
     reset();
   });
 
