@@ -1,8 +1,17 @@
 .form {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 2.5rem auto;
   border: solid 1px;
-  padding: 1rem;
+  padding: 3rem 5rem 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  height: 90%;
+}
+.firstAndLastName{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap:1rem;
 }
 
 .form label {
@@ -10,11 +19,22 @@
   width: 100%;
   margin-top: 1rem;
 }
-
+.form input{
+  border-radius: 15px;
+  width: 100%;
+}
 .form p {
   color: darkred;
 }
-
+.form select{
+  width: 100%;
+  border-radius: 15px;
+  padding: .5rem;
+  border:1px solid #ccc ;
+}
+label p{
+ font-size: 10px;
+}
 .checklistPassword {
   border: solid 1px;
   list-style: none;
@@ -30,7 +50,12 @@
   content: '✗';
   color: red;
 }
-
+.passReq{
+  font-size: 10px;
+}
+.default{
+  font-size: 10px;
+}
 .passReq::before {
   padding-right: 8px;
   content: '✓';
@@ -38,7 +63,20 @@
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
+  margin-top: 2rem;
+}
+.submitButtonValid{
+  background-color: #31572C;
+  color: #fff;
+  border-radius: 10px;
+}
+.submitButton{
+  border-radius: 10px;
+  color: #aaa8a8;
+}
+@media screen and (max-width: 767px) {
+  .form{
+    border: none;
+    padding: 1rem;
+  }
 }

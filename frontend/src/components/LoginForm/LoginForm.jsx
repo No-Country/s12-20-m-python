@@ -8,7 +8,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const { loginReq, loading, error } = useUser();
@@ -22,14 +22,18 @@ const LoginForm = () => {
     reset();
   });
 
+  const submitButtonClass = isValid ? styles.submitButtonValid : styles.submitButton;
+
   return (
     <form onSubmit={onSubmit} className={styles.form}>
+      <h3>Iniciar sesión</h3>
       <label htmlFor='email'>
-        Email:
+       
         <input
           id='email'
           type='email'
           name='email'
+          placeholder='Correo electrónico'
           {...register('email', {
             validate: {
               required: (value) => value !== '' || 'Campo email es requerido',
@@ -43,11 +47,12 @@ const LoginForm = () => {
       </label>
 
       <label htmlFor='password'>
-        Contraseña:
+      
         <input
           id='password'
           type='password'
           name='password'
+          placeholder='Contraseña'
           {...register('password', {
             validate: {
               required: (value) => value !== '' || 'La contraseña es requerida',
@@ -60,10 +65,10 @@ const LoginForm = () => {
         />
         {errors.password && <p>{errors.password.message}</p>}
       </label>
-
-      <input type='submit' value={'Acceder'} />
-      <p>
-        ¿No tienes cuenta? Registrate <Link to={'/register'}>Aquí</Link>
+          <p className={styles.forget}>Olvidé mi contraseña</p>
+      <input type='submit' value={'Iniciar sesión'} className={submitButtonClass}/>
+      <p className={styles.goToRegister}>
+        ¿Sos un usuario nuevo?  <Link to={'/register'}>Registrate</Link>
       </p>
     </form>
   );
