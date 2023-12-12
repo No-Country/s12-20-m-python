@@ -1,0 +1,40 @@
+.container {
+  background-color: #F5FCD1;
+  margin: 2rem auto 0;
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 1440px;
+  
+}
+.iconBox{
+  padding: 1rem 0;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+}
+.container > div {
+  text-align: center;
+}
+
+.iconBox h1 {
+  white-space: pre-line;
+  color: #768C27;
+  font-size: 24px;
+  font-weight: 600;
+}
+.iconBox p{
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+@media screen and (max-width: 768px) {
+  .container{
+    margin: 0 16px;
+  }
+  .iconBox{
+    flex-direction: column;
+    gap: 2rem
+  }
+}
