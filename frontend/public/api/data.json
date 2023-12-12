@@ -1,0 +1,116 @@
+[
+    {
+        "id": 2,
+        "created": "2023-12-12T12:34:35.010803Z",
+        "place": "Glavez",
+        "ammount": 32,
+        "img": "/media/land/default.jpg",
+        "description": "Glalvez palmeras",
+        "get_coordinated": [
+            -14.3232,
+            36.434
+        ],
+        "count_tree": 0,
+        "tree": [],
+        "count_typetree": 1,
+        "type_tree": [
+            {
+                "id": 3,
+                "name": "Palmera1",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            },
+
+            {
+                "id": 5,
+                "name": "Palmera2",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            },
+
+            {
+                "id": 9,
+                "name": "Palmera3",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            }
+        ]
+    },
+
+    {
+        "id": 5,
+        "created": "2023-12-12T12:34:35.010803Z",
+        "place": "Zona B",
+        "ammount": 32,
+        "img": "/media/land/default.jpg",
+        "description": "descripcion de zona b",
+        "get_coordinated": [
+            -15.3232,
+            37.434
+        ],
+        "count_tree": 0,
+        "tree": [],
+        "count_typetree": 1,
+        "type_tree": [
+            {
+                "id": 3,
+                "name": "Palmera1",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            },
+
+            {
+                "id": 5,
+                "name": "Palmera2",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            },
+
+            {
+                "id": 9,
+                "name": "Palmera3",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            }
+        ]
+    },
+
+    {
+        "id": 9,
+        "created": "2023-12-12T12:34:35.010803Z",
+        "place": "Zona C",
+        "ammount": 32,
+        "img": "/media/land/default.jpg",
+        "description": "descripcion de zona C",
+        "get_coordinated": [
+            -13.3232,
+            35.434
+        ],
+        "count_tree": 0,
+        "tree": [],
+        "count_typetree": 1,
+        "type_tree": [
+            {
+                "id": 3,
+                "name": "Palmera1",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            },
+
+            {
+                "id": 5,
+                "name": "Palmera2",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            },
+
+            {
+                "id": 9,
+                "name": "Palmera3",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera"
+            }
+        ]
+    }
+
+]

@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import styles from './LoginForm.module.css';
+import { useUser } from '../../context/UserContext';
 
 const LoginForm = () => {
   const {
@@ -10,9 +11,14 @@ const LoginForm = () => {
     formState: { errors, isValid },
   } = useForm();
 
-  const onSubmit = handleSubmit((data) => {
+  const { loginReq, loading, error } = useUser();
+
+  const onSubmit = handleSubmit(async (data) => {
     alert(`datos : ${JSON.stringify(data)}`);
     console.log(data);
+
+    await loginReq(data);
+
     reset();
   });
 
