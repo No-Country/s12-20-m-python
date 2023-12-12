@@ -1,21 +1,30 @@
-from rest_framework import serializers
+from rest_framework import serializers, pagination
 from django.contrib.auth.models import User
 from .models import UserProfile, Country, Adoption, FollowUp
+
+
+class PaginationSerializer(pagination.PageNumberPagination):
+    page_size = 5
+    max_page_size = 50
+
 
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
         fields = '__all__'
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'email']
 
+
 class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     age = serializers.IntegerField()
-    country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
+    country = serializers.PrimaryKeyRelatedField(
+        queryset=Country.objects.all())
 
     class Meta:
         model = UserProfile
@@ -31,11 +40,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
         return user_profile
 
+
 class AdoptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Adoption
         fields = '__all__'
+
 
 class FollowUpSerializer(serializers.ModelSerializer):
 

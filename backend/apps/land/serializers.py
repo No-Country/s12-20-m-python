@@ -1,10 +1,16 @@
 # Rest Framework
-from rest_framework import serializers
+from rest_framework import serializers, pagination
 # Models
 from .models import Land, Tree, TypeTree
 
 
+class PaginationSerializer(pagination.PageNumberPagination):
+    page_size = 5
+    max_page_size = 50
+
 # Land
+
+
 class TypeTreeLandSerializers (serializers.ModelSerializer):
     "Type Tree serrialzier for detailing the land"
 
@@ -12,7 +18,9 @@ class TypeTreeLandSerializers (serializers.ModelSerializer):
         model = TypeTree
         fields = [
             'id',
-            'typetree',
+            'name',
+            'common_name',
+            'scientific_name',
         ]
 
 
@@ -58,6 +66,7 @@ class LandGetSerialziers (serializers.ModelSerializer):
     def get_count_typetree(self, obj):
         return obj.type_tree.all().count()
 
+
 class LandSerialziers (serializers.ModelSerializer):
     "Serializer for the Land. Method POST - DELETE - UPDATE "
 
@@ -66,6 +75,8 @@ class LandSerialziers (serializers.ModelSerializer):
         fields = '__all__'
 
 # Tree
+
+
 class TreeSerializers (serializers.ModelSerializer):
     "Serializer for the Tree model"
 
