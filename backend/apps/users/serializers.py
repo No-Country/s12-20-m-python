@@ -19,7 +19,8 @@ class CountrySerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'password']
+        fields = ['id', 'username', 'first_name',
+                  'last_name', 'email', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
 
@@ -64,9 +65,20 @@ class LoginUserSerializer(serializers.Serializer):
 
 class AdoptionSerializer(serializers.ModelSerializer):
 
+    count_adoptions = serializers.SerializerMethodField()
+
     class Meta:
         model = Adoption
-        fields = '__all__'
+        fields = [
+            'user',
+            'land',
+            'tree',
+            'name',
+            'count_adoptions',
+        ]
+
+    def get_count_adoptions(self, obj):
+        return obj.adoption.all().count()
 
 
 class FollowUpSerializer(serializers.ModelSerializer):

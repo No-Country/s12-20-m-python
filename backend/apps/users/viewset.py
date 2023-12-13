@@ -19,17 +19,17 @@ from django.contrib.auth import logout
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 
+
 class CountryViewSet(viewsets.ModelViewSet):
 
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    pagination_class = PaginationSerializer
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     pagination_class = PaginationSerializer
-    
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -51,7 +51,7 @@ class FollowUpViewSet(viewsets.ModelViewSet):
     queryset = FollowUp.objects.all()
     serializer_class = FollowUpSerializer
     pagination_class = PaginationSerializer
-    
+
 
 class LoginViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -72,9 +72,10 @@ class LoginViewSet(viewsets.ModelViewSet):
             token, created = Token.objects.get_or_create(user=user)
 
             login(request, user)
-            return Response({'message': 'Inicio de sesión exitoso', 'token': token.key}, status=status.HTTP_200_OK)
+            return Response({'message': 'Successful login', 'token': token.key}, status=status.HTTP_200_OK)
         else:
-            return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
+
+            return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class UserLogoutAPIView(APIView):
     
