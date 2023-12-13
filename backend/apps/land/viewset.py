@@ -5,13 +5,15 @@ from rest_framework import status
 # .models
 from .models import Land, Tree, TypeTree
 # .serialziers
-from .serializers import LandSerialziers, LandGetSerialziers, TreeSerializers, TypeTreeSerializers
+from .serializers import LandSerialziers, LandGetSerialziers, TreeSerializers, TypeTreeSerializers, PaginationSerializer
+
 
 class LandViewSet(ModelViewSet):
     'ViewSet Land'
 
     queryset = Land.objects.all()
     serializer_class = LandSerialziers
+    pagination_class = PaginationSerializer
 
     def list(self, request, *args, **kwargs):
         queryset = Land.objects.all().order_by('-created')
@@ -23,11 +25,13 @@ class LandViewSet(ModelViewSet):
         serializer = LandGetSerialziers(instance)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+
 class TreeViewSet(ModelViewSet):
     'ViewSet Land'
 
     queryset = Tree.objects.all()
     serializer_class = TreeSerializers
+    pagination_class = PaginationSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -42,4 +46,4 @@ class TypeTreeViewSet(ModelViewSet):
 
     queryset = TypeTree.objects.all()
     serializer_class = TypeTreeSerializers
-
+    pagination_class = PaginationSerializer

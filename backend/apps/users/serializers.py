@@ -1,19 +1,27 @@
-from rest_framework import serializers
+from rest_framework import serializers, pagination
 from django.contrib.auth.models import User
 from .models import UserProfile, Country, Adoption, FollowUp
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
+
+
+class PaginationSerializer(pagination.PageNumberPagination):
+    page_size = 5
+    max_page_size = 50
+
 
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
         fields = '__all__'
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'password']
         extra_kwargs = {'password': {'write_only': True}}
+
 
 class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer()
@@ -32,6 +40,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         Token.objects.create(user=user)
 
         return user_profile
+
 
     def get_token(self, obj):
         return Token.objects.get(user=obj.user).key
@@ -54,11 +63,13 @@ class LoginUserSerializer(serializers.Serializer):
         data['user'] = user
         return data
 
+
 class AdoptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Adoption
         fields = '__all__'
+
 
 class FollowUpSerializer(serializers.ModelSerializer):
 

@@ -24,7 +24,7 @@ class TypeTree (TimeStampedModel):
     def __str__(self):
         """Unicode representation of Type Tree."""
 
-        return str(self.typetree)
+        return str(self.name)
 
 
 class Land (TimeStampedModel):
@@ -69,7 +69,7 @@ class Land (TimeStampedModel):
 
     def get_coordinated(self):
         """ Coordinated """
-        return [self.latitude, self.length]
+        return [self.latitude, self.longitude]
 
     def __str__(self):
         """Unicode representation of Land."""
