@@ -48,13 +48,9 @@ LOCAL_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
-<<<<<<< HEAD
     "rest_framework.authtoken",
-    'corsheaders'
-=======
     'corsheaders',
-    'drf_yasg'
->>>>>>> develop
+    'drf_yasg',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_PARTY_APPS
