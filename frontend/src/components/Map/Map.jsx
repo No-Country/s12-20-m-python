@@ -7,7 +7,15 @@ import './Map.css';
 import { useLand } from '../../context/LandContext';
 
 const Map = ({ mainLocation, places, handleClick, placeFound }) => {
-  const { location, zoom } = mainLocation;
+  //Argentina
+  const testMainLocation = {
+    location: {
+      lat: '-38.7630646',
+      lng: '-68.785466',
+    },
+    zoom: 4,
+  };
+  const { location, zoom } = testMainLocation;
 
   const { land, loading, error } = useLand();
 
