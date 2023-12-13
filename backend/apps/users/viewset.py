@@ -20,10 +20,10 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 
+
 class CountryViewSet(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    pagination_class = PaginationSerializer
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
@@ -32,7 +32,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     # permission_classes = (CustomPermissions,)
     # authentication_classes = (CustomAuthentication,)
     pagination_class = PaginationSerializer
-    
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -54,7 +53,7 @@ class FollowUpViewSet(viewsets.ModelViewSet):
     queryset = FollowUp.objects.all()
     serializer_class = FollowUpSerializer
     pagination_class = PaginationSerializer
-    
+
 
 class LoginViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -75,9 +74,11 @@ class LoginViewSet(viewsets.ModelViewSet):
             return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
     def create(self, request, *args, **kwargs):
-    
+
         return Response({'message': 'User instance created'}, status=status.HTTP_201_CREATED)
+
 
 class Logout(APIView):
     def post(self, request, format=None):
@@ -85,10 +86,10 @@ class Logout(APIView):
             try:
                 # Elimina todos los tokens asociados al usuario
                 Token.objects.filter(user=request.user).delete()
-                
+
                 # Realiza el logout
                 logout(request)
-                
+
                 return Response({'message': 'Logout successful'}, status=status.HTTP_200_OK)
             except Exception as e:
                 return Response({'error': f'Error during logout: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
