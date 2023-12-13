@@ -1,0 +1,48 @@
+.imgAdoption {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+}
+
+.containerTree {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Divide en tres partes iguales */
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+.treeContainer {
+  padding: 10px;
+  text-align: center;
+}
+
+.counterContainer {
+  display: flex;
+  font-size: large;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.buttonCounterMinus {
+  background: none;
+  border: none;
+  margin-right: 0.5em;
+}
+
+.buttonCounterPlus {
+  background: none;
+  border: none;
+  margin-left: 0.5em;
+}
+
+.purchaseButton {
+  background-color: #31572c;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 328px;
+  margin-top: 8px;
+}

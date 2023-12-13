@@ -1,25 +1,33 @@
-.adoptioncontainer {
-  margin: 7em;
+.adoptionContainer {
+  margin: 5em 3em 5em 3em;
   display: flex;
   flex-direction: row;
 }
 
-@media (max-width: 900px) {
-  .adoptioncontainer {
+@media (max-width: 980px) {
+  .adoptionContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  .loremtree {
+    margin-top: 2em;
+    padding: 1em;
+    border: none;
+  }
+  
+
 }
 
-.rigthcontainer {
-  padding-left: 3em;
+.rightContainer {
+  padding-left: 2em;
   flex-direction: column;
 }
 
 .loremtree {
   margin-top: 2em;
   padding: 1em;
-  border: 1px solid #ccc;
+  border: 2px solid #768C27;
   border-radius: 15px;
 }
