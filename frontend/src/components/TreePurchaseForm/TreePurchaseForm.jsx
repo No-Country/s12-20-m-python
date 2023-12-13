@@ -4,9 +4,12 @@ import { FiPlusCircle } from 'react-icons/fi';
 import { BiMinusCircle } from 'react-icons/bi';
 import styles from './TreePurchaseForm.module.css';
 import { useLand } from '../../context/LandContext';
+import { useNavigate } from 'react-router-dom';
 
 const TreePurchaseForm = ({ type_tree, max_amount }) => {
   const { setPurchase, purchase } = useLand();
+
+  const navigate = useNavigate();
 
   const typeAmount = (id) => {
     const typeItems = purchase.filter((item) => item.id === id);
@@ -84,18 +87,22 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
   // };
 
   const handleCompraClick = () => {
-    if (isUserLoggedIn) {
-      // Enviar información al backend y realizar la compra
-      alert(
-        'Compra realizada con éxito. Se ha enviado la información al backend.',
-      );
-    } else {
-      // Mostrar formulario de registro o inicio de sesión
-      alert(
-        'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
-      );
-      // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
-    }
+    navigate('/shoppingcar');
+   
+     
+    // if (isUserLoggedIn) {
+    //   // Enviar información al backend y realizar la compra
+    //   alert(
+    //     'Compra realizada con éxito. Se ha enviado la información al backend.',
+    //   );
+     
+    // } else {
+    //   // Mostrar formulario de registro o inicio de sesión
+    //   alert(
+    //     'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
+    //   );
+    //   // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
+    // }
   };
 
   return (
@@ -169,11 +176,11 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
       </div>
       <div>
         <h4>Subtotal: ${0}</h4>
-        <Link to='/login'>
+        
           <button className={styles.purchaseButton} onClick={handleCompraClick}>
             Adoptar
           </button>
-        </Link>
+       
       </div>
     </>
   );
