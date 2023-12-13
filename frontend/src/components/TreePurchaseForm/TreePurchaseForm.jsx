@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FiPlusCircle } from 'react-icons/fi';
 import { BiMinusCircle } from 'react-icons/bi';
 import styles from './TreePurchaseForm.module.css';
