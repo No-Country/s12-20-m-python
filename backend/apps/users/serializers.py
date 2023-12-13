@@ -1,6 +1,8 @@
 from rest_framework import serializers, pagination
 from django.contrib.auth.models import User
 from .models import UserProfile, Country, Adoption, FollowUp
+from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate
 
 
 class PaginationSerializer(pagination.PageNumberPagination):
@@ -17,18 +19,16 @@ class CountrySerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'email']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    age = serializers.IntegerField()
-    country = serializers.PrimaryKeyRelatedField(
-        queryset=Country.objects.all())
 
     class Meta:
         model = UserProfile
-        fields = ['id', 'user', 'age', 'country']
+        fields = ['id', 'user', 'birthdate', 'country']
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')
@@ -37,8 +37,31 @@ class UserProfileSerializer(serializers.ModelSerializer):
         user = user_serializer.save()
 
         user_profile = UserProfile.objects.create(user=user, **validated_data)
+        Token.objects.create(user=user)
 
         return user_profile
+
+
+    def get_token(self, obj):
+        return Token.objects.get(user=obj.user).key
+
+
+class LoginUserSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+        username = data.get('username')
+        password = data.get('password')
+
+        # Autenticar al usuario
+        user = authenticate(username=username, password=password)
+
+        if not user or not user.check_password(password):
+            raise serializers.ValidationError('Invalid credentials')
+
+        data['user'] = user
+        return data
 
 
 class AdoptionSerializer(serializers.ModelSerializer):
