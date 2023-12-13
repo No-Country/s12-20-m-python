@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import { useLand } from '../../context/LandContext';
 
-const Map = ({ mainLocation, places, handleClick, placeFound }) => {
+const Map = ({ handleClick, placeFound }) => {
   //Argentina
   const testMainLocation = {
     location: {
@@ -26,10 +26,6 @@ const Map = ({ mainLocation, places, handleClick, placeFound }) => {
     iconSize: [24, 24],
   });
 
-  /*  const handleClick = (name) => {
-    alert(`click on ${name}`);
-  }; */
-
   return (
     <MapContainer center={location} zoom={zoom} scrollWheelZoom={true}>
       <TileLayer
@@ -37,15 +33,12 @@ const Map = ({ mainLocation, places, handleClick, placeFound }) => {
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
 
-      {/*   <Polygon pathOptions={purpleOptions} positions={polygon} /> */}
-
       {land.map((place) => {
         return (
           <Marker
             key={place.id}
             position={place.get_coordinated}
             icon={customIcon}
-            // eventHandlers={{ click: () => handleClick(place.name) }}
           >
             <Popup>
               <h4>Planta un árbol aquí:</h4>
@@ -56,8 +49,6 @@ const Map = ({ mainLocation, places, handleClick, placeFound }) => {
                   ? 'árbol 1, árbol 2, árbol 3'
                   : place.type_tree.map((type) => type.name).join(', ')}
               </p>
-              {/* <p>Latitud: {place.location.lat}</p>
-              <p>Longitud: {place.location.lng}</p> */}
               <button
                 onClick={() => {
                   handleClick();
