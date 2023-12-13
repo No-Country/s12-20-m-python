@@ -4,6 +4,7 @@ import { FiPlusCircle } from 'react-icons/fi';
 import { BiMinusCircle } from 'react-icons/bi';
 import styles from './TreePurchaseForm.module.css';
 import { useLand } from '../../context/LandContext';
+import { useNavigate } from 'react-router-dom';
 
 const TreePurchaseForm = ({ type_tree, max_amount }) => {
   const { setPurchase, purchase } = useLand();
@@ -12,6 +13,7 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
     const quantityType = purchase.find((item) => item.id === id);
     return quantityType ? quantityType.quantity : 0;
   };
+  const navigate = useNavigate();
 
   const getTotalPrice = purchase
     .map((item) => item.quantity * item.price)
@@ -102,18 +104,21 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
   // };
 
   const handleCompraClick = () => {
-    //   if (isUserLoggedIn) {
-    //     // Enviar información al backend y realizar la compra
-    //     alert(
-    //       'Compra realizada con éxito. Se ha enviado la información al backend.',
-    //     );
-    //   } else {
-    //     // Mostrar formulario de registro o inicio de sesión
-    //     alert(
-    //       'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
-    //     );
-    //     // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
-    //   }
+    navigate('/shoppingcar');
+
+    // if (isUserLoggedIn) {
+    //   // Enviar información al backend y realizar la compra
+    //   alert(
+    //     'Compra realizada con éxito. Se ha enviado la información al backend.',
+    //   );
+
+    // } else {
+    //   // Mostrar formulario de registro o inicio de sesión
+    //   alert(
+    //     'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
+    //   );
+    //   // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
+    // }
   };
 
   return (
@@ -192,11 +197,9 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
       )}
       <div>
         <h4>Subtotal: ${getTotalPrice}</h4>
-        <Link to='/login'>
-          <button className={styles.purchaseButton} onClick={handleCompraClick}>
-            Adoptar
-          </button>
-        </Link>
+        <button className={styles.purchaseButton} onClick={handleCompraClick}>
+          Adoptar
+        </button>
       </div>
     </>
   );
