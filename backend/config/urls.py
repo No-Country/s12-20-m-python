@@ -6,7 +6,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework.authtoken import views
-from apps.users.viewset import Logout
+from apps.users.viewset import UserLogoutAPIView
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -29,5 +29,5 @@ urlpatterns = [
     path('payment/', include('apps.payments.router')),
     path('land/', include('apps.land.router')),
     path('api_generate_token/', views.obtain_auth_token),
-    path('logout/', Logout.as_view(), name='logout'),
+    path('logout/', UserLogoutAPIView.as_view(), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
