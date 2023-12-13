@@ -7,6 +7,7 @@ import Adoption from './pages/Adoption/Adoption';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/Profile';
+import ShoppingCar from './components/ShoppingCar/ShoppingCar';
 import { UserProvider } from './context/UserContext';
 import { LandProvider } from './context/LandContext';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
@@ -25,6 +26,7 @@ function App() {
             </Route>
             <Route exact path='/register' element={<Register />} />
             <Route exact path='/login' element={<Login />} />
+            <Route exact path='/shoppingcar' element={<ShoppingCar />} />
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -6,8 +6,10 @@ import TreePurchaseForm from '../../components/TreePurchaseForm/TreePurchaseForm
 import { useUser } from '../../context/UserContext';
 import { useLand } from '../../context/LandContext';
 import Map2 from '../../components/Map2/Map2';
+import PlaceInfo from '../../components/PlaceInfo/PlaceInfo';
 
 const Adoption = () => {
+  const [place, setPlace] = useState(null);
   // const { user } = useContext(UserContext);
   const { user } = useUser();
   const { land, loading, error } = useLand();
@@ -17,14 +19,17 @@ const Adoption = () => {
     console.log(`Buscando: ${term}`);
   };
 
-
- 
   const [showDetail, setShowDetail] = useState(false);
 
   const handleClick = () => {
     setShowDetail(true);
   };
-  
+
+  const placeFound = (id) => {
+    const found = land.find((place) => place.id === id);
+    setPlace(found);
+  };
+
   const mainLocation = {
     location: {
       lat: '-32.607455',
@@ -82,24 +87,28 @@ const Adoption = () => {
           mainLocation={mainLocation}
           places={places}
           handleClick={handleClick}
+          placeFound={placeFound}
         />
       </div>
       <div className={styles.rightContainer}>
-        
-        {showDetail === true && (
+        {/* {showDetail === true && (
           <div className={styles.loremtree}>
             <div>
-            <h3> {places.land}</h3>
-            <p>A los alrededores de la Laguna Rosales en Neuquén nos pusimos como objetivo sembrar 200 árboles de 3 especies de árboles nativos, Ñire (Nothofagus antarctica), Maitén (Maytenus boaria) y Coihue (Nothofagus dombeyi).</p>
-            <p>Seleccioná el/los árbol/es que querés adoptar</p>
+              <h3> {places.land}</h3>
+              <p>
+                A los alrededores de la Laguna Rosales en Neuquén nos pusimos
+                como objetivo sembrar 200 árboles de 3 especies de árboles
+                nativos, Ñire (Nothofagus antarctica), Maitén (Maytenus boaria)
+                y Coihue (Nothofagus dombeyi).
+              </p>
+              <p>Seleccioná el/los árbol/es que querés adoptar</p>
             </div>
-            
+
             <TreePurchaseForm />
           </div>
-          
-        )}
+        )} */}
 
-        
+        {showDetail && <PlaceInfo place={place} />}
       </div>
     </div>
   );
