@@ -1,0 +1,143 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+  }
+  
+  .container {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .ourvision{
+    background: rgb(177, 177, 177); 
+  }
+  .homeVideo{
+    width: 1440px;
+    height: 412px;
+    object-fit: cover;
+
+  }
+  .adoptButton{
+    background-color: #31572C;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 328px;
+    margin-top: 8px;
+  }
+  .titleBox{
+  position: absolute;
+  margin-top: -250px;
+  width: 100vw;
+  
+  }
+  .titleBox h2{
+    color: #fff;
+    font-weight: 600;
+    font-size: 36px;
+  }
+  .whyadopt{
+    max-width: 1440px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #31572C;
+    display: flex;
+    justify-content: space-between;
+  }
+  .adopyTexts{
+    flex-grow: 2;
+    text-align: left;
+    padding: 1rem;
+  }
+  .adopyTexts h2{
+    font-size: 36px;
+    padding: 1rem 0 2rem 0;
+    color: #fff;
+  }
+  .adopyTexts p{
+    text-align: left;
+    color: #F3F1F1;
+    padding-bottom: 1rem;
+    font-size: 16px;
+  }
+  .whyadopt img{
+   height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .secondButton{
+    background-color: #F5FCD1;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #31572C;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 328px;
+    margin-top: 60px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  .secondButton:hover {
+    background-color: #868686;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px){
+    .whyadopt{
+      width: 100%;
+      flex-direction: column;
+      height: 600px;
+      margin-bottom: 720px;
+    }
+    .adopyTexts h2{
+      font-size: 20px;
+    }
+    .adopyTexts p{
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .whyadopt img{
+      padding: 0 16px ;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .homeVideo{
+      width: 100%;
+    }
+    .titleBox h2{
+      font-size: 20px;
+    }
+    .adoptButton{
+      width: 165px;
+    }
+    .whyadopt{
+      width: 100%;
+      flex-direction: column;
+      height: 600px;
+      margin-bottom: 420px;
+    }
+    .adopyTexts h2{
+      font-size: 20px;
+    }
+    .adopyTexts p{
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .whyadopt img{
+      padding: 0 16px ;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }

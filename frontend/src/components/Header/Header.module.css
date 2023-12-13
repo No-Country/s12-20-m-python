@@ -1,0 +1,41 @@
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(3, 3, 3, 0.4);
+  height: 80px;
+  z-index: 100;
+}
+
+.headerBackground {
+  background-color: var(--white);
+}
+
+.headerContent {
+  max-width: 1200px;
+  height: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.openMenu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .openMenu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .openMenuIcon {
+    color: var(--white);
+  }
+
+  .openMenuIconDark {
+    color: var(--dark);
+  }
+}
