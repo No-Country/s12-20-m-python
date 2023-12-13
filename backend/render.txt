@@ -1,6 +1,6 @@
 RENDER ACCESO
 
-host: dpg-clsrrutcm5oc73basfb0-a
+host: dpg-clsrrutcm5oc73basfb0-a.oregon-postgres.render.com
 port: 5432
 database: guardianes_apz4
 username: guardianesdelbosque
