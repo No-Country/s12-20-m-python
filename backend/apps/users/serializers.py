@@ -35,16 +35,15 @@ class UserProfileSerializer(serializers.ModelSerializer):
         user_data = validated_data.pop('user')
         user_serializer = UserSerializer(data=user_data)
         user_serializer.is_valid(raise_exception=True)
-        user = user_serializer.save()
-
-        user_profile = UserProfile.objects.create(user=user, **validated_data)
+        
+        user = User.objects.create_user(**user_data)
+        
+        # Crea un token para el usuario
         Token.objects.create(user=user)
+        
+        user_profile = UserProfile.objects.create(user=user, **validated_data)
 
         return user_profile
-
-    def get_token(self, obj):
-        return Token.objects.get(user=obj.user).key
-
 
 class LoginUserSerializer(serializers.Serializer):
     username = serializers.CharField()
