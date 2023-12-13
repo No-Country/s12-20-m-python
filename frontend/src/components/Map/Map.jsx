@@ -4,12 +4,14 @@ import TreeIcon from '../../assets/treeDefault.png';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
+import { useLand } from '../../context/LandContext';
 
-const Map = ({ mainLocation, places, handleClick }) => {
+const Map = ({ mainLocation, places, handleClick, placeFound }) => {
   const { location, zoom } = mainLocation;
 
-
   const { land, loading, error } = useLand();
+
+  if (!land) return <div>Cargando Datos...</div>;
 
   const customIcon = L.icon({
     iconUrl: TreeIcon,
@@ -40,10 +42,22 @@ const Map = ({ mainLocation, places, handleClick }) => {
             <Popup>
               <h4>Planta un árbol aquí:</h4>
               <h3>{place.place}</h3>
-              <p>Tipos de árboles: {place.type_tree.map(type => type.name).join(", ")}</p>
+              <p>
+                Tipos de árboles:{' '}
+                {place.type_tree.length < 1
+                  ? 'árbol 1, árbol 2, árbol 3'
+                  : place.type_tree.map((type) => type.name).join(', ')}
+              </p>
               {/* <p>Latitud: {place.location.lat}</p>
               <p>Longitud: {place.location.lng}</p> */}
-              <button onClick={(e) => handleClick(e)}>click</button>
+              <button
+                onClick={() => {
+                  handleClick();
+                  placeFound(place.id);
+                }}
+              >
+                click
+              </button>
             </Popup>
           </Marker>
         );
