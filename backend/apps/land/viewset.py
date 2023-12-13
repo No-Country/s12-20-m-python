@@ -46,4 +46,3 @@ class TypeTreeViewSet(ModelViewSet):
 
     queryset = TypeTree.objects.all()
     serializer_class = TypeTreeSerializers
-    pagination_class = PaginationSerializer
