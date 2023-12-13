@@ -1,13 +1,15 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
-import TreeIcon from '../../assets/tree-icon.svg';
+import TreeIcon from '../../assets/treeDefault.png';
 
 import 'leaflet/dist/leaflet.css';
 import './Map2.css';
 import { useLand } from '../../context/LandContext';
+import { useState } from 'react';
 
 const Map2 = ({ handleClick }) => {
   const { land } = useLand();
+  const [selectedPlace, setSelectedPlace] = useState(null);
 
   if (!land) return <div>Cargando Mapa...</div>;
 
@@ -31,23 +33,25 @@ const Map2 = ({ handleClick }) => {
 
       {/*   <Polygon pathOptions={purpleOptions} positions={polygon} /> */}
 
-      {land.map((place) => {
+      {land.map((places) => {
         return (
           <Marker
-            key={place.id}
-            position={place.get_coordinated}
+            key={places.id}
+            position={places.get_coordinated}
             icon={customIcon}
-            // eventHandlers={{ click: () => handleClick(place.name) }}
+            eventHandlers={{ click: () => setSelectedPlace(places.id) }}
           >
             <Popup>
               <h4>Planta un árbol aquí:</h4>
-              <h3>{place.place}</h3>
+              <h3>{places.places}</h3>
               <p>
                 Tipos de árboles:{' '}
-                {place.type_tree.map((type) => type.name).join(', ')}
+                {places.type_tree.map((type) => type.name).join(', ')}
               </p>
 
-              <button onClick={(e) => handleClick(e)}>click</button>
+              <button onClick={() => handleClick(/* pass necessary data */)}>
+                click
+              </button>
             </Popup>
           </Marker>
         );

@@ -17,17 +17,20 @@ const Adoption = () => {
     console.log(`Buscando: ${term}`);
   };
 
+
+ 
   const [showDetail, setShowDetail] = useState(false);
 
   const handleClick = () => {
     setShowDetail(true);
   };
+  
   const mainLocation = {
     location: {
       lat: '-32.607455',
       lng: '-63.850605',
     },
-    zoom: 7,
+    zoom: 3,
   };
 
   const places = [
@@ -58,8 +61,8 @@ const Adoption = () => {
   ];
 
   return (
-    <div className={styles.adoptioncontainer}>
-      <div className={styles.leftcontainer}>
+    <div className={styles.adoptionContainer}>
+      <div className={styles.leftContainer}>
         <h1>Adopta un Árbol</h1>
         <h2>{user.name}</h2>
         <SearchInput onSearch={handleSearch} />
@@ -81,12 +84,12 @@ const Adoption = () => {
           handleClick={handleClick}
         />
       </div>
-      <div className={styles.rigthcontainer}>
+      <div className={styles.rightContainer}>
         
         {showDetail === true && (
           <div className={styles.loremtree}>
             <div>
-            <h3>*Zona Elegida*</h3>
+            <h3> {places.land}</h3>
             <p>A los alrededores de la Laguna Rosales en Neuquén nos pusimos como objetivo sembrar 200 árboles de 3 especies de árboles nativos, Ñire (Nothofagus antarctica), Maitén (Maytenus boaria) y Coihue (Nothofagus dombeyi).</p>
             <p>Seleccioná el/los árbol/es que querés adoptar</p>
             </div>
