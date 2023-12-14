@@ -25,7 +25,7 @@ class UserProfile(TimeStampedModel):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     img = models.ImageField(
         'Image',
-        upload_to='static/profile',
+        upload_to='profile',
         default='static/profile/perfil.png'
     )
 
