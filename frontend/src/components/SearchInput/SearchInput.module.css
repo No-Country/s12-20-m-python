@@ -1,4 +1,4 @@
-.searchbar {
+.searchBar {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -6,7 +6,7 @@
   gap: 8px;
 }
 
-input {
+.searchBar input {
   padding: 9px;
   flex: 1;
   border: none;

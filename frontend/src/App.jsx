@@ -11,6 +11,7 @@ import ShoppingCar from './components/ShoppingCar/ShoppingCar';
 import { UserProvider } from './context/UserContext';
 import { LandProvider } from './context/LandContext';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
+import SuccessAdoption from './components/SuccessAdoption/SuccessAdoption';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route exact path='/register' element={<Register />} />
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/shoppingcar' element={<ShoppingCar />} />
+            <Route exact path='/success' element={<SuccessAdoption />} />
           </Routes>
           <Footer />
         </BrowserRouter>
