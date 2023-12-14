@@ -1,0 +1,18 @@
+.typeList {
+  list-style-position: inside;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.containerBtn {
+  text-align: center;
+}
+
+.placeBtn {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+}

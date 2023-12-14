@@ -164,7 +164,8 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
             </div>
 
             <label>
-              <p>{type.name}</p>${type.price}
+              <p className={styles.typeName}>{type.name}</p>
+              <p className={styles.typePrice}>${type.price}</p>
               <div className={styles.counterContainer}>
                 <button
                   onClick={() => {

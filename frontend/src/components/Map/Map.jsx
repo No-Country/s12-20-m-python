@@ -4,6 +4,7 @@ import TreeIcon from '../../assets/treeDefault.png';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
+import styles from './MapStyles.module.css';
 import { useLand } from '../../context/LandContext';
 
 const Map = ({ handleClick, placeFound }) => {
@@ -43,20 +44,25 @@ const Map = ({ handleClick, placeFound }) => {
             <Popup>
               <h4>Planta un árbol aquí:</h4>
               <h3>{place.place}</h3>
-              <p>
-                Tipos de árboles:{' '}
-                {place.type_tree.length < 1
-                  ? 'árbol 1, árbol 2, árbol 3'
-                  : place.type_tree.map((type) => type.name).join(', ')}
-              </p>
-              <button
-                onClick={() => {
-                  handleClick();
-                  placeFound(place.id);
-                }}
-              >
-                click
-              </button>
+              <div>
+                <p>Tipos de árboles disponibles para esta zona: </p>
+                <ul className={styles.typeList}>
+                  {place.type_tree.map((type) => (
+                    <li key={type.id}>{type.name}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.containerBtn}>
+                <button
+                  className={styles.placeBtn}
+                  onClick={() => {
+                    handleClick();
+                    placeFound(place.id);
+                  }}
+                >
+                  Ver más
+                </button>
+              </div>
             </Popup>
           </Marker>
         );
