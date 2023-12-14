@@ -6,7 +6,7 @@ from rest_framework import status
 from .models import Land, Tree, TypeTree
 # .serialziers
 from .serializers import LandSerialziers, LandGetSerialziers, TreeSerializers, TypeTreeSerializers, PaginationSerializer
-from rest_framework.parsers import MultiPartParser, FormParser
+# from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class LandViewSet(ModelViewSet):
@@ -15,7 +15,7 @@ class LandViewSet(ModelViewSet):
     queryset = Land.objects.all()
     serializer_class = LandSerialziers
     pagination_class = PaginationSerializer
-    parser_classes = [MultiPartParser, FormParser]
+    # parser_classes = [MultiPartParser, FormParser]
 
     def list(self, request, *args, **kwargs):
         queryset = Land.objects.all().order_by('-created')
@@ -48,4 +48,4 @@ class TypeTreeViewSet(ModelViewSet):
 
     queryset = TypeTree.objects.all()
     serializer_class = TypeTreeSerializers
-    parser_classes = [MultiPartParser, FormParser]
+    # parser_classes = [MultiPartParser, FormParser]
