@@ -18,7 +18,7 @@ from .utils import CustomPermissions, CustomAuthentication
 from django.contrib.auth import logout
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
-from rest_framework.parsers import MultiPartParser, FormParser
+# from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class CountryViewSet(viewsets.ModelViewSet):
@@ -31,7 +31,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     pagination_class = PaginationSerializer
-    parser_classes = [MultiPartParser, FormParser]
+    # parser_classes = [MultiPartParser, FormParser]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

@@ -29,21 +29,22 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ['id', 'user', 'birthdate', 'country']
+        fields = ['id', 'user', 'birthdate', 'img', 'country']
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')
         user_serializer = UserSerializer(data=user_data)
         user_serializer.is_valid(raise_exception=True)
-        
+
         user = User.objects.create_user(**user_data)
-        
+
         # Crea un token para el usuario
         Token.objects.create(user=user)
-        
+
         user_profile = UserProfile.objects.create(user=user, **validated_data)
 
         return user_profile
+
 
 class LoginUserSerializer(serializers.Serializer):
     username = serializers.CharField()

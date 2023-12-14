@@ -9,19 +9,22 @@ from rest_framework.authtoken import views
 from apps.users.viewset import UserLogoutAPIView
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Guardianes del Bosque ",
-      default_version='v0.1',
-      description="Documentacion",
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
+    openapi.Info(
+        title="Guardianes del Bosque ",
+        default_version='v0.1',
+        description="Documentacion",
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
-    path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('swagger<format>/', schema_view.without_ui(cache_timeout=0),
+         name='schema-json'),
+    path('', schema_view.with_ui('swagger', cache_timeout=0),
+         name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc',
+         cache_timeout=0), name='schema-redoc'),
     path("admin/", admin.site.urls),
     path('user/', include('apps.users.router')),
     path('reward/', include('apps.rewards.router')),
