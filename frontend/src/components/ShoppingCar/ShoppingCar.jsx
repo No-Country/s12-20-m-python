@@ -170,7 +170,7 @@ const ShoppingCar = () => {
         </form>
       </div>
 
-      <div className={styles.shoppingRigth}>
+      <div className={styles.shoppingRight}>
         <PurchaseSummary purchase={purchase} />
       </div>
     </div>
