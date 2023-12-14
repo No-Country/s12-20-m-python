@@ -166,7 +166,7 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
 
             <label>
               <p className={styles.typeName}>{type.name}</p>
-              <p className={styles.typePrice}>${type.price}</p>
+              <p className={styles.typePrice}>{type.price} USD</p>
               <div className={styles.counterContainer}>
                 <button
                   onClick={() => {
@@ -196,7 +196,7 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
         </p>
       )}
       <div>
-        <h4>Subtotal: ${getTotalPrice}</h4>
+        <h4>Subtotal: {getTotalPrice} USD</h4>
         <button
           className={styles.purchaseButton}
           onClick={() => handleCompraClick()}
