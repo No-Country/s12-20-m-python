@@ -13,7 +13,8 @@ body {
   background: white;
 }
 .homeVideo {
-  width: 1440px;
+  /* width: 1440px; */
+  width: 100%;
   height: 412px;
   object-fit: cover;
 }

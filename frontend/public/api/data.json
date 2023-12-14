@@ -29,12 +29,12 @@
                 "common_name": "Palmeraa",
                 "scientific_name": "PArlmeprapalmera",
                 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
-                "price":5
+                "price":35
             },
 
             {
                 "id": 9,
-                "name": "Árbol3",
+                "name": "Acacia",
                 "common_name": "Palmeraa",
                 "scientific_name": "PArlmeprapalmera",
                 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
@@ -47,7 +47,7 @@
         "id": 5,
         "created": "2023-12-12T12:34:35.010803Z",
         "place": "Zona B",
-        "ammount": 32,
+        "ammount": 45,
         "img": "/media/land/default.jpg",
         "description": "descripcion de zona b",
         "get_coordinated": [
@@ -60,17 +60,17 @@
 
         "type_tree": [
             {
-                "id": 3,
-                "name": "Palmera",
+                "id": 13,
+                "name": "Nogal",
                 "common_name": "Palmeraa",
                 "scientific_name": "PArlmeprapalmera",
                 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
-                "price":10
+                "price":30
             },
 
             {
-                "id": 5,
-                "name": "Pino",
+                "id": 55,
+                "name": "Sauce",
                 "common_name": "Palmeraa",
                 "scientific_name": "PArlmeprapalmera",
                 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
@@ -78,12 +78,12 @@
             },
 
             {
-                "id": 9,
-                "name": "Árbol3",
+                "id": 96,
+                "name": "Almendro",
                 "common_name": "Palmeraa",
                 "scientific_name": "PArlmeprapalmera",
                 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
-                "price":15
+                "price":25
             }
         ]
 
@@ -93,7 +93,7 @@
         "id": 9,
         "created": "2023-12-12T12:34:35.010803Z",
         "place": "Zona C",
-        "ammount": 32,
+        "ammount": 20,
         "img": "/media/land/default.jpg",
         "description": "descripcion de zona C",
         "get_coordinated": [
@@ -106,29 +106,29 @@
         "type_tree": [
             {
                 "id": 3,
-                "name": "Palmera",
+                "name": "Cerezo",
                 "common_name": "Palmeraa",
                 "scientific_name": "PArlmeprapalmera",
                 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
-                "price":10
+                "price":20
             },
 
             {
                 "id": 5,
-                "name": "Pino",
-                "common_name": "Palmeraa",
-                "scientific_name": "PArlmeprapalmera",
-                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
-                "price":5
-            },
-
-            {
-                "id": 9,
-                "name": "Árbol3",
+                "name": "Olmo",
                 "common_name": "Palmeraa",
                 "scientific_name": "PArlmeprapalmera",
                 "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
                 "price":15
+            },
+
+            {
+                "id": 9,
+                "name": "Roble",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":5
             }
         ]
     }

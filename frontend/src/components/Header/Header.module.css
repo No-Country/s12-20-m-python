@@ -12,7 +12,8 @@
 }
 
 .headerContent {
-  max-width: 1200px;
+  /* max-width: 1200px; */
+  width: 95%;
   height: 100%;
   padding: 1rem;
   margin: 0 auto;
