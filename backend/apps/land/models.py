@@ -17,8 +17,8 @@ class TypeTree (TimeStampedModel):
 
     img = models.ImageField(
         'Image',
-        upload_to='tree',
-        default='tree/default.jpg'
+        upload_to='static/tree',
+        default='static/tree/default.jpg'
     )
 
     co2 = models.IntegerField(default=20)
@@ -45,8 +45,8 @@ class Land (TimeStampedModel):
     ammount = models.IntegerField('Number of trees')
     img = models.ImageField(
         'Image',
-        upload_to='land',
-        default='land/default.jpg'
+        upload_to='static/land',
+        default='static/land/default.jpg'
     )
     description = models.TextField('Description')
     latitude = models.DecimalField(
