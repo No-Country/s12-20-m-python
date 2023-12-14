@@ -1,7 +1,13 @@
+import { useUser } from '../../context/UserContext';
+import styles from './Profile.module.css';
+
 const Profile = () => {
+  const { user } = useUser();
   return (
-    <div>
+    <div className={styles.profileContainer}>
       <h2>Profile</h2>
+      <div>{JSON.stringify(user)}</div>
+      <br />
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. In itaque
         delectus similique eaque a corrupti tempora, veniam alias quo deserunt,
