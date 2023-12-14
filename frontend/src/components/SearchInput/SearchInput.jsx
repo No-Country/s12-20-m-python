@@ -14,7 +14,7 @@ const SearchInput = ({ onSearch }) => {
   };
 
   return (
-    <div className={styles.searchbar}>
+    <div className={styles.searchBar}>
       <input
         type='text'
         placeholder='Buscar'
