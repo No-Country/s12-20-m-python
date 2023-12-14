@@ -1,5 +1,9 @@
-.purchaseResume{
-    display: flex;
-    justify-content: space-between;
-    
+.purchaseResume {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.purchaseResume img {
+  max-width: 40px;
 }

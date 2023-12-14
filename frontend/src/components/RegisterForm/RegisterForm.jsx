@@ -11,7 +11,7 @@ const RegisterForm = () => {
     formState: { errors, isValid },
   } = useForm();
 
-  const { registerReq, loading, error } = useUser();
+  const { registerReq, loading, error, regOk } = useUser();
 
   const submitButtonClass = isValid
     ? styles.submitButtonValid
@@ -19,15 +19,17 @@ const RegisterForm = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     const newData = {
-      name: trimmedValue(data.name),
-      lastName: trimmedValue(data.lastName),
-      email: data.email,
-      birthday: data.birth,
-      password: data.password,
+      user: {
+        username: data.username,
+        first_name: trimmedValue(data.name),
+        last_name: trimmedValue(data.lastName),
+        email: data.email,
+        password: data.password,
+      },
+      birthdate: data.birthdate,
       country: data.country,
     };
-    alert(`datos: ${JSON.stringify(newData)}`);
-    console.log(newData);
+    // console.log(newData);
 
     await registerReq(newData);
 
@@ -39,6 +41,35 @@ const RegisterForm = () => {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Registro</h3>
+
+      {loading && <div>registrando...</div>}
+      {error && <div>{JSON.stringify(error)}</div>}
+      {regOk && <div>Registro Exitoso!</div>}
+
+      <label htmlFor='username'>
+        <input
+          id='username'
+          type='text'
+          name='username'
+          placeholder='Nombre de Usuario'
+          {...register('username', {
+            validate: {
+              required: (value) =>
+                trimmedValue(value) !== '' || 'Nombre de Usuario es requerido',
+              usernameValid: (value) =>
+                /^[a-zA-Z][a-zA-Z0-9]*$/.test(value) ||
+                'Este campo solo acepta números y letras, debe comenzar con una letra.',
+              minLength: (value) =>
+                trimmedValue(value).length >= 3 ||
+                'El minimo de caracteres permitidos es 3',
+              maxLength: (value) =>
+                trimmedValue(value).length <= 200 ||
+                'El máximo de caracteres permitidos es 200',
+            },
+          })}
+        />
+        {errors.username && <p>{errors.username.message}</p>}
+      </label>
       <div className={styles.firstAndLastName}>
         <label htmlFor='name'>
           <input
@@ -109,22 +140,22 @@ const RegisterForm = () => {
         {errors.email && <p>{errors.email.message}</p>}
       </label>
 
-      <label htmlFor='birth'>
+      <label htmlFor='birthdate'>
         <input
-          id='birth'
+          id='birthdate'
           type='date'
-          name='birth'
+          name='birthdate'
           placeholder='Fecha de nacimiento'
-          {...register('birth', {
+          {...register('birthdate', {
             validate: {
               required: (value) =>
                 trimmedValue(value) !== '' ||
                 'Fecha de nacimiento es requerida',
               validAge: (value) => {
                 const currentDate = new Date();
-                const birthday = new Date(value);
+                const birthdate = new Date(value);
                 const differenceTime =
-                  currentDate.getTime() - birthday.getTime();
+                  currentDate.getTime() - birthdate.getTime();
                 const age = Math.floor(
                   differenceTime / (1000 * 60 * 60 * 24 * 365.25),
                 );
@@ -135,13 +166,21 @@ const RegisterForm = () => {
             },
           })}
         />
-        {errors.birth && <p>{errors.birth.message}</p>}
+        {errors.birthdate && <p>{errors.birthdate.message}</p>}
       </label>
+
       <label htmlFor='pais'>
-        <select id='pais' name='country' {...register('country')}>
+        <select
+          id='pais'
+          name='country'
+          {...register('country', {
+            required: 'País es requerido',
+          })}
+        >
           <option value=''>País</option>
-          <option value='AR'>Argentina</option>
+          <option value='1'>Argentina</option>
         </select>
+        {errors.country && <p>{errors.country.message}</p>}
       </label>
 
       <label htmlFor='password'>

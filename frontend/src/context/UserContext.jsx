@@ -16,7 +16,8 @@ export const useUser = () => {
 export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [user, setUser] = useState({ name: 'user1' });
+  const [regOk, setRegOk] = useState(null);
+  const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
 
   const logout = () => {
@@ -29,13 +30,16 @@ export const UserProvider = ({ children }) => {
   const registerReq = async (data) => {
     setLoading(true);
     setError(null);
+    setRegOk(null);
     try {
       const res = await registerUser(data);
-      console.log(res);
+      if (res.status === 201) {
+        setRegOk(res.data);
+      }
     } catch (error) {
       setError({
+        error: error.response.data,
         status: error.response.status,
-        message: error.response.statusMessage || 'Error...',
       });
     } finally {
       setLoading(false);
@@ -45,14 +49,18 @@ export const UserProvider = ({ children }) => {
   const loginReq = async (data) => {
     setLoading(true);
     setError(null);
+    setIsAuth(false);
     try {
       const res = await loginUser(data);
       console.log(res);
-      // setUser(res.data)
+      if (res.status === 200) {
+        setUser(res.data);
+        setIsAuth(true);
+      }
     } catch (error) {
       setError({
+        error: error.response.data,
         status: error.response.status,
-        message: error.response.statusMessage || 'Error...',
       });
     } finally {
       setLoading(false);
@@ -64,6 +72,7 @@ export const UserProvider = ({ children }) => {
     error,
     user,
     registerReq,
+    regOk,
     loginReq,
     isAuth,
     login,

@@ -11,24 +11,45 @@ const LoginForm = () => {
     formState: { errors, isValid },
   } = useForm();
 
-  const { loginReq, loading, error } = useUser();
+  const { loginReq, loading, error, user } = useUser();
 
   const onSubmit = handleSubmit(async (data) => {
-    alert(`datos : ${JSON.stringify(data)}`);
-    console.log(data);
-
+    // console.log(data);
+    // await loginReq(data);
     await loginReq(data);
 
-    reset();
+    // reset();
   });
 
-  const submitButtonClass = isValid ? styles.submitButtonValid : styles.submitButton;
+  const submitButtonClass = isValid
+    ? styles.submitButtonValid
+    : styles.submitButton;
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Iniciar sesión</h3>
-      <label htmlFor='email'>
-       
+
+      {loading && <div>Accediendo...</div>}
+      {error && <div>{JSON.stringify(error)}</div>}
+      {user && <div>Login Exitoso!</div>}
+
+      <label htmlFor='username'>
+        <input
+          id='username'
+          type='text'
+          name='username'
+          placeholder='Nombre de Usuario'
+          {...register('username', {
+            validate: {
+              required: (value) =>
+                value !== '' || 'Nombre de Usuario es requerido',
+            },
+          })}
+        />
+        {errors.username && <p>{errors.username.message}</p>}
+      </label>
+
+      {/* <label htmlFor='email'>
         <input
           id='email'
           type='email'
@@ -44,10 +65,9 @@ const LoginForm = () => {
           })}
         />
         {errors.email && <p>{errors.email.message}</p>}
-      </label>
+      </label> */}
 
       <label htmlFor='password'>
-      
         <input
           id='password'
           type='password'
@@ -65,10 +85,14 @@ const LoginForm = () => {
         />
         {errors.password && <p>{errors.password.message}</p>}
       </label>
-          <p className={styles.forget}>Olvidé mi contraseña</p>
-      <input type='submit' value={'Iniciar sesión'} className={submitButtonClass}/>
+      <p className={styles.forget}>Olvidé mi contraseña</p>
+      <input
+        type='submit'
+        value={'Iniciar sesión'}
+        className={submitButtonClass}
+      />
       <p className={styles.goToRegister}>
-        ¿Sos un usuario nuevo?  <Link to={'/register'}>Registrate</Link>
+        ¿Sos un usuario nuevo? <Link to={'/register'}>Registrate</Link>
       </p>
     </form>
   );

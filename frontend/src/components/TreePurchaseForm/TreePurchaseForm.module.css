@@ -15,6 +15,11 @@
   text-align: center;
 }
 
+.typeName,
+.typePrice {
+  font-size: 1rem;
+}
+
 .counterContainer {
   display: flex;
   font-size: large;
