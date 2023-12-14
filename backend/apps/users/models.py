@@ -25,8 +25,8 @@ class UserProfile(TimeStampedModel):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     img = models.ImageField(
         'Image',
-        upload_to='static/profile',
-        # default='static/profile/perfil.png'
+        upload_to='profile',
+        default='static/profile/perfil.png'
     )
 
     def calculate_age(self):
