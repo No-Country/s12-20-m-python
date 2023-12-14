@@ -13,6 +13,8 @@ import { LandProvider } from './context/LandContext';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
 import SuccessAdoption from './components/SuccessAdoption/SuccessAdoption';
 import ErrorPage from './components/ErrorPage/ErrorParge';
+import About from './pages/About/About';
+import Activities from './pages/Activities/Activities';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/adoption' element={<Adoption />} />
+            <Route exact path='/about' element={<About />} />
+            <Route exact path='/activities' element={<Activities />} />
             <Route element={<PrivateRoutes />}>
               <Route exact path='/profile' element={<Profile />} />
             </Route>
