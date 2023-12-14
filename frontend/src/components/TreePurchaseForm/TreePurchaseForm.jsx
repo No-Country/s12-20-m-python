@@ -60,6 +60,7 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
             name: type.name,
             price: type.price,
             quantity: 1,
+            img: type.img,
           };
 
           return [...prev, newItem];
@@ -102,7 +103,7 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
   // };
 
   const handleCompraClick = () => {
-    navigate('/shoppingcar', {state: { purchase}});
+    navigate('/shoppingcar', { state: { purchase } });
 
     // if (isUserLoggedIn) {
     //   // Enviar información al backend y realizar la compra
@@ -196,10 +197,12 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
       )}
       <div>
         <h4>Subtotal: ${getTotalPrice}</h4>
-        <button className={styles.purchaseButton} onClick={() => handleCompraClick()}>
-  Adoptar
-</button>
-
+        <button
+          className={styles.purchaseButton}
+          onClick={() => handleCompraClick()}
+        >
+          Adoptar
+        </button>
       </div>
     </>
   );
