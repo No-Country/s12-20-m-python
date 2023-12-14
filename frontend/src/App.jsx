@@ -12,6 +12,7 @@ import { UserProvider } from './context/UserContext';
 import { LandProvider } from './context/LandContext';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
 import SuccessAdoption from './components/SuccessAdoption/SuccessAdoption';
+import ErrorPage from './components/ErrorPage/ErrorParge';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/shoppingcar' element={<ShoppingCar />} />
             <Route exact path='/success' element={<SuccessAdoption />} />
+            <Route path='*' element={<ErrorPage />} />
           </Routes>
           <Footer />
         </BrowserRouter>
