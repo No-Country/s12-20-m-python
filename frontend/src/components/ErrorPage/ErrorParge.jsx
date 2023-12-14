@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ErrorPage.module.css';
 
 const ErrorPage = () => {
@@ -10,7 +9,7 @@ const ErrorPage = () => {
         <br />
         Solo aquellos que son dignos y respetuosos con la naturaleza pueden acceder. 
         <br />
-        ¡Conviértete en un guardián!
+        ¡Convértite en un Guardián del Bosque!
       </p>
       {/* Puedes agregar más información o elementos alusivos al bloqueo */}
     </div>
