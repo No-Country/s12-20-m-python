@@ -1,5 +1,5 @@
 .adoptionContainer {
-  margin: 5em 3em 5em 3em;
+  margin: 7em 3em 5em 3em;
   display: flex;
   flex-direction: row;
 }
@@ -21,13 +21,16 @@
 }
 
 .rightContainer {
-  padding-left: 2em;
+  margin-left: 2em;
+  padding: 1em;
   flex-direction: column;
+  border-radius: 15px;
+  border: 2px solid white;
 }
 
 .loremtree {
   margin-top: 2em;
-  padding: 1em;
+  padding: em;
   border: 2px solid #768C27;
   border-radius: 15px;
 }
