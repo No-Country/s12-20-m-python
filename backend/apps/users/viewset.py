@@ -18,6 +18,7 @@ from .utils import CustomPermissions, CustomAuthentication
 from django.contrib.auth import logout
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class CountryViewSet(viewsets.ModelViewSet):
@@ -25,10 +26,12 @@ class CountryViewSet(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
 
+
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     pagination_class = PaginationSerializer
+    parser_classes = [MultiPartParser, FormParser]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -47,7 +50,7 @@ class AdoptionViewSet(viewsets.ModelViewSet):
 
 
 class FollowUpViewSet(viewsets.ModelViewSet):
-    
+
     queryset = FollowUp.objects.all()
     serializer_class = FollowUpSerializer
     pagination_class = PaginationSerializer
@@ -77,8 +80,9 @@ class LoginViewSet(viewsets.ModelViewSet):
 
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
 class UserLogoutAPIView(APIView):
-    
+
     def post(self, request):
         logout(request)
         return Response({'message': "Logout successful"})
