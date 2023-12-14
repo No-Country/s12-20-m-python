@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getJson, getLand } from '../api/land';
+import { getTreeType } from '../api/tree';
 
-export const LandContext = createContext();
+export const TreeTypeContext = createContext();
 
-export const useLand = () => {
-  const context = useContext(LandContext);
+export const useTreeTypes = () => {
+  const context = useContext(TreeTypeContext);
 
   if (!context) {
     throw Error('Context Error');
@@ -13,22 +13,20 @@ export const useLand = () => {
   }
 };
 
-export const LandProvider = ({ children }) => {
+export const TreeTypeProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [land, setLand] = useState(null);
-  const [purchase, setPurchase] = useState([]);
+  const [treeType, setTreeType] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await getLand();
-        //const res = await getJson();
-        console.log(res);
+        const res = await getTreeType();
+        console.log(res)
         if (res.status === 200) {
-          setLand(res.data);
+          setTreeType(res.data);
         }
       } catch (error) {
         setError({
@@ -43,16 +41,19 @@ export const LandProvider = ({ children }) => {
     getData();
   }, []);
 
-  const getLandReq = async () => {
+  const getTreeTypeReq = async () => {
     try {
-      const res = await getLand();
+      const res = await getTreeType();
       console.log(res);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const values = { getLandReq, land, loading, error, purchase, setPurchase };
+  const values = { getTreeTypeReq, treeType, loading, error };
 
-  return <LandContext.Provider value={values}>{children}</LandContext.Provider>;
+  return <TreeTypeContext.Provider value={values}>{children}</TreeTypeContext.Provider>;
 };
+
+
+ 
