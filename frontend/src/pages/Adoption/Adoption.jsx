@@ -36,25 +36,11 @@ const Adoption = () => {
 
         <Map handleClick={handleClick} placeFound={placeFound} />
       </div>
-      <div className={styles.rightAdoptionContainer}>
-        {/* {showDetail === true && (
-          <div className={styles.loremtree}>
-            <div>
-              <h3> {places.land}</h3>
-              <p>
-                A los alrededores de la Laguna Rosales en Neuquén nos pusimos
-                como objetivo sembrar 200 árboles de 3 especies de árboles
-                nativos, Ñire (Nothofagus antarctica), Maitén (Maytenus boaria)
-                y Coihue (Nothofagus dombeyi).
-              </p>
-              <p>Seleccioná el/los árbol/es que querés adoptar</p>
-            </div>
 
-            <TreePurchaseForm />
-          </div>
-        )} */}
-
-        {showDetail && <PlaceInfo place={place} />}
+      <div className={styles.rightContainer}>
+        <div className={styles.rightAdoptionContainer}>
+          {showDetail && <PlaceInfo place={place} />}
+        </div>
       </div>
     </div>
   );

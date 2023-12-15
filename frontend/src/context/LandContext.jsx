@@ -25,7 +25,7 @@ export const LandProvider = ({ children }) => {
       setError(null);
       try {
         const res = await getLand();
-        //const res = await getJson();
+        // const res = await getJson();
         console.log(res);
         if (res.status === 200) {
           setLand(res.data);

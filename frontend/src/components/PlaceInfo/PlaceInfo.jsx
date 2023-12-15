@@ -8,6 +8,7 @@ const PlaceInfo = ({ place }) => {
       <TreePurchaseForm
         type_tree={place.type_tree}
         max_amount={place.ammount}
+        placeId={place.id}
       />
     </div>
   );

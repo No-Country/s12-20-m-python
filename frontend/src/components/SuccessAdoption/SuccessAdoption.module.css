@@ -3,17 +3,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  /* height: 90vh; */
   max-width: 100%;
   padding: 20px;
+  padding-top: 100px;
   box-sizing: border-box;
 }
 
-.successAdoption{
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    align-items: center;
+.successAdoption {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  align-items: center;
 }
 
 .sucessContainer h3 {
@@ -33,11 +34,11 @@
 }
 
 .sucessContainer button {
-    border: none;
-    align-items: center;
-    padding: 8px 32px;
-    gap: 10px;
-    color: white;
-    background: #31572C;
-    border-radius: 10px;
+  border: none;
+  align-items: center;
+  padding: 8px 32px;
+  gap: 10px;
+  color: white;
+  background: #31572c;
+  border-radius: 10px;
 }
