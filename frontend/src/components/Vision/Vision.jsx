@@ -28,7 +28,7 @@ function Vision() {
         por el planeta y todas sus formas de vida.
         </p>
       </div>
-      <div className='vision'>
+      <div className={styles.visionCard}>
       <img src={Responsabilidad} alt="" />
         <h3>Responsabilidad</h3>
         <p>
