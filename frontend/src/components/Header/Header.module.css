@@ -21,7 +21,12 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.logo{
+  color:#31572c;
+}
+.whiteLogo{
+  color: #fff;
+}
 .openMenu {
   display: none;
 }
