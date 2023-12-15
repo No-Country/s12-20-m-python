@@ -15,7 +15,7 @@ const ShoppingCar = () => {
   const onSubmit = (data) => {
     // Aquí puedes manejar los datos del formulario
     console.log(data);
-    navigate('/success')
+    navigate('/success');
   };
 
   return (

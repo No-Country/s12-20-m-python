@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { useUser } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const {
@@ -11,15 +12,18 @@ const LoginForm = () => {
     formState: { errors, isValid },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const { loginReq, loading, error, user } = useUser();
 
   const onSubmit = handleSubmit(async (data) => {
-    // console.log(data);
-    // await loginReq(data);
-    await loginReq(data);
-
-    // reset();
+    const success = await loginReq(data);
+  
+    if (success) {
+      navigate('/profile');
+    }
   });
+  
 
   const submitButtonClass = isValid
     ? styles.submitButtonValid
@@ -90,6 +94,7 @@ const LoginForm = () => {
         type='submit'
         value={'Iniciar sesión'}
         className={submitButtonClass}
+        disabled={loading} 
       />
       <p className={styles.goToRegister}>
         ¿Sos un usuario nuevo? <Link to={'/register'}>Registrate</Link>

@@ -1,3 +1,5 @@
+import MyAdoptions from "../../components/MyAdoptions/MyAdoptions";
+
 const Profile = () => {
   return (
     <div>
@@ -26,6 +28,8 @@ const Profile = () => {
         distinctio impedit iure. Nostrum repudiandae dignissimos facere
         asperiores consequuntur.
       </p>
+      <div>
+        <MyAdoptions />      </div>
     </div>
   );
 };
