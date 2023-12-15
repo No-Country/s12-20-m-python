@@ -15,11 +15,12 @@ const ShoppingCar = () => {
   const onSubmit = (data) => {
     // Aquí puedes manejar los datos del formulario
     console.log(data);
-    navigate('/success')
+    navigate('/success');
   };
 
   return (
     <div className={styles.shoppingContainer}>
+      
       <div className={styles.shoppingLeft}>
         <h4>Medio de Pago</h4>
         <form onSubmit={handleSubmit(onSubmit)}>

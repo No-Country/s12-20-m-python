@@ -103,21 +103,23 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
   // };
 
   const handleCompraClick = () => {
-    navigate('/shoppingcar', { state: { purchase } });
+    
 
-    // if (isUserLoggedIn) {
-    //   // Enviar información al backend y realizar la compra
-    //   alert(
-    //     'Compra realizada con éxito. Se ha enviado la información al backend.',
-    //   );
+    if (isUserLoggedIn) {
+      // Enviar información al backend y realizar la compra
+      alert(
+        'Compra realizada con éxito. Se ha enviado la información al backend.',
+      );
+      navigate('/shoppingcar', { state: { purchase } });
 
-    // } else {
-    //   // Mostrar formulario de registro o inicio de sesión
-    //   alert(
-    //     'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
-    //   );
-    //   // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
-    // }
+    } else {
+      // Mostrar formulario de registro o inicio de sesión
+      alert(
+        'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
+      );
+      navigate('/login');
+      // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
+    }
   };
 
   return (

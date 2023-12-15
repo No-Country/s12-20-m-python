@@ -1,3 +1,4 @@
+import MyAdoptions from "../../components/MyAdoptions/MyAdoptions";
 import { useUser } from '../../context/UserContext';
 import styles from './Profile.module.css';
 
@@ -32,6 +33,8 @@ const Profile = () => {
         distinctio impedit iure. Nostrum repudiandae dignissimos facere
         asperiores consequuntur.
       </p>
+      <div>
+        <MyAdoptions />      </div>
     </div>
   );
 };
