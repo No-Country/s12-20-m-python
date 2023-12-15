@@ -75,9 +75,17 @@ class LoginViewSet(viewsets.ModelViewSet):
             token, created = Token.objects.get_or_create(user=user)
 
             login(request, user)
-            return Response({'message': 'Successful login', 'token': token.key}, status=status.HTTP_200_OK)
-        else:
+            
+            # Obtén el UserProfile asociado al usuario
+            user_profile = UserProfile.objects.get(user=user)
+            user_profile_serializer = UserProfileSerializer(user_profile)
 
+            return Response({
+                'message': 'Successful login',
+                'token': token.key,
+                'user_profile': user_profile_serializer.data
+            }, status=status.HTTP_200_OK)
+        else:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
