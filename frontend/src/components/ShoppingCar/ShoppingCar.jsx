@@ -20,6 +20,7 @@ const ShoppingCar = () => {
 
   return (
     <div className={styles.shoppingContainer}>
+      
       <div className={styles.shoppingLeft}>
         <h4>Medio de Pago</h4>
         <form onSubmit={handleSubmit(onSubmit)}>
