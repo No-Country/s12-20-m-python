@@ -24,6 +24,7 @@ function Home() {
       <div>
         <Vision />
       </div>
+      <div className={styles.whyadoptBox}>
       <div className={styles.whyadopt}>
         <div className={styles.adopyTexts}>
           <h2>¿Por qué adoptar un árbol?</h2>
@@ -45,9 +46,10 @@ function Home() {
             <button className={styles.secondButton}>Adoptá un árbol</button>
           </Link>
         </div>
-        <div>
+        <div className={styles.imgBox}>
           <img src={HomeImage} alt="" />
         </div>
+      </div>
       </div>
       <div>
         <Achievements />
