@@ -25,7 +25,7 @@ const Header = () => {
     >
       <section className={styles.headerContent}>
         <div>
-          <h3>LOGO</h3>
+        <h2 className={`${!isHomePage? styles.logo: styles.whiteLogo}`}>Guardianes del Bosque</h2>
         </div>
         <Navbar
           handleCloseMenu={handleCloseMenu}
