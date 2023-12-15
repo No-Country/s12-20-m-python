@@ -4,7 +4,6 @@ import TreeIcon from '../../assets/treeDefault.png';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
-import styles from './MapStyles.module.css';
 import { useLand } from '../../context/LandContext';
 
 const Map = ({ handleClick, placeFound }) => {
