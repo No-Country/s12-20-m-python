@@ -2,7 +2,9 @@ import React from 'react';
 import styles from './MyAdoptions.module.css';
 import TestTreee from '../../assets/testTree.png';
 
-function MyAdoptions() {
+function MyAdoptions({purchase}) {
+
+  console.log(purchase);
   return (
     <>
       <h4>Tus Adopciones</h4>
