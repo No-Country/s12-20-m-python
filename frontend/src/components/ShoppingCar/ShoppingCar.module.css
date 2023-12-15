@@ -4,18 +4,6 @@
   justify-content: space-around;
 }
 
-@media (max-width: 725px) {
-  .shoppingContainer {
-    margin: 8em 5em 5em 5em;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .shoppingLeft {
-    margin-bottom: 2em;
-  }
-}
-
 .shoppingLeft {
   width: 60%;
   margin-right: 4em;
@@ -57,4 +45,21 @@ select {
   color: white;
   background: #31572c;
   border-radius: 10px;
+}
+
+@media (max-width: 725px) {
+  .shoppingContainer {
+    margin: 8em 5em 5em 5em;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .shoppingLeft {
+    margin-top: 2em;
+    border: 0.5px solid white;
+  }
+  .shoppingRight {
+    border: 0.5px solid white;
+  }
+
 }
