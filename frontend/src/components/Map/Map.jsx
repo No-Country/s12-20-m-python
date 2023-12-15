@@ -46,15 +46,15 @@ const Map = ({ handleClick, placeFound }) => {
               <h3>{place.place}</h3>
               <div>
                 <p>Tipos de árboles disponibles para esta zona: </p>
-                <ul className={styles.typeList}>
+                <ul className='typeList'>
                   {place.type_tree.map((type) => (
                     <li key={type.id}>{type.name}</li>
                   ))}
                 </ul>
               </div>
-              <div className={styles.containerBtn}>
+              <div className='containerBtn'>
                 <button
-                  className={styles.placeBtn}
+                  className='placeBtn'
                   onClick={() => {
                     handleClick();
                     placeFound(place.id);

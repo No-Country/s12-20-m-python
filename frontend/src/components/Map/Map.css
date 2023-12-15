@@ -1,7 +1,12 @@
 .leaflet-container {
-  width: 100%;
-  height: 50vh; /* o ajusta según tus necesidades */
-  max-width: 100%; /* Para evitar que el mapa sea más grande que el 100% del ancho de la ventana */
+  width: 400px;
+  height: 500px; 
+}
+@media (max-width: 980px) {
+  .leaflet-container {
+    width: 350px;
+    height: 450px; 
+  }
 }
 
 .leaflet-control,
@@ -29,3 +34,4 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
