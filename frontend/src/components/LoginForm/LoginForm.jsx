@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const LoginForm = () => {
   const {
@@ -18,12 +19,11 @@ const LoginForm = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     const success = await loginReq(data);
-  
+
     if (success) {
       navigate('/profile');
     }
   });
-  
 
   const submitButtonClass = isValid
     ? styles.submitButtonValid
@@ -33,7 +33,7 @@ const LoginForm = () => {
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Iniciar sesión</h3>
 
-      {loading && <div>Accediendo...</div>}
+      {loading && <Loader />}
       {error && <div>{JSON.stringify(error)}</div>}
       {user && <div>Login Exitoso!</div>}
 
@@ -94,7 +94,7 @@ const LoginForm = () => {
         type='submit'
         value={'Iniciar sesión'}
         className={submitButtonClass}
-        disabled={loading} 
+        disabled={loading}
       />
       <p className={styles.goToRegister}>
         ¿Sos un usuario nuevo? <Link to={'/register'}>Registrate</Link>
