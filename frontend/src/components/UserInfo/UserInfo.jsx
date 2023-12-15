@@ -1,6 +1,9 @@
+import { useUser } from '../../context/UserContext';
 import styles from './UserInfo.module.css';
 
 const UserInfo = () => {
+  const { user } = useUser();
+
   return (
     <section className={styles.userContainer}>
       <div className={styles.imgContainer}>
@@ -10,8 +13,10 @@ const UserInfo = () => {
         />
       </div>
       <article>
-        <p>Nombre de Usuario</p>
-        <p>email@gmail.com</p>
+        <p>
+          {user.first_name} {user.last_name}
+        </p>
+        <p>{user.email}</p>
       </article>
     </section>
   );
