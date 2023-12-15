@@ -1,3 +1,20 @@
+/* .leaflet-container {
+  width: 500px !important;
+  height: 500px !important;
+}
+
+.leaflet-control {
+  z-index: 0 !important;
+}
+.leaflet-pane {
+  z-index: 0 !important;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 0 !important;
+}
+
+
 .typeList {
   list-style-position: inside;
   margin-left: 2rem;
@@ -15,4 +32,4 @@
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 5px;
-}
+} */
