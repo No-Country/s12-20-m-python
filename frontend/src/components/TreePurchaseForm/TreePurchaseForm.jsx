@@ -44,9 +44,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
             id: type.id,
             landId: placeId,
             name: type.name,
-            price: type.price || 5,
             quantity: 1,
-            img: type.img,
           };
 
           return [...prev, newItem];

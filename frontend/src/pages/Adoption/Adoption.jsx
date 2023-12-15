@@ -29,15 +29,18 @@ const Adoption = () => {
 
   return (
     <div className={styles.adoptionContainer}>
-      <div className={styles.leftContainer}>
+      <div className={styles.leftAdoptionContainer}>
         <h1>Adopta un Árbol</h1>
         <SearchInput onSearch={handleSearch} />
         <p>Seleccioná un árbol y mirá donde estamos reforestando.</p>
 
         <Map handleClick={handleClick} placeFound={placeFound} />
       </div>
+
       <div className={styles.rightContainer}>
-        {showDetail && <PlaceInfo place={place} />}
+        <div className={styles.rightAdoptionContainer}>
+          {showDetail && <PlaceInfo place={place} />}
+        </div>
       </div>
     </div>
   );
