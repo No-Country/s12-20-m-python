@@ -40,16 +40,21 @@ body {
   font-weight: 600;
   font-size: 36px;
 }
+.whyadoptBox{
+  height: max-content;
+  padding: 2rem 0;
+
+}
 .whyadopt {
   max-width: 1440px;
-  width: 80%;
+  width: 80vw;
   margin: 0 auto;
-  background-color: #31572c;
   display: flex;
   justify-content: space-between;
 }
 .adopyTexts {
-  flex-grow: 2;
+  background-color: #31572c;
+  width: 62%;
   text-align: left;
   padding: 1rem;
 }
@@ -64,10 +69,16 @@ body {
   padding-bottom: 1rem;
   font-size: 16px;
 }
-.whyadopt img {
+.imgBox{
+  object-position: center;
+  overflow: hidden;
+}
+.imgBox img {
+  object-position: center;
   height: 100%;
   margin: 0;
   padding: 0;
+
 }
 .secondButton {
   background-color: #f5fcd1;
@@ -89,27 +100,40 @@ p {
 .secondButton:hover {
   background-color: #868686;
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .whyadopt {
-    width: 100%;
-    flex-direction: column;
-    height: 600px;
-    margin-bottom: 720px;
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .adopyTexts h2{
+    font-size: 24px;
   }
+  .adopyTexts p{
+    font-size: 14px;
+    padding-bottom: .5rem;
+  }
+
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .adopyTexts{
+    padding: 1rem 1.5rem;
+  }
+
   .adopyTexts h2 {
     font-size: 20px;
   }
   .adopyTexts p {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
   }
-  .whyadopt img {
-    padding: 0 16px;
-    box-sizing: border-box;
-    width: 100%;
+  .whyadopt{
+    width: 90vw;
   }
+
 }
 @media screen and (max-width: 767px) {
+  .whyadoptBox{
+    padding: 2rem 0;
+  }
+  .whyadopt{
+    width: 90vw;
+  }
   .homeVideo {
     width: 100%;
   }
@@ -122,19 +146,23 @@ p {
   .whyadopt {
     width: 100%;
     flex-direction: column;
-    height: 600px;
-    margin-bottom: 420px;
+  }
+  .adopyTexts{
+    width: 100%;
+    padding: 1rem 1.5rem 4rem;
   }
   .adopyTexts h2 {
     font-size: 20px;
   }
-  .adopyTexts p {
-    font-size: 14px;
-    font-weight: 400;
+  .imgBox{
+    margin-top: -2rem;
   }
-  .whyadopt img {
-    padding: 0 16px;
+  .imgBox img {
+    padding: 0 20px;
     box-sizing: border-box;
+    width: 100%;
+  }
+  .secondButton{
     width: 100%;
   }
 }
