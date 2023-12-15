@@ -79,6 +79,8 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
   };
 
   const handleCompraClick = () => {
+    if (purchase.length < 1) return;
+
     if (isAuth) {
       // Enviar información al backend y realizar la compra
       navigate('/shoppingcar');
