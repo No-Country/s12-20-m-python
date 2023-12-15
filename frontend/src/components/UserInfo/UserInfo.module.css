@@ -1,0 +1,15 @@
+.userContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.imgContainer {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.imgContainer img {
+  display: block;
+}

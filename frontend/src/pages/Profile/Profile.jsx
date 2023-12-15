@@ -1,12 +1,15 @@
+import UserInfo from '../../components/UserInfo/UserInfo';
 import { useUser } from '../../context/UserContext';
 import styles from './Profile.module.css';
 
 const Profile = () => {
   const { user } = useUser();
+
   return (
     <div className={styles.profileContainer}>
       <h2>Profile</h2>
       <div>{JSON.stringify(user)}</div>
+      <UserInfo />
       <br />
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. In itaque
