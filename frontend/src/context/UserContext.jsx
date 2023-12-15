@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { loginUser, registerUser } from '../api/auth';
 
 export const UserContext = createContext();
@@ -20,12 +20,15 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
 
-  const logout = () => {
-    setIsAuth(false);
-  };
-  const login = () => {
+  if (localStorage.getItem('userData') && user === null) {
+    const data = JSON.parse(localStorage.getItem('userData'));
     setIsAuth(true);
-  };
+    setUser(data);
+  }
+
+  useEffect(() => {
+    if (user !== null) localStorage.setItem('userData', JSON.stringify(user));
+  }, [user]);
 
   const registerReq = async (data) => {
     setLoading(true);
@@ -34,6 +37,7 @@ export const UserProvider = ({ children }) => {
     try {
       const res = await registerUser(data);
       if (res.status === 201) {
+        console.log(res.data);
         setRegOk(res.data);
       }
     } catch (error) {
@@ -54,6 +58,7 @@ export const UserProvider = ({ children }) => {
       const res = await loginUser(data);
       console.log(res);
       if (res.status === 200) {
+        console.log(res.data);
         setUser(res.data);
         setIsAuth(true);
       }
@@ -70,13 +75,13 @@ export const UserProvider = ({ children }) => {
   const values = {
     loading,
     error,
+    setUser,
     user,
     registerReq,
     regOk,
     loginReq,
+    setIsAuth,
     isAuth,
-    login,
-    logout,
   };
 
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>;
