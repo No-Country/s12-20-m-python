@@ -9,13 +9,12 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isValid },
   } = useForm();
 
   const navigate = useNavigate();
 
-  const { loginReq, loading, error, user } = useUser();
+  const { loginReq, loading, error } = useUser();
 
   const onSubmit = handleSubmit(async (data) => {
     const success = await loginReq(data);
@@ -33,9 +32,8 @@ const LoginForm = () => {
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Iniciar sesión</h3>
 
-      {loading && <Loader />}
+      {loading && <Loader fullscreen={true} />}
       {error && <div>{JSON.stringify(error)}</div>}
-      {user && <div>Login Exitoso!</div>}
 
       <label htmlFor='username'>
         <input

@@ -11,10 +11,12 @@ const PurchaseSummary = ({ purchase }) => {
       <h4>Resumen de compra</h4>
 
       {purchase.map((item) => (
-        <div key={item.id}>
+        <div key={item.typeId}>
           <div className={styles.purchaseResume}>
-            <img src={item.img} alt="" />
-            <p>{item.name}x{item.quantity}</p>
+            <img src={item.img} alt='' />
+            <p>
+              {item.typeName}x{item.quantity}
+            </p>
             <p>{item.price} USD</p>
           </div>
         </div>

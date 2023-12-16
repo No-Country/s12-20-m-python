@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import styles from './RegisterForm.module.css';
 import { useUser } from '../../context/UserContext';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const RegisterForm = () => {
   const {
@@ -29,7 +31,6 @@ const RegisterForm = () => {
       birthdate: data.birthdate,
       country: data.country,
     };
-    // console.log(newData);
 
     await registerReq(newData);
 
@@ -42,8 +43,9 @@ const RegisterForm = () => {
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Registro</h3>
 
-      {loading && <div>registrando...</div>}
-      {error && <div>{JSON.stringify(error)}</div>}
+      {loading && <Loader fullscreen={true} />}
+      {error && <ErrorMessage message={error.error} />}
+
       {regOk && <div>Registro Exitoso!</div>}
 
       <label htmlFor='username'>

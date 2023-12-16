@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getJson, getLand } from '../api/land';
+import { json } from 'react-router-dom';
 
 export const LandContext = createContext();
 
@@ -18,6 +19,17 @@ export const LandProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [land, setLand] = useState(null);
   const [purchase, setPurchase] = useState([]);
+  const [adoptionData, setAdoptionData] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('adoptionData') && adoptionData === null) {
+      const data = JSON.parse(localStorage.getItem('adoptionData'));
+      setAdoptionData(data);
+    }
+
+    if (adoptionData !== null)
+      localStorage.setItem('adoptionData', JSON.stringify(adoptionData));
+  }, [adoptionData]);
 
   useEffect(() => {
     const getData = async () => {
@@ -26,15 +38,18 @@ export const LandProvider = ({ children }) => {
       try {
         const res = await getLand();
         // const res = await getJson();
-        console.log(res);
         if (res.status === 200) {
           setLand(res.data);
         }
       } catch (error) {
-        setError({
-          status: error.response.status,
-          message: error.response.statusMessage || 'Error...',
-        });
+        if (error.response) {
+          setError({
+            status: error.response.status,
+            message: error.response.statusMessage || 'Error...',
+          });
+        } else {
+          console.error(error);
+        }
       } finally {
         setLoading(false);
       }
@@ -52,7 +67,16 @@ export const LandProvider = ({ children }) => {
     }
   };
 
-  const values = { getLandReq, land, loading, error, purchase, setPurchase };
+  const values = {
+    adoptionData,
+    setAdoptionData,
+    getLandReq,
+    land,
+    loading,
+    error,
+    purchase,
+    setPurchase,
+  };
 
   return <LandContext.Provider value={values}>{children}</LandContext.Provider>;
 };

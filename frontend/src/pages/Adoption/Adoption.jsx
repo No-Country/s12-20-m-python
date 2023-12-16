@@ -7,7 +7,7 @@ import PlaceInfo from '../../components/PlaceInfo/PlaceInfo';
 
 const Adoption = () => {
   const [place, setPlace] = useState(null);
-  const { land, loading, error, setPurchase } = useLand();
+  const { land, setPurchase } = useLand();
 
   const handleSearch = (term) => {
     //lógica del buscador
