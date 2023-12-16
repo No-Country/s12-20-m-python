@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { loginUser, registerUser } from '../api/auth';
+import { useLand } from './LandContext';
 
 export const UserContext = createContext();
 
@@ -19,16 +20,29 @@ export const UserProvider = ({ children }) => {
   const [regOk, setRegOk] = useState(null);
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
-
-  if (localStorage.getItem('userData') && user === null) {
-    const data = JSON.parse(localStorage.getItem('userData'));
-    setIsAuth(true);
-    setUser(data);
-  }
+  const [adoptions, setAdoptions] = useState([]);
 
   useEffect(() => {
+    if (localStorage.getItem('userData') && user === null) {
+      const data = JSON.parse(localStorage.getItem('userData'));
+      setIsAuth(true);
+      setUser(data);
+    }
+
     if (user !== null) localStorage.setItem('userData', JSON.stringify(user));
   }, [user]);
+
+  const { adoptionData } = useLand();
+
+  useEffect(() => {
+    if (isAuth && adoptionData) {
+      const userAdoptions = adoptionData.filter(
+        (item) => item.userId === user.id,
+      );
+
+      setAdoptions(userAdoptions);
+    }
+  }, [adoptionData, isAuth]);
 
   const registerReq = async (data) => {
     setLoading(true);
@@ -41,10 +55,15 @@ export const UserProvider = ({ children }) => {
         setRegOk(res.data);
       }
     } catch (error) {
-      setError({
-        error: error.response.data,
-        status: error.response.status,
-      });
+      if (error.response.status === 400) {
+        if (error.response.data.user.username) {
+          return setError({
+            error: error.response.data.user.username[0],
+            status: error.response.status,
+          });
+        }
+      }
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -56,21 +75,32 @@ export const UserProvider = ({ children }) => {
     setIsAuth(false);
     try {
       const res = await loginUser(data);
-      console.log(res);
+      // console.log(res);
       if (res.status === 200) {
-        console.log(res.data);
+        // console.log(res.data);
         const data = {
           ...res.data.user_profile.user,
           token: res.data.token,
         };
         setUser(data);
         setIsAuth(true);
+
+        if (adoptionData) {
+          const userAdoptions = adoptionData.filter(
+            (item) => item.userId === data.id,
+          );
+          setAdoptions(userAdoptions);
+        }
       }
     } catch (error) {
-      setError({
-        error: error.response.data,
-        status: error.response.status,
-      });
+      if (error.response) {
+        setError({
+          status: error.response.status,
+          message: error.response.statusMessage || 'Error...',
+        });
+      } else {
+        console.error(error);
+      }
     } finally {
       setLoading(false);
     }
@@ -81,6 +111,7 @@ export const UserProvider = ({ children }) => {
     error,
     setUser,
     user,
+    adoptions,
     registerReq,
     regOk,
     loginReq,

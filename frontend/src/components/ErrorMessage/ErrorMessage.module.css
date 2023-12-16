@@ -1,0 +1,9 @@
+.errorContainer {
+  border: solid 1px var(--error);
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+
+.textMessage {
+  color: var(--error);
+}

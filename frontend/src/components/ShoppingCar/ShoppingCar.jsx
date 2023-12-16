@@ -9,29 +9,39 @@ import { useUser } from '../../context/UserContext';
 const ShoppingCar = () => {
   const { isAuth, user } = useUser();
 
-  const { purchase, setPurchase } = useLand();
+  const { purchase, setPurchase, setAdoptionData } = useLand();
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const { handleSubmit, control } = useForm();
 
   if (!isAuth) return <Navigate to={'/login'} />;
 
-  const onSubmit = (data) => {
-    const adoptionData = {
-      userId: user.id,
-      username: user.username,
-      adoptionPurchase: purchase,
-    };
+  const onSubmit = () => {
+    const adoptionData = purchase.reduce((acc, item) => {
+      for (let i = item.quantity; i > 0; i--) {
+        delete item.quantity;
+        acc.push({
+          adoptionId: crypto.randomUUID(),
+          userId: user.id,
+          ...item,
+        });
+      }
+      return acc;
+    }, []);
 
-    setPurchase(adoptionData);
-    // Aquí puedes manejar los datos del formulario
-    // console.log(data);
+    setAdoptionData((prev) => {
+      if (prev === null) return adoptionData;
+
+      return [...prev, ...adoptionData];
+    });
+    setPurchase([]);
+
     navigate('/success');
   };
 
   return (
     <div className={styles.shoppingContainer}>
-      <pre>{JSON.stringify(purchase, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
 
       <div className={styles.shoppingLeft}>
         <h4>Medio de Pago</h4>

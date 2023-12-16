@@ -1,36 +1,23 @@
-.myAdoptionsContainer{
+.myAdoptionsContainer {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
 }
 
-.adoptionCard {
-    display: flex;
-    max-width: 400px;
-    margin: 10px;
-    padding: 1em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    background: #F5FCD1;
-  }
-  
-  .cardImage {
-    width: 150px;
-    object-fit: cover;
-  }
-  
-  .cardContent {
-    padding: 16px;
-  }
-  
-  .cardTitle {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-  }
-  
-  .card-Description {
-    font-size: 1rem;
-    color: #666;
-  }
-  
+.adoptionMessage {
+  width: 80%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.adoptionBtn {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  border: none;
+  align-items: center;
+  padding: 8px 32px;
+  color: var(--white);
+  background: var(--primary);
+  border-radius: 10px;
+}

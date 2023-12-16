@@ -5,22 +5,22 @@ import TreeIcon from '../../assets/treeDefault.png';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import { useLand } from '../../context/LandContext';
+import Loader from '../Loader/Loader';
 
 const Map = ({ handleClick, placeFound }) => {
   //Argentina
-  const testMainLocation = {
+  const MainLocation = {
     location: {
       lat: '-38.7630646',
       lng: '-68.785466',
     },
     zoom: 4,
   };
-  const { location, zoom } = testMainLocation;
+  const { location, zoom } = MainLocation;
 
   const { land, loading, error } = useLand();
- console.log(land)
 
-  if (!land) return <div>Cargando Datos...</div>;
+  if (!land) return <Loader />;
 
   const customIcon = L.icon({
     iconUrl: TreeIcon,
