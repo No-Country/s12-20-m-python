@@ -18,7 +18,7 @@ const Map = ({ handleClick, placeFound }) => {
   const { location, zoom } = testMainLocation;
 
   const { land, loading, error } = useLand();
- console.log(land)
+//  console.log(land)
 
   if (!land) return <div>Cargando Datos...</div>;
 

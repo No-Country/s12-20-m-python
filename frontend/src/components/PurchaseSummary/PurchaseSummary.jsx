@@ -1,9 +1,17 @@
 import React from 'react';
 import styles from './PurchaseSummary.module.css';
 
+
+import image1 from '../../assets/imagen.png';
+import image2 from '../../assets/imagen1.png';
+import image3 from '../../assets/imagen2.png';
+
 const PurchaseSummary = ({ purchase }) => {
+
+  const treeImages = [image1, image2, image3];
+  
   const totalPrice = purchase.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.quantity,
     0,
   );
   return (
@@ -13,7 +21,7 @@ const PurchaseSummary = ({ purchase }) => {
       {purchase.map((item) => (
         <div key={item.id}>
           <div className={styles.purchaseResume}>
-            <img src={item.img} alt="" />
+            <img src={treeImages[Math.floor(Math.random() * treeImages.length)]}  alt="" />
             <p>{item.name}x{item.quantity}</p>
             <p>{item.price} USD</p>
           </div>
