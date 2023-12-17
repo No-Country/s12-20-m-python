@@ -10,24 +10,21 @@ import emailjs from '@emailjs/browser';
 
 const ShoppingCar = () => {
   const { isAuth, user } = useUser();
-  console.log(user);
 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
+
  
   const { purchase, setPurchase, setAdoptionData } = useLand();
 
   const navigate = useNavigate();
   const [name, setName] = useState('');
+  
   const { handleSubmit, control } = useForm();
 
   if (!isAuth) return <Navigate to={'/login'} />;
 
   const onSubmit = (data) => {
-
-    console.log(data);
 
     // envío de email
 
@@ -35,17 +32,13 @@ const ShoppingCar = () => {
     const templateId = 'template_1y7bw38';
     const publicKey = 'CEV6XbbBu0Lvz2Qfx';
 
-    const userEmail =  (user.email);
-    console.log(userEmail);
-
-    //   user && user.user_profile ? user.user_profile.user.username : '';
 
     const templateParams = {
       from_name: 'Guardianes del Bosque',
-      from_email: email,
+      from_email:  user.email,
       to_name: user.username,
       message: message,
-      to_email: userEmail,
+      to_email: user.email,
     };
 
     emailjs
