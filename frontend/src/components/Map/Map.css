@@ -1,15 +1,37 @@
 .leaflet-container {
-  width: 500px !important;
-  height: 500px !important;
+  width: 400px;
+  height: 500px; 
+}
+@media (max-width: 980px) {
+  .leaflet-container {
+    width: 350px;
+    height: 450px; 
+  }
 }
 
-.leaflet-control {
-  z-index: 0 !important;
-}
-.leaflet-pane {
-  z-index: 0 !important;
-}
+.leaflet-control,
+.leaflet-pane,
 .leaflet-top,
 .leaflet-bottom {
   z-index: 0 !important;
 }
+
+.typeList {
+  list-style-position: inside;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.containerBtn {
+  text-align: center;
+}
+
+.placeBtn {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+

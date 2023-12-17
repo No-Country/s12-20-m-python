@@ -1,0 +1,11 @@
+.profileContainer {
+  padding-top: 100px;
+}
+
+.profileContainer button{
+  background: white;
+  padding: 5px 8px;
+  border-radius: 15px;
+  border: 0.5px solid #5b5b5b;
+  margin-bottom: 1em;
+}

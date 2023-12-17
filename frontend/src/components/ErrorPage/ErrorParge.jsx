@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ErrorPage.module.css';
 
 const ErrorPage = () => {
@@ -12,7 +11,6 @@ const ErrorPage = () => {
         <br />
         ¡Conviértete en un guardián!
       </p>
-      {/* Puedes agregar más información o elementos alusivos al bloqueo */}
     </div>
   );
 };

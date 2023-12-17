@@ -3,7 +3,6 @@ import { useUser } from '../../context/UserContext';
 
 const PrivateRoutes = () => {
   const { isAuth } = useUser();
-
   if (isAuth) {
     return <Outlet />;
   }

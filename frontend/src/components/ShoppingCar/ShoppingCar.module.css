@@ -4,7 +4,7 @@
   justify-content: space-around;
 }
 
-.shoppingLeft{
+.shoppingLeft {
   width: 60%;
   margin-right: 4em;
   padding: 1em;
@@ -12,20 +12,20 @@
   border-radius: 16px;
 }
 
-.shoppingRight{
+.shoppingRight {
   padding: 1em;
   border: 0.5px solid #5b5b5b;
   border-radius: 16px;
 }
 
-.cardData, .cardDni {
+.cardData,
+.cardDni {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
 
-
-.shoppingContainer h4{
+.shoppingContainer h4 {
   margin-bottom: 1em;
 }
 
@@ -43,6 +43,23 @@ select {
   padding: 8px 32px;
   gap: 10px;
   color: white;
-  background: #31572C;
+  background: #31572c;
   border-radius: 10px;
+}
+
+@media (max-width: 725px) {
+  .shoppingContainer {
+    margin: 8em 5em 5em 5em;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .shoppingLeft {
+    margin-top: 2em;
+    border: 0.5px solid white;
+  }
+  .shoppingRight {
+    border: 0.5px solid white;
+  }
+
 }

@@ -1,0 +1,103 @@
+.aboutContainer {
+  padding: 3rem 7rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.aboutImg{
+  width: 100vw;
+  height: 60vh;
+  overflow: hidden;
+}
+.aboutImg img{
+  width: 100%;
+  object-position: center;
+}
+.aboutContainer p{
+  columns: 2;
+}
+.joinBox{
+  padding: 0rem 1rem 2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+
+}
+.joinBox div{
+  width: 47%;
+}
+.joinBox p{
+  color: #f5fcd1;
+  columns: 1;
+  font-size: 18px;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+.secondButton {
+  background-color: #f5fcd1;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #31572c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 328px;
+  margin: 12px auto 0;
+}
+.section{
+  background-color: #31572c;
+  margin: 4rem 0;
+  border-radius: 20px;
+  color: #fff;
+}
+.section h2{
+  padding: 1rem;
+  text-align: center;
+}
+.finalCall p{
+  font-weight: 300;
+  color: #fff;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .aboutImg{
+    height: 40%;
+  }
+  .joinBox{
+    flex-direction: column;
+  }
+  .joinBox div{
+    width: 92%;
+    text-align: center;
+  }
+  .joinBox p{
+    margin-top: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .aboutImg{
+    height: 30%;
+  }
+  .aboutContainer{
+    padding: 2rem 1.5rem;
+  }
+  .aboutContainer p{
+    columns: 1;
+  }
+  .joinBox{
+    flex-direction: column;
+  }
+  .section{
+    margin: 1rem 0;
+  }
+  .section h2{
+    font-size: 20px;
+  }
+  .joinBox div{
+    width: 90%;
+    text-align: center;
+  }
+  .secondButton{
+    width: 90%;
+  }
+}

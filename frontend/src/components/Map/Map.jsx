@@ -4,23 +4,22 @@ import TreeIcon from '../../assets/treeDefault.png';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
-import styles from './MapStyles.module.css';
 import { useLand } from '../../context/LandContext';
+import Loader from '../Loader/Loader';
 
 const Map = ({ handleClick, placeFound }) => {
   //Argentina
-  const testMainLocation = {
+  const MainLocation = {
     location: {
       lat: '-38.7630646',
       lng: '-68.785466',
     },
     zoom: 4,
   };
-  const { location, zoom } = testMainLocation;
+  const { location, zoom } = MainLocation;
 
   const { land, loading, error } = useLand();
-
-  if (!land) return <div>Cargando Datos...</div>;
+  if (!land) return <Loader />;
 
   const customIcon = L.icon({
     iconUrl: TreeIcon,
@@ -46,15 +45,15 @@ const Map = ({ handleClick, placeFound }) => {
               <h3>{place.place}</h3>
               <div>
                 <p>Tipos de árboles disponibles para esta zona: </p>
-                <ul className={styles.typeList}>
+                <ul className='typeList'>
                   {place.type_tree.map((type) => (
                     <li key={type.id}>{type.name}</li>
                   ))}
                 </ul>
               </div>
-              <div className={styles.containerBtn}>
+              <div className='containerBtn'>
                 <button
-                  className={styles.placeBtn}
+                  className='placeBtn'
                   onClick={() => {
                     handleClick();
                     placeFound(place.id);

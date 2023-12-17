@@ -2,23 +2,26 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { useUser } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isValid },
   } = useForm();
 
-  const { loginReq, loading, error, user } = useUser();
+  const navigate = useNavigate();
+
+  const { loginReq, loading, error } = useUser();
 
   const onSubmit = handleSubmit(async (data) => {
-    // console.log(data);
-    // await loginReq(data);
-    await loginReq(data);
+    const success = await loginReq(data);
 
-    // reset();
+    if (success) {
+      navigate('/profile');
+    }
   });
 
   const submitButtonClass = isValid
@@ -29,9 +32,8 @@ const LoginForm = () => {
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Iniciar sesión</h3>
 
-      {loading && <div>Accediendo...</div>}
+      {loading && <Loader fullscreen={true} />}
       {error && <div>{JSON.stringify(error)}</div>}
-      {user && <div>Login Exitoso!</div>}
 
       <label htmlFor='username'>
         <input
@@ -90,6 +92,7 @@ const LoginForm = () => {
         type='submit'
         value={'Iniciar sesión'}
         className={submitButtonClass}
+        disabled={loading}
       />
       <p className={styles.goToRegister}>
         ¿Sos un usuario nuevo? <Link to={'/register'}>Registrate</Link>

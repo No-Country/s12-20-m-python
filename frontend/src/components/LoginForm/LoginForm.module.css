@@ -2,10 +2,9 @@
   max-width: 500px;
   margin: 4rem auto;
   border: solid 1px;
-  padding: 5rem;
+  padding: 4rem;
   background-color: #fff;
   border-radius: 15px;
-  height: 90%;
 }
 
 .form label {
@@ -22,6 +21,10 @@
 }
 .form input{
   width: 100%;
+  margin-bottom: 1em;
+  border: 0.5px solid #5b5b5b;
+  border-radius: 16px;
+  padding: 8px 16px;
 }
 .forget{
   float: right;
@@ -34,6 +37,7 @@
   text-align: center;
   padding-top: 20%;
   color: #5b5b5b;
+  padding-bottom: 1rem;
 }
 .form a{
   text-decoration: none;
@@ -48,6 +52,10 @@
 .submitButton{
   border-radius: 10px;
   color: #aaa8a8;
+}
+.submitButton:hover{
+  background-color: #31572C;
+  color: #fff;
 }
 
 @media screen and (max-width: 767px) {

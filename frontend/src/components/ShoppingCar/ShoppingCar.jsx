@@ -1,25 +1,85 @@
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useLand } from '../../context/LandContext';
+import { useUser } from '../../context/UserContext';
+import { useNavigate, Navigate } from 'react-router-dom';
 import PurchaseSummary from '../PurchaseSummary/PurchaseSummary';
 import styles from './ShoppingCar.module.css';
-import { useNavigate } from 'react-router-dom';
+
+import emailjs from '@emailjs/browser';
 
 const ShoppingCar = () => {
-  const { purchase } = useLand();
-  const navigate = useNavigate();
+  const { isAuth, user } = useUser();
 
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+ 
+  const { purchase, setPurchase, setAdoptionData } = useLand();
+
+  const navigate = useNavigate();
   const [name, setName] = useState('');
+  
   const { handleSubmit, control } = useForm();
 
+  if (!isAuth) return <Navigate to={'/login'} />;
+
   const onSubmit = (data) => {
-    // Aquí puedes manejar los datos del formulario
-    console.log(data);
-    navigate('/success')
+
+    // envío de email
+
+    const serviceId = 'service_900wiln';
+    const templateId = 'template_1y7bw38';
+    const publicKey = 'CEV6XbbBu0Lvz2Qfx';
+
+
+    const templateParams = {
+      from_name: 'Guardianes del Bosque',
+      from_email:  user.email,
+      to_name: user.username,
+      message: message,
+      to_email: user.email,
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('envío email exitoso', response);
+        setName('');
+        setEmail('');
+        setMessage('');
+      })
+      .catch((error) => {
+        console.error('error en el envío de mail', error);
+      });
+
+    const adoptionData = purchase.reduce((acc, item) => {
+      for (let i = item.quantity; i > 0; i--) {
+        delete item.quantity;
+        acc.push({
+          adoptionId: crypto.randomUUID(),
+          userId: user.id,
+          ...item,
+        });
+      }
+      return acc;
+    }, []);
+
+    setAdoptionData((prev) => {
+      if (prev === null) return adoptionData;
+
+      return [...prev, ...adoptionData];
+    });
+    setPurchase([]);
+
+    navigate('/success');
+
   };
 
   return (
     <div className={styles.shoppingContainer}>
+      {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
+
       <div className={styles.shoppingLeft}>
         <h4>Medio de Pago</h4>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -124,49 +184,49 @@ const ShoppingCar = () => {
 
           <div className={styles.cardDni}>
             <div>
-            <Controller
-              name='dni'
-              control={control}
-              defaultValue=''
-              rules={{
-                required: true,
-                pattern: /^[A-Za-z0-9]{9}$/, // Acepta 9 caracteres alfanuméricos
-              }}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type='text'
-                  id='dni'
-                  placeholder='DNI'
-                  maxLength='9' // Limita la longitud a 9 caracteres
-                  onInput={(e) => {
-                    e.target.value = e.target.value.replace(
-                      /[^A-Za-z0-9]/g,
-                      '',
-                    ); // Permite solo letras y números
-                  }}
-                />
-              )}
-            />
+              <Controller
+                name='dni'
+                control={control}
+                defaultValue=''
+                rules={{
+                  required: true,
+                  pattern: /^[A-Za-z0-9]{9}$/, // Acepta 9 caracteres alfanuméricos
+                }}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type='text'
+                    id='dni'
+                    placeholder='DNI'
+                    maxLength='9' // Limita la longitud a 9 caracteres
+                    onInput={(e) => {
+                      e.target.value = e.target.value.replace(
+                        /[^A-Za-z0-9]/g,
+                        '',
+                      ); // Permite solo letras y números
+                    }}
+                  />
+                )}
+              />
+            </div>
+
+            <div>
+              <Controller
+                name='documentType'
+                control={control}
+                render={({ field }) => (
+                  <select {...field}>
+                    <option value='dni'>DNI</option>
+                    <option value='pasaporte'>Pasaporte</option>
+                    {/* Agrega más opciones según sea necesario */}
+                  </select>
+                )}
+              />
+            </div>
           </div>
 
-          <div>
-            <Controller
-              name='documentType'
-              control={control}
-              render={({ field }) => (
-                <select {...field}>
-                  <option value='dni'>DNI</option>
-                  <option value='pasaporte'>Pasaporte</option>
-                  {/* Agrega más opciones según sea necesario */}
-                </select>
-              )}
-            />
-          </div>
-          </div>
-          
+          <button type='submit'>Confirmar Adopción</button>
 
-          <button type='submit' onClick={onSubmit}>Enviar</button>
         </form>
       </div>
 

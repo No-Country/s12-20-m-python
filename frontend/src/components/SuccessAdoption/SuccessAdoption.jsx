@@ -1,7 +1,15 @@
+import { Link, Navigate } from 'react-router-dom';
 import TreeAmico from '../../assets/tree-amico.png';
+import { useLand } from '../../context/LandContext';
+import { useUser } from '../../context/UserContext';
 import styles from './SuccessAdoption.module.css';
 
 function SuccessAdoption() {
+  const { isAuth } = useUser();
+  const { adoptionData } = useLand();
+
+  if (!isAuth) return <Navigate to={'/login'} />;
+
   return (
     <div className={styles.sucessContainer}>
       <div className={styles.successAdoption}>
@@ -12,8 +20,12 @@ function SuccessAdoption() {
           actualizaciones periódicas para mantenerte informado sobre su
           desarrollo.
         </p>
-        <button>Configurar un árbol</button>
+        <Link className={styles.sucessContainerBtn} to='/profile'>
+          Configurar un árbol
+        </Link>
       </div>
+
+      {/* <pre>{JSON.stringify(adoptionData, null, 2)}</pre> */}
     </div>
   );
 }

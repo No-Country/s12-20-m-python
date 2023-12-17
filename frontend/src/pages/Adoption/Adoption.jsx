@@ -7,7 +7,7 @@ import PlaceInfo from '../../components/PlaceInfo/PlaceInfo';
 
 const Adoption = () => {
   const [place, setPlace] = useState(null);
-  const { land, loading, error, setPurchase } = useLand();
+  const { land, setPurchase } = useLand();
 
   const handleSearch = (term) => {
     //lógica del buscador
@@ -29,32 +29,18 @@ const Adoption = () => {
 
   return (
     <div className={styles.adoptionContainer}>
-      <div className={styles.leftContainer}>
+      <div className={styles.leftAdoptionContainer}>
         <h1>Adopta un Árbol</h1>
         <SearchInput onSearch={handleSearch} />
         <p>Seleccioná un árbol y mirá donde estamos reforestando.</p>
 
         <Map handleClick={handleClick} placeFound={placeFound} />
       </div>
+
       <div className={styles.rightContainer}>
-        {/* {showDetail === true && (
-          <div className={styles.loremtree}>
-            <div>
-              <h3> {places.land}</h3>
-              <p>
-                A los alrededores de la Laguna Rosales en Neuquén nos pusimos
-                como objetivo sembrar 200 árboles de 3 especies de árboles
-                nativos, Ñire (Nothofagus antarctica), Maitén (Maytenus boaria)
-                y Coihue (Nothofagus dombeyi).
-              </p>
-              <p>Seleccioná el/los árbol/es que querés adoptar</p>
-            </div>
-
-            <TreePurchaseForm />
-          </div>
-        )} */}
-
-        {showDetail && <PlaceInfo place={place} />}
+        <div className={styles.rightAdoptionContainer}>
+          {showDetail && <PlaceInfo place={place} />}
+        </div>
       </div>
     </div>
   );
