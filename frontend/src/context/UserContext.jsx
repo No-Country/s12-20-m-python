@@ -37,7 +37,7 @@ export const UserProvider = ({ children }) => {
     try {
       const res = await registerUser(data);
       if (res.status === 201) {
-        console.log(res.data);
+        // console.log(res.data);
         setRegOk(res.data);
       }
     } catch (error) {
@@ -59,7 +59,11 @@ export const UserProvider = ({ children }) => {
       console.log(res);
       if (res.status === 200) {
         console.log(res.data);
-        setUser(res.data);
+        const data = {
+          ...res.data.user_profile.user,
+          token: res.data.token,
+        };
+        setUser(data);
         setIsAuth(true);
       }
     } catch (error) {

@@ -2,27 +2,29 @@ import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useLand } from '../../context/LandContext';
 import { useUser } from '../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import PurchaseSummary from '../PurchaseSummary/PurchaseSummary';
 import styles from './ShoppingCar.module.css';
 
 import emailjs from '@emailjs/browser';
 
 const ShoppingCar = () => {
-  const { user } = useUser();
+  const { isAuth, user } = useUser();
   console.log(user);
 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [userName, setUserName] = useState('');
-
-  const { purchase } = useLand();
+ 
+  const { purchase, setPurchase } = useLand();
   const navigate = useNavigate();
-
   const [name, setName] = useState('');
   const { handleSubmit, control } = useForm();
 
+  if (!isAuth) return <Navigate to={'/login'} />;
+
   const onSubmit = (data) => {
+
     console.log(data);
 
     // envío de email
@@ -57,13 +59,13 @@ const ShoppingCar = () => {
       });
 
     // redireccionamiento
-
-    navigate('/success');
+  navigate('/success');
   };
 
   return (
     <div className={styles.shoppingContainer}>
-  
+      <pre>{JSON.stringify(purchase, null, 2)}</pre>
+
       <div className={styles.shoppingLeft}>
         <h4>Medio de Pago</h4>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -210,6 +212,7 @@ const ShoppingCar = () => {
           </div>
 
           <button type='submit'>Confirmar Adopción</button>
+
         </form>
       </div>
 

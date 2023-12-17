@@ -4,17 +4,20 @@ import styles from './TreePurchaseForm.module.css';
 import { useLand } from '../../context/LandContext';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../context/UserContext';
 
 import image1 from '../../assets/imagen.png';
 import image2 from '../../assets/imagen1.png';
 import image3 from '../../assets/imagen2.png';
 
-const TreePurchaseForm = ({ type_tree, max_amount }) => {
+const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   const { user } = useUser();
 
   const treeImages = [image1, image2, image3];
+
   const { setPurchase, purchase } = useLand();
+  const { isAuth } = useUser();
 
   const getQuantityTree = (id) => {
     const quantityType = purchase.find((item) => item.id === id);
@@ -30,23 +33,6 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
     .map((item) => item.quantity)
     .reduce((acc, item) => acc + item, 0);
 
-  // const [treeTypes, setTreeTypes] = useState({
-  //   olmo: { name: 'Olmo', price: 10, quantity: 0 },
-  //   espinillo: { name: 'Espinillo', price: 15, quantity: 0 },
-  //   alamo: { name: 'Álamo', price: 20, quantity: 0 },
-  // });
-
-  // const [total, setTotal] = useState(0);
-  // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
-  // const handleQuantityChange = (type, quantity) => {
-  //   const updatedTreeTypes = {
-  //     ...treeTypes,
-  //     [type]: { ...treeTypes[type], quantity },
-  //   };
-  //   setTreeTypes(updatedTreeTypes);
-  //   calculateTotal(updatedTreeTypes);
-  // };
   const addItem = (type) => {
     if (getTotalQuantity < max_amount) {
       setPurchase((prev) => {
@@ -66,10 +52,9 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
         } else {
           const newItem = {
             id: type.id,
+            landId: placeId,
             name: type.name,
-            price: type.price,
             quantity: 1,
-            img: type.img,
           };
 
           return [...prev, newItem];
@@ -103,28 +88,14 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
     });
   };
 
-  // const calculateTotal = (types) => {
-  //   let newTotal = 0;
-  //   Object.keys(types).forEach((type) => {
-  //     newTotal += types[type].price * types[type].quantity;
-  //   });
-  //   setTotal(newTotal);
-  // };
-
   const handleCompraClick = () => {
-    
-    if (user) {
-      // Enviar información al backend y realizar la compra
-      // alert(
-      //   'Compra realizada con éxito. Se ha enviado la información al backend.',
-      // );
-      navigate('/adoptioncar', { state: { purchase } });
+    if (purchase.length < 1) return;
 
+    if (isAuth) {
+      // Enviar información al backend y realizar la compra
+      navigate('/adoptioncar');
     } else {
       // Mostrar formulario de registro o inicio de sesión
-      alert(
-        'Usuario no registrado. Mostrar formulario de registro o inicio de sesión.',
-      );
       navigate('/login');
       // Puedes almacenar temporalmente la información del carrito y redirigir a la página de registro/inicio de sesión.
     }
@@ -132,6 +103,7 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
 
   return (
     <>
+
     <h4>Adopta y apadrina un árbol desde 1 dolar:</h4>
       <div className={styles.containerTree}>
         {/* {Object.keys(treeTypes).map((type) => (
@@ -169,6 +141,7 @@ const TreePurchaseForm = ({ type_tree, max_amount }) => {
           </div>
         ))} */}
         
+
         {type_tree.map((type) => (
           <div key={type.id} className={styles.treeContainer}>
             <div>

@@ -1,7 +1,15 @@
+import { Navigate } from 'react-router-dom';
 import TreeAmico from '../../assets/tree-amico.png';
+import { useLand } from '../../context/LandContext';
+import { useUser } from '../../context/UserContext';
 import styles from './SuccessAdoption.module.css';
 
 function SuccessAdoption() {
+  const { isAuth } = useUser();
+  const { purchase } = useLand();
+
+  if (!isAuth) return <Navigate to={'/login'} />;
+
   return (
     <div className={styles.sucessContainer}>
       <div className={styles.successAdoption}>
@@ -14,6 +22,8 @@ function SuccessAdoption() {
         </p>
         <button>Configurar un árbol</button>
       </div>
+
+      <pre>{JSON.stringify(purchase, null, 2)}</pre>
     </div>
   );
 }
