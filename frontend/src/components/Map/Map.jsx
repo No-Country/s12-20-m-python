@@ -19,7 +19,6 @@ const Map = ({ handleClick, placeFound }) => {
   const { location, zoom } = MainLocation;
 
   const { land, loading, error } = useLand();
-
   if (!land) return <Loader />;
 
   const customIcon = L.icon({

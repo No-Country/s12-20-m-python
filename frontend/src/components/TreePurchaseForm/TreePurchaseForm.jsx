@@ -2,10 +2,20 @@ import { FiPlusCircle } from 'react-icons/fi';
 import { BiMinusCircle } from 'react-icons/bi';
 import styles from './TreePurchaseForm.module.css';
 import { useLand } from '../../context/LandContext';
+import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 
+import image1 from '../../assets/imagen.png';
+import image2 from '../../assets/imagen1.png';
+import image3 from '../../assets/imagen2.png';
+
 const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
+
+  const { user } = useUser();
+
+  const treeImages = [image1, image2, image3];
+
   const { setPurchase, purchase } = useLand();
   const { isAuth } = useUser();
 
@@ -83,7 +93,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
     if (isAuth) {
       // Enviar información al backend y realizar la compra
-      navigate('/shoppingcar');
+      navigate('/adoptioncar');
     } else {
       // Mostrar formulario de registro o inicio de sesión
       navigate('/login');
@@ -93,17 +103,19 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   return (
     <>
+    <h4>Adopta y apadrina un árbol desde 1 dolar:</h4>
       {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
       <div className={styles.containerTree}>
+       
         {type_tree.map((type) => (
           <div key={type.id} className={styles.treeContainer}>
             <div>
-              <img src={type.img} alt='' className={styles.imgAdoption} />
+            <img src={treeImages[Math.floor(Math.random() * treeImages.length)]} alt='' className={styles.imgAdoption} />
             </div>
 
             <label>
               <p className={styles.typeName}>{type.name}</p>
-              <p className={styles.typePrice}>{type.price} USD</p>
+              <p className={styles.typePrice}>{type.price}1 USD</p>
               <div className={styles.counterContainer}>
                 <button
                   onClick={() => {
@@ -133,7 +145,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
         </p>
       )}
       <div>
-        <h4>Subtotal: {getTotalPrice} USD</h4>
+        <h4>Subtotal: {getTotalQuantity} USD</h4>
         <button
           className={styles.purchaseButton}
           onClick={() => handleCompraClick()}

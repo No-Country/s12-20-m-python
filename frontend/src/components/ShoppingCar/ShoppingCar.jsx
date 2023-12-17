@@ -1,22 +1,65 @@
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useLand } from '../../context/LandContext';
+import { useUser } from '../../context/UserContext';
+import { useNavigate, Navigate } from 'react-router-dom';
 import PurchaseSummary from '../PurchaseSummary/PurchaseSummary';
 import styles from './ShoppingCar.module.css';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
+
+import emailjs from '@emailjs/browser';
 
 const ShoppingCar = () => {
   const { isAuth, user } = useUser();
+  console.log(user);
 
+
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [userName, setUserName] = useState('');
+ 
   const { purchase, setPurchase, setAdoptionData } = useLand();
+
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const { handleSubmit, control } = useForm();
 
   if (!isAuth) return <Navigate to={'/login'} />;
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
+
+    console.log(data);
+
+    // envío de email
+
+    const serviceId = 'service_900wiln';
+    const templateId = 'template_1y7bw38';
+    const publicKey = 'CEV6XbbBu0Lvz2Qfx';
+
+    const userEmail =
+      user && user.user_profile ? user.user_profile.user.email : '';
+    const userName =
+      user && user.user_profile ? user.user_profile.user.username : '';
+
+    const templateParams = {
+      from_name: 'Guardianes del Bosque',
+      from_email: email,
+      to_name: userName,
+      message: message,
+      to_email: userEmail,
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('envío email exitoso', response);
+        setName('');
+        setEmail('');
+        setMessage('');
+      })
+      .catch((error) => {
+        console.error('error en el envío de mail', error);
+      });
+
     const adoptionData = purchase.reduce((acc, item) => {
       for (let i = item.quantity; i > 0; i--) {
         delete item.quantity;
@@ -37,6 +80,7 @@ const ShoppingCar = () => {
     setPurchase([]);
 
     navigate('/success');
+
   };
 
   return (
@@ -188,9 +232,8 @@ const ShoppingCar = () => {
             </div>
           </div>
 
-          <button type='submit' onClick={onSubmit}>
-            Enviar
-          </button>
+          <button type='submit'>Confirmar Adopción</button>
+
         </form>
       </div>
 
