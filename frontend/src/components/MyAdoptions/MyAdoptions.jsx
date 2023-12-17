@@ -9,7 +9,7 @@ function MyAdoptions() {
   return (
     <>
       {/* <pre>{JSON.stringify(adoptions, null, 2)}</pre> */}
-      <h4>Tus Adopciones</h4>
+      <h3>Tus Adopciones</h3>
       {adoptions.length < 1 && (
         <div className={styles.adoptionMessage}>
           <p>

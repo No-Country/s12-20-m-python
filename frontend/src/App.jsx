@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
@@ -15,6 +15,7 @@ import SuccessAdoption from './components/SuccessAdoption/SuccessAdoption';
 import ErrorPage from './components/ErrorPage/ErrorParge';
 import About from './pages/About/About';
 import Activities from './pages/Activities/Activities';
+import AdoptionInfo from './components/AdoptionInfo/AdoptionInfo';
 
 function App() {
   return (
@@ -29,11 +30,16 @@ function App() {
             <Route exact path='/activities' element={<Activities />} />
             <Route element={<PrivateRoutes />}>
               <Route exact path='/profile' element={<Profile />} />
+              <Route
+                exact
+                path='/adoption-info/:id'
+                element={<AdoptionInfo />}
+              />
+              <Route exact path='/adoptioncar' element={<ShoppingCar />} />
+              <Route exact path='/success' element={<SuccessAdoption />} />
             </Route>
             <Route exact path='/register' element={<Register />} />
             <Route exact path='/login' element={<Login />} />
-            <Route exact path='/adoptioncar' element={<ShoppingCar />} />
-            <Route exact path='/success' element={<SuccessAdoption />} />
             <Route path='*' element={<ErrorPage />} />
           </Routes>
           <Footer />

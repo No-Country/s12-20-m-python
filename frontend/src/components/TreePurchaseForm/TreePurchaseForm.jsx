@@ -10,9 +10,7 @@ import image2 from '../../assets/imagen1.png';
 import image3 from '../../assets/imagen2.png';
 
 const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
-
   const adoptionPrice = 5;
-  const { user } = useUser();
 
   const treeImages = [image1, image2, image3];
 
@@ -54,6 +52,9 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
             typeId: type.id,
             landId: placeId,
             typeName: type.name,
+            typeCommonName: type.common_name,
+            typeScientificName: type.scientific_name,
+            adoptionDate: new Date().toLocaleDateString('es-ES'),
             quantity: 1,
           };
 
@@ -103,14 +104,17 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   return (
     <>
-    <h4>Adopta y apadrina un árbol desde {adoptionPrice} dolar:</h4>
+      <h4>Adopta y apadrina un árbol desde {adoptionPrice} dolar:</h4>
       {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
       <div className={styles.containerTree}>
-       
         {type_tree.map((type) => (
           <div key={type.id} className={styles.treeContainer}>
             <div>
-            <img src={treeImages[Math.floor(Math.random() * treeImages.length)]} alt='' className={styles.imgAdoption} />
+              <img
+                src={treeImages[Math.floor(Math.random() * treeImages.length)]}
+                alt=''
+                className={styles.imgAdoption}
+              />
             </div>
 
             <label>
