@@ -4,7 +4,6 @@ import styles from './TreePurchaseForm.module.css';
 import { useLand } from '../../context/LandContext';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
 
 import image1 from '../../assets/imagen.png';
 import image2 from '../../assets/imagen1.png';
@@ -12,6 +11,7 @@ import image3 from '../../assets/imagen2.png';
 
 const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
+  const adoptionPrice = 5;
   const { user } = useUser();
 
   const treeImages = [image1, image2, image3];
@@ -26,7 +26,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
   const navigate = useNavigate();
 
   const getTotalPrice = purchase
-    .map((item) => item.quantity * item.price)
+    .map((item) => item.quantity * adoptionPrice)
     .reduce((acc, item) => acc + item, 0);
 
   const getTotalQuantity = purchase
@@ -103,7 +103,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   return (
     <>
-    <h4>Adopta y apadrina un árbol desde 1 dolar:</h4>
+    <h4>Adopta y apadrina un árbol desde {adoptionPrice} dolar:</h4>
       {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
       <div className={styles.containerTree}>
        
@@ -115,7 +115,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
             <label>
               <p className={styles.typeName}>{type.name}</p>
-              <p className={styles.typePrice}>{type.price}1 USD</p>
+              <p className={styles.typePrice}>{adoptionPrice} USD</p>
               <div className={styles.counterContainer}>
                 <button
                   onClick={() => {
@@ -145,7 +145,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
         </p>
       )}
       <div>
-        <h4>Subtotal: {getTotalQuantity} USD</h4>
+        <h4>Subtotal: {getTotalPrice} USD</h4>
         <button
           className={styles.purchaseButton}
           onClick={() => handleCompraClick()}
