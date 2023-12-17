@@ -12,11 +12,13 @@ const ShoppingCar = () => {
   const { isAuth, user } = useUser();
   console.log(user);
 
+
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [userName, setUserName] = useState('');
  
-  const { purchase, setPurchase } = useLand();
+  const { purchase, setPurchase, setAdoptionData } = useLand();
+
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const { handleSubmit, control } = useForm();
@@ -58,13 +60,32 @@ const ShoppingCar = () => {
         console.error('error en el envío de mail', error);
       });
 
-    // redireccionamiento
-  navigate('/success');
+    const adoptionData = purchase.reduce((acc, item) => {
+      for (let i = item.quantity; i > 0; i--) {
+        delete item.quantity;
+        acc.push({
+          adoptionId: crypto.randomUUID(),
+          userId: user.id,
+          ...item,
+        });
+      }
+      return acc;
+    }, []);
+
+    setAdoptionData((prev) => {
+      if (prev === null) return adoptionData;
+
+      return [...prev, ...adoptionData];
+    });
+    setPurchase([]);
+
+    navigate('/success');
+
   };
 
   return (
     <div className={styles.shoppingContainer}>
-      <pre>{JSON.stringify(purchase, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
 
       <div className={styles.shoppingLeft}>
         <h4>Medio de Pago</h4>

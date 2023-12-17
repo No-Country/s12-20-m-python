@@ -20,7 +20,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
   const { isAuth } = useUser();
 
   const getQuantityTree = (id) => {
-    const quantityType = purchase.find((item) => item.id === id);
+    const quantityType = purchase.find((item) => item.typeId === id);
     return quantityType ? quantityType.quantity : 0;
   };
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
   const addItem = (type) => {
     if (getTotalQuantity < max_amount) {
       setPurchase((prev) => {
-        const itemExist = prev.find((item) => item.id === type.id);
+        const itemExist = prev.find((item) => item.typeId === type.id);
 
         if (itemExist) {
           const itemUpdated = {
@@ -45,15 +45,15 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
           };
 
           const newData = prev.map((item) =>
-            item.id === type.id ? itemUpdated : item,
+            item.typeId === type.id ? itemUpdated : item,
           );
 
           return newData;
         } else {
           const newItem = {
-            id: type.id,
+            typeId: type.id,
             landId: placeId,
-            name: type.name,
+            typeName: type.name,
             quantity: 1,
           };
 
@@ -65,12 +65,12 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   const deleteItem = (type) => {
     setPurchase((prev) => {
-      const foundItem = prev.find((item) => item.id === type.id);
+      const foundItem = prev.find((item) => item.typeId === type.id);
 
       if (!foundItem) return prev;
 
       if (foundItem && foundItem.quantity === 1) {
-        const newData = prev.filter((item) => item.id !== type.id);
+        const newData = prev.filter((item) => item.typeId !== type.id);
         return newData;
       }
 
@@ -80,7 +80,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
           quantity: foundItem.quantity - 1,
         };
         const newData = prev.map((item) =>
-          item.id === type.id ? itemUpdated : item,
+          item.typeId === type.id ? itemUpdated : item,
         );
 
         return newData;
@@ -103,45 +103,10 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   return (
     <>
-
     <h4>Adopta y apadrina un árbol desde 1 dolar:</h4>
+      {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
       <div className={styles.containerTree}>
-        {/* {Object.keys(treeTypes).map((type) => (
-          <div key={type}>
-            <div className={styles.treeContainer}>
-              <img
-                src='ruta_de_imagen_1'
-                alt='Imagen'
-                className={styles.imgAdoption}
-              />
-              <label>
-                <p>{treeTypes[type].name}</p>${treeTypes[type].price}
-                <div className={styles.counterContainer}>
-                  <button
-                    onClick={() => {
-                      handleQuantityChange(type, treeTypes[type].quantity - 1);
-                    }}
-                    className={styles.buttonCounterMinus}
-                  >
-                    <BiMinusCircle size={'24px'} color={'#31572C'} />
-                  </button>
-                  <span>{treeTypes[type].quantity}</span>
-                  <button
-                    onClick={() => {
-                      handleQuantityChange(type, treeTypes[type].quantity + 1);
-                      addItem(type);
-                    }}
-                    className={styles.buttonCounterPlus}
-                  >
-                    <FiPlusCircle size={'24px'} color={'#31572C'} />
-                  </button>
-                </div>
-              </label>
-            </div>
-          </div>
-        ))} */}
-        
-
+       
         {type_tree.map((type) => (
           <div key={type.id} className={styles.treeContainer}>
             <div>

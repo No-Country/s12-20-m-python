@@ -1,22 +1,30 @@
-import React from 'react';
 import styles from './MyAdoptions.module.css';
-import TestTreee from '../../assets/testTree.png';
+import { useUser } from '../../context/UserContext';
+import AdoptionCard from '../AdoptionCard/AdoptionCard';
+import { Link } from 'react-router-dom';
 
-function MyAdoptions({purchase}) {
+function MyAdoptions() {
+  const { adoptions } = useUser();
 
-  console.log(purchase);
   return (
     <>
+      {/* <pre>{JSON.stringify(adoptions, null, 2)}</pre> */}
       <h4>Tus Adopciones</h4>
-      <div className={styles.myAdoptionsContainer}>
-        <div className={styles.adoptionCard}>
-          <img src={TestTreee} alt='Card' className={styles.cardImage} />
-          <div className={styles.cardContent}>
-            <h2 className={styles.cardTitle}>Nombre árbol</h2>
-            <p className={styles.cardDescription}>Tipo de Árbol</p>
-            <p className={styles.cardDescription}>Cumpleaños 11/11/11</p>
-          </div>
+      {adoptions.length < 1 && (
+        <div className={styles.adoptionMessage}>
+          <p>
+            ¡Sin adopciones aún! Descubre nuestros proyectos de reforestación y
+            sé parte del cambio.
+          </p>
+          <Link className={styles.adoptionBtn} to={'/adoption'}>
+            Adoptar un árbol
+          </Link>
         </div>
+      )}
+      <div className={styles.myAdoptionsContainer}>
+        {adoptions.map((item) => (
+          <AdoptionCard key={item.adoptionId} adoption={item} />
+        ))}
       </div>
     </>
   );

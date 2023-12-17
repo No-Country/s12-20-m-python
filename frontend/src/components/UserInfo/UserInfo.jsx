@@ -1,5 +1,6 @@
 import { useUser } from '../../context/UserContext';
 import styles from './UserInfo.module.css';
+import profileIma from '../../assets/default-profile-image.png';
 
 const UserInfo = () => {
   const { user } = useUser();
@@ -7,10 +8,7 @@ const UserInfo = () => {
   return (
     <section className={styles.userContainer}>
       <div className={styles.imgContainer}>
-        <img
-          src='https://dummyimage.com/100x100/000/fff'
-          alt='imagen de perfil'
-        />
+        <img src={profileIma} alt='imagen de perfil' />
       </div>
       <article>
         <p>
