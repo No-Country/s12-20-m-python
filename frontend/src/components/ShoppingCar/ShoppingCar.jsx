@@ -12,10 +12,10 @@ const ShoppingCar = () => {
   const { isAuth, user } = useUser();
   console.log(user);
 
-
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
  
   const { purchase, setPurchase, setAdoptionData } = useLand();
 
@@ -35,15 +35,15 @@ const ShoppingCar = () => {
     const templateId = 'template_1y7bw38';
     const publicKey = 'CEV6XbbBu0Lvz2Qfx';
 
-    const userEmail =
-      user && user.user_profile ? user.user_profile.user.email : '';
-    const userName =
-      user && user.user_profile ? user.user_profile.user.username : '';
+    const userEmail =  (user.email);
+    console.log(userEmail);
+
+    //   user && user.user_profile ? user.user_profile.user.username : '';
 
     const templateParams = {
       from_name: 'Guardianes del Bosque',
       from_email: email,
-      to_name: userName,
+      to_name: user.username,
       message: message,
       to_email: userEmail,
     };

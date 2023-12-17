@@ -6,12 +6,13 @@ import image2 from '../../assets/imagen1.png';
 import image3 from '../../assets/imagen2.png';
 
 const PurchaseSummary = ({ purchase }) => {
+  
   const treeImages = [image1, image2, image3];
 
-  const totalPrice = purchase.reduce((acc, item) => acc + item.quantity, 0);
+  const totalPrice = purchase.reduce((acc, item) => acc + item.quantity *5, 0);
   return (
     <div>
-      <h4>Resumen de compra</h4>
+      <h4>Resumen de Adopción</h4>
 
       {purchase.map((item) => (
         <div key={item.typeId}>
@@ -24,7 +25,7 @@ const PurchaseSummary = ({ purchase }) => {
               {item.typeName}x{item.quantity}
             </p>
 
-            <p>{item.price} USD</p>
+            <p>5 USD</p>
           </div>
         </div>
       ))}
