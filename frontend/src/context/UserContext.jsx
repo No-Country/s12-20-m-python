@@ -93,14 +93,15 @@ export const UserProvider = ({ children }) => {
         }
       }
     } catch (error) {
-      if (error.response) {
-        setError({
-          status: error.response.status,
-          message: error.response.statusMessage || 'Error...',
-        });
-      } else {
-        console.error(error);
+      if (error.response.status === 400) {
+        if (error.response.data.non_field_errors) {
+          return setError({
+            error: error.response.data.non_field_errors[0],
+            status: error.response.status,
+          });
+        }
       }
+      console.log(error);
     } finally {
       setLoading(false);
     }

@@ -1,29 +1,27 @@
-
 .activitiesContainer {
   padding: 3rem 7rem;
   max-width: 1440px;
   margin: 0 auto;
 }
-.activitiesImg{
+.activitiesImg {
   width: 100vw;
   height: 60vh;
   overflow: hidden;
 }
-.activitiesImg img{
+.activitiesImg img {
   width: 100%;
   object-position: center;
   margin-top: -120px;
 }
-.activitiesBox{
+.activitiesBox {
   display: flex;
- gap: 2rem;
- width: 100%;
- justify-content: space-between;
- margin-top: 1rem;
-
+  gap: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
-.activitieCard{
-/*   border: 1px solid #797979; */
+.activitieCard {
+  /*   border: 1px solid #797979; */
   border-radius: 20px;
   width: 48%;
   padding: 2rem;
@@ -33,20 +31,19 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.activitieCard h2{
+.activitieCard h2 {
   color: #31572c;
   font-weight: 400;
 }
-.activitieCard img{
+.activitieCard img {
   width: 100%;
   height: 300px;
   object-fit: cover;
   margin-top: 1rem;
 }
-.activitieCard p{
+.activitieCard p {
   margin-top: 1rem;
   flex-grow: 2;
-  
 }
 .activitieButton {
   background-color: #31572c;
@@ -62,43 +59,40 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .activitiesImg{
+  .activitiesImg {
     height: 40%;
   }
-  .activitiesImg img{
+  .activitiesImg img {
     margin-top: 0px;
   }
-  .activitiesBox{
+  .activitiesBox {
     flex-direction: column;
-  
   }
-  .activitieCard{
+  .activitieCard {
     width: 100%;
-   flex-direction: row;
+    flex-direction: row;
   }
-  .innerCard{
+  .innerCard {
     width: 47%;
     display: flex;
     flex-direction: column;
-    }
+  }
 }
 
 @media screen and (max-width: 767px) {
-  .activitiesImg{
+  .activitiesImg {
     height: 30vh;
   }
-  .activitiesImg img{
-  margin-top: 0;
+  .activitiesImg img {
+    margin-top: 0;
   }
-  .activitiesContainer{
+  .activitiesContainer {
     padding: 2rem 1.5rem;
   }
-  .activitiesBox{
+  .activitiesBox {
     flex-direction: column;
-  
   }
-  .activitieCard{
+  .activitieCard {
     width: 100%;
   }
-
 }

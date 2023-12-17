@@ -1,0 +1,35 @@
+.adoptionInfoContainer {
+  padding-top: 100px;
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.adoptionInfoBackBtn {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.adoptionInfoContent {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.adoptionInfoImgCont {
+  width: 400px;
+}
+
+.adoptionInfoImgCont img {
+  width: 100%;
+}
+
+.adoptionInfoText p {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .adoptionInfoContent {
+    flex-direction: column;
+  }
+}

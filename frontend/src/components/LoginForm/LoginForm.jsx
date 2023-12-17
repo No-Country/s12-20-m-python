@@ -4,6 +4,7 @@ import styles from './LoginForm.module.css';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const LoginForm = () => {
   const {
@@ -33,7 +34,7 @@ const LoginForm = () => {
       <h3>Iniciar sesión</h3>
 
       {loading && <Loader fullscreen={true} />}
-      {error && <div>{JSON.stringify(error)}</div>}
+      {error && <ErrorMessage message={error.error} />}
 
       <label htmlFor='username'>
         <input

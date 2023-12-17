@@ -16,50 +16,48 @@
 .form label p {
   color: darkred;
 }
-.form h3{
+.form h3 {
   padding-bottom: 10%;
 }
-.form input{
+.form input {
   width: 100%;
   margin-bottom: 1em;
   border: 0.5px solid #5b5b5b;
   border-radius: 16px;
   padding: 8px 16px;
 }
-.forget{
+.forget {
   float: right;
   font-size: 14px;
   color: #5b5b5b;
   padding-bottom: 15%;
-
 }
-.goToRegister{
+.goToRegister {
   text-align: center;
   padding-top: 20%;
   color: #5b5b5b;
   padding-bottom: 1rem;
 }
-.form a{
+.form a {
   text-decoration: none;
-  color: #31572C;
-  ;
+  color: #31572c;
 }
-.submitButtonValid{
-  background-color: #31572C;
+.submitButtonValid {
+  background-color: #31572c;
   color: #fff;
   border-radius: 10px;
 }
-.submitButton{
+.submitButton {
   border-radius: 10px;
   color: #aaa8a8;
 }
-.submitButton:hover{
-  background-color: #31572C;
+.submitButton:hover {
+  background-color: #31572c;
   color: #fff;
 }
 
 @media screen and (max-width: 767px) {
-  .form{
+  .form {
     border: none;
     padding: 1rem;
   }
