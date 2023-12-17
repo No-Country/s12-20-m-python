@@ -7,6 +7,7 @@
   border-radius: 8px;
   overflow: hidden;
   background: #f5fcd1;
+  cursor: pointer;
 }
 
 .cardImage {
