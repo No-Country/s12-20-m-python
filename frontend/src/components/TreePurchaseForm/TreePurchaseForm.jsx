@@ -4,15 +4,10 @@ import styles from './TreePurchaseForm.module.css';
 import { useLand } from '../../context/LandContext';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
-
-import image1 from '../../assets/imagen.png';
-import image2 from '../../assets/imagen1.png';
-import image3 from '../../assets/imagen2.png';
+import { treeImages } from '../../helpers/TreeImages.js';
 
 const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
   const adoptionPrice = 5;
-
-  const treeImages = [image1, image2, image3];
 
   const { setPurchase, purchase } = useLand();
   const { isAuth } = useUser();
@@ -104,15 +99,16 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   return (
     <>
-      <h4>Adopta y apadrina un árbol desde {adoptionPrice} dolar:</h4>
+      <h4>Adopta y apadrina un árbol desde {adoptionPrice}$:</h4>
       {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
       <div className={styles.containerTree}>
         {type_tree.map((type) => (
           <div key={type.id} className={styles.treeContainer}>
             <div>
               <img
-                src={treeImages[Math.floor(Math.random() * treeImages.length)]}
-                alt=''
+                // src={treeImages[Math.floor(Math.random() * treeImages.length)]}
+                src={treeImages[type.id]}
+                alt='imagen tipo árbol'
                 className={styles.imgAdoption}
               />
             </div>
