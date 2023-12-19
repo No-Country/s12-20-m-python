@@ -1,7 +1,6 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import TreeIcon from '../../assets/treeDefault.png';
-
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import { useLand } from '../../context/LandContext';
@@ -19,7 +18,13 @@ const Map = ({ handleClick, placeFound }) => {
   const { location, zoom } = MainLocation;
 
   const { land, loading, error } = useLand();
-  if (!land) return <Loader />;
+
+  if (!land)
+    return (
+      <div className='mapLoaderContainer'>
+        <Loader />
+      </div>
+    );
 
   const customIcon = L.icon({
     iconUrl: TreeIcon,

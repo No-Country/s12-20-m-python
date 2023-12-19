@@ -99,8 +99,6 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
 
   return (
     <>
-      <h4>Adopta y apadrina un árbol desde {adoptionPrice}$:</h4>
-      {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
       <div className={styles.containerTree}>
         {type_tree.map((type) => (
           <div key={type.id} className={styles.treeContainer}>
@@ -144,7 +142,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
           El límite máximo de árboles disponibles para esta zona es {max_amount}
         </p>
       )}
-      <div>
+      <div className={styles.confirmContainer}>
         <h4>Subtotal: {getTotalPrice} USD</h4>
         <button
           className={styles.purchaseButton}

@@ -1,9 +1,10 @@
 .searchBar {
   display: flex;
+  max-width: 400px;
+  margin: 0 auto;
   flex-direction: row;
   align-items: flex-start;
   padding: 0px 8px;
-  margin:1em 0px;
   gap: 8px;
 }
 
@@ -17,7 +18,7 @@
   text-indent: 2em;
 }
 
-.searchbutton{
+.searchbutton {
   position: absolute;
   border: none;
   background: none;
