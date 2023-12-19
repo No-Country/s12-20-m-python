@@ -30,3 +30,8 @@
   font-size: 1rem;
   color: #666;
 }
+
+.cardDefaulName {
+  font-size: 18px;
+  color: var(--grayA);
+}

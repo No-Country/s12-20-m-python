@@ -7,13 +7,13 @@ import { useLand } from '../../context/LandContext';
 import Loader from '../Loader/Loader';
 
 const Map = ({ handleClick, placeFound }) => {
-  //Argentina
+  //Argentina - Cordoba
   const MainLocation = {
     location: {
-      lat: '-38.7630646',
-      lng: '-68.785466',
+      lat: '-30.7630646',
+      lng: '-64.785466',
     },
-    zoom: 4,
+    zoom: 7,
   };
   const { location, zoom } = MainLocation;
 

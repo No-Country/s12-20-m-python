@@ -113,6 +113,7 @@ export const UserProvider = ({ children }) => {
     setUser,
     user,
     adoptions,
+    setAdoptions,
     registerReq,
     regOk,
     loginReq,
