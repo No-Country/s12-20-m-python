@@ -3,8 +3,11 @@ import MyAdoptions from '../../components/MyAdoptions/MyAdoptions';
 import styles from './Profile.module.css';
 import { FaChevronRight } from "react-icons/fa";
 import UserCategory from '../../components/UserCategory/UserCategory';
+import { useUser } from '../../context/UserContext';
 
 const Profile = () => {
+  const { adoptions } = useUser();
+  console.log(adoptions)
   return (
     <div className={styles.profileBox}>
     <div className={styles.profileContainer}>
@@ -19,7 +22,7 @@ const Profile = () => {
       </div>
     </div>
 
-     <UserCategory />
+     <UserCategory adoptionNumber={adoptions.length}/>
 
     </div>
   );
