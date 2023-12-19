@@ -203,32 +203,28 @@ const ShoppingCar = () => {
           </div>
 
           <div className={styles.cardDni}>
-            <div>
-              <Controller
-                name='dni'
-                control={control}
-                defaultValue=''
-                rules={{
-                  required: true,
-                  pattern: /^[A-Za-z0-9]{9}$/, // Acepta 9 caracteres alfanuméricos
+        <div>
+          <Controller
+            name='dni'
+            control={control}
+            defaultValue=''
+            rules={{
+              required: true,
+              pattern: /^[A-Za-z0-9]{7,9}$/, 
+            }}
+            render={({ field }) => (
+              <input
+                {...field}
+                type='text'
+                id='dni'
+                placeholder='DNI'
+                onInput={(e) => {
+                  e.target.value = e.target.value.replace(/[^A-Za-z0-9]/g, '');
                 }}
-                render={({ field }) => (
-                  <input
-                    {...field}
-                    type='text'
-                    id='dni'
-                    placeholder='DNI'
-                    maxLength='9' // Limita la longitud a 9 caracteres
-                    onInput={(e) => {
-                      e.target.value = e.target.value.replace(
-                        /[^A-Za-z0-9]/g,
-                        '',
-                      ); // Permite solo letras y números
-                    }}
-                  />
-                )}
               />
-            </div>
+            )}
+          />
+        </div>
 
             <div>
               <Controller
