@@ -17,9 +17,9 @@ const Profile = () => {
       <div>
         <MyAdoptions />
       </div>
-      <div>
+      {/* <div>
         <button>Información personal <FaChevronRight /></button>
-      </div>
+      </div> */}
     </div>
 
      <UserCategory adoptionNumber={adoptions.length}/>
