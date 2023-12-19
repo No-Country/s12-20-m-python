@@ -1,5 +1,7 @@
 # Guardianes del Bosque
 
+![App Screenshot](./assets/guardianes.png)
+
 ## ¿Por qué adoptar un árbol?
 
 La deforestación es una de las principales amenazas ambientales a las que se enfrenta nuestro planeta, ya que reduce los beneficios que los árboles proporcionan. Cada año, se pierden millones de hectáreas de bosques debido a la tala indiscriminada, entre otras actividades.
