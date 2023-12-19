@@ -6,8 +6,10 @@
 
 .containerTree {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Divide en tres partes iguales */
-  gap: 20px; /* Espacio entre los elementos */
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  gap: 20px;
+  justify-items: center;
+  justify-content: center;
 }
 
 .treeContainer {
@@ -27,16 +29,32 @@
   margin-top: 10px;
 }
 
-.buttonCounterMinus {
-  background: none;
+.counterContainer button {
+  background-color: transparent;
   border: none;
+}
+
+.buttonCounterMinus {
   margin-right: 0.5em;
+  cursor: pointer;
 }
 
 .buttonCounterPlus {
-  background: none;
-  border: none;
   margin-left: 0.5em;
+  cursor: pointer;
+}
+
+.confirmContainer {
+  width: 80%;
+  margin: 1rem auto 0;
+}
+
+.confirmContainer {
+  text-align: center;
+}
+
+.confirmContainer h4 {
+  text-align: left;
 }
 
 .purchaseButton {
@@ -52,16 +70,14 @@
   margin-top: 8px;
 }
 
-
-@media (max-width: 980px) {
+@media (max-width: 480px) {
   .containerTree {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .purchaseButton{
+  .purchaseButton {
     width: 200px;
   }
 }
-

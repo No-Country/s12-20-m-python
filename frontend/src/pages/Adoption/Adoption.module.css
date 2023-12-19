@@ -1,39 +1,47 @@
 .adoptionContainer {
-  margin: 7em 3em 5em 3em;
+  padding: 8rem 1rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.adoptionContainerHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.adoptionContainerHeader > div {
+  margin-bottom: 1rem;
+}
+
+.adoptionContainerHeader h1 {
+  margin-bottom: 1rem;
+}
+
+.adoptionContent {
   display: flex;
-  flex-direction: row;
+  gap: 2rem;
 }
 
-.rightAdoptionContainer {
-  margin-left: 2em;
-  padding: 1em;
-  flex-direction: column;
+.rightContainer {
   border-radius: 15px;
-  border: 2px solid white;
+  border: 3px solid var(--secondary);
+  padding: 1rem;
 }
 
-.loremtree {
-  margin-top: 2em;
-  padding: em;
-  border: 2px solid #768c27;
-  border-radius: 15px;
+.defaultInfo h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--primary);
 }
 
-@media (max-width: 980px) {
-  .adoptionContainer {
-    display: flex;
+.defaultInfo img {
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .adoptionContent {
     flex-direction: column;
     align-items: center;
-  }
-
-  .rightAdoptionContainer {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .loremtree {
-    margin-top: 2em;
-    padding: 1em;
-    border: none;
   }
 }
