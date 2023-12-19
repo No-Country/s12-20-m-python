@@ -3,27 +3,25 @@
   max-width: 1440px;
   width: 90%;
   margin: 0 auto 4rem;
-  
 }
 
 .adoptionInfoBackBtn {
   text-decoration: none;
   color: var(--primary);
 }
-.totalCont{
+.totalCont {
   display: flex;
-  gap:1rem;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
 .adoptionInfoContent {
-
   display: flex;
   gap: 1rem;
 }
 
 .adoptionInfoImgCont {
-  width:50%;
+  width: 50%;
 }
 
 .adoptionInfoImgCont img {
@@ -31,22 +29,26 @@
   height: 100%;
   object-fit: cover;
 }
-.adoptionInfoText{
+.adoptionInfoText {
   width: 80%;
   display: flex;
   gap: 1rem;
   flex-direction: column;
   justify-content: space-between;
 }
-.adoptionInfoText h4{
+.adoptionInfoText h4 {
   font-size: 20px;
 }
 .text {
   margin-bottom: 1rem;
   font-size: 12px;
 }
-.textZone{
+.textZone {
   font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+.customNameContainer {
   margin-bottom: 1rem;
 }
 
@@ -55,36 +57,35 @@
     flex-direction: column;
     margin: 0;
   }
-  .totalCont{
+  .totalCont {
     flex-direction: column;
   }
-  .adoptionInfoImgCont{
+  .adoptionInfoImgCont {
     flex-direction: column;
     width: 100%;
   }
-  .adoptionInfoImgCont img{
+  .adoptionInfoImgCont img {
     width: 100%;
   }
-  .adoptionInfoText{
+  .adoptionInfoText {
     width: 100%;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1300px) {
-  .adoptionInfoImgCont{
+  .adoptionInfoImgCont {
     width: 100%;
   }
- 
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-.adoptionInfoContent{
-  display: flex;
-  flex-direction: column;
-}
+  .adoptionInfoContent {
+    display: flex;
+    flex-direction: column;
+  }
 
-  .adoptionInfoText{
+  .adoptionInfoText {
     width: 100%;
   }
-  .adoptionInfoImgCont{
+  .adoptionInfoImgCont {
     width: 100%;
   }
 }

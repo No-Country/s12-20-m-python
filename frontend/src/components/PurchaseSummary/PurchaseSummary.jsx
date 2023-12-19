@@ -13,7 +13,7 @@ const PurchaseSummary = ({ purchase }) => {
           <div className={styles.purchaseResume}>
             <img src={treeImages[item.typeId]} alt='' />
             <p>
-              {item.typeName}x{item.quantity}
+              {item.typeName} x{item.quantity}
             </p>
 
             <p>5 USD</p>
@@ -23,7 +23,9 @@ const PurchaseSummary = ({ purchase }) => {
 
       <hr />
       <div>
-        <p>Total: {totalPrice} USD</p>
+        <p className={styles.purchaseTotal}>
+          Total <span>{totalPrice} USD</span>
+        </p>
       </div>
     </div>
   );
