@@ -4,7 +4,7 @@ import { treeImages } from '../../helpers/TreeImages.js';
 import styles from './AdoptionInfo.module.css';
 import { useUser } from '../../context/UserContext';
 import { useLand } from '../../context/LandContext';
-import TestTreee from '../../assets/TreeDetail.jpg';
+/* import TestTreee from '../../assets/TreeDetail.jpg'; */
 import TimeLine from '../TimeLine/TimeLine';
 import TreeInfo from '../TreeInfo/TreeInfo';
 
@@ -23,6 +23,7 @@ const AdoptionInfo = () => {
       <Link className={styles.adoptionInfoBackBtn} to={'/profile'}>
         <FaArrowLeft size={32} />
       </Link>
+      <div className={styles.totalCont}>
       <div className={styles.adoptionInfoContent}>
         <div className={styles.adoptionInfoImgCont}>
 
@@ -50,11 +51,16 @@ const AdoptionInfo = () => {
           <TreeInfo />
           </div>
           </div>
+          
+          
         </div>
-        <TimeLine />
+        <div>
+          <TimeLine />
+          </div>
+        
       </div>
-     
-    </div>
+     </div>
+   
   );
 };
 
