@@ -5,6 +5,8 @@ import { useUser } from '../../context/UserContext';
 import { useNavigate, Navigate } from 'react-router-dom';
 import PurchaseSummary from '../PurchaseSummary/PurchaseSummary';
 import styles from './ShoppingCar.module.css';
+import Swal from 'sweetalert2';
+
 
 import emailjs from '@emailjs/browser';
 
@@ -28,7 +30,7 @@ const ShoppingCar = () => {
 
     // envío de email
 
-    const serviceId = 'service_900wiln';
+    const serviceId = 'service_rt93a4x';
     const templateId = 'template_1y7bw38';
     const publicKey = 'CEV6XbbBu0Lvz2Qfx';
 
@@ -45,12 +47,28 @@ const ShoppingCar = () => {
       .send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log('envío email exitoso', response);
+
+        Swal.fire({
+          title: '¡Correo enviado!',
+          text: 'Hemos enviado un correo de confirmación de la adopción a tu dirección de email.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
+
         setName('');
         setEmail('');
         setMessage('');
       })
       .catch((error) => {
         console.error('error en el envío de mail', error);
+
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al enviar el correo de confirmación. Por favor, inténtalo de nuevo más tarde.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+
       });
 
     const adoptionData = purchase.reduce((acc, item) => {
