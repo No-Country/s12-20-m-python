@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
+import { treeImages } from '../../helpers/TreeImages.js';
 import styles from './AdoptionInfo.module.css';
 import { useUser } from '../../context/UserContext';
 import { useLand } from '../../context/LandContext';
@@ -24,8 +25,13 @@ const AdoptionInfo = () => {
       </Link>
       <div className={styles.adoptionInfoContent}>
         <div className={styles.adoptionInfoImgCont}>
-          <img src={TestTreee} alt='imagen tipo de árbol' />
-        
+
+          <img
+            src={treeImages[adoptionData.typeId]}
+            alt='imagen tipo de árbol'
+          />
+        </div>
+
         <div className={styles.adoptionInfoText}>
           <div>
           <h4>
