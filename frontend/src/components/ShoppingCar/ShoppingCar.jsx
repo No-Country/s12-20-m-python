@@ -7,37 +7,35 @@ import PurchaseSummary from '../PurchaseSummary/PurchaseSummary';
 import styles from './ShoppingCar.module.css';
 import Swal from 'sweetalert2';
 
-
 import emailjs from '@emailjs/browser';
+import Loader from '../Loader/Loader';
 
 const ShoppingCar = () => {
+  const [loadingSimulated, setLoadingSimulated] = useState(false);
   const { isAuth, user } = useUser();
 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
- 
   const { purchase, setPurchase, setAdoptionData } = useLand();
 
   const navigate = useNavigate();
   const [name, setName] = useState('');
-  
+
   const { handleSubmit, control } = useForm();
 
   if (!isAuth) return <Navigate to={'/login'} />;
 
-  const onSubmit = (data) => {
-
+  const onSubmit = async (data) => {
     // envío de email
 
     const serviceId = 'service_rt93a4x';
     const templateId = 'template_1y7bw38';
     const publicKey = 'CEV6XbbBu0Lvz2Qfx';
 
-
     const templateParams = {
       from_name: 'Guardianes del Bosque',
-      from_email:  user.email,
+      from_email: user.email,
       to_name: user.username,
       message: message,
       to_email: user.email,
@@ -68,7 +66,6 @@ const ShoppingCar = () => {
           icon: 'error',
           confirmButtonText: 'OK',
         });
-
       });
 
     const adoptionData = purchase.reduce((acc, item) => {
@@ -90,13 +87,18 @@ const ShoppingCar = () => {
     });
     setPurchase([]);
 
-    navigate('/success');
-
+    setLoadingSimulated(true);
+    const loadingSim = await setTimeout(() => {
+      setLoadingSimulated(false);
+      clearTimeout(loadingSim);
+      navigate('/success');
+    }, 1000);
   };
 
   return (
     <div className={styles.shoppingContainer}>
       {/* <pre>{JSON.stringify(purchase, null, 2)}</pre> */}
+      {loadingSimulated && <Loader fullscreen={true} />}
 
       <div className={styles.shoppingLeft}>
         <h4>Medio de Pago</h4>
@@ -244,7 +246,6 @@ const ShoppingCar = () => {
           </div>
 
           <button type='submit'>Confirmar Adopción</button>
-
         </form>
       </div>
 

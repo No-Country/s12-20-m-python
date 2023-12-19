@@ -5,11 +5,14 @@ import { useLand } from '../../context/LandContext';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { treeImages } from '../../helpers/TreeImages.js';
+import { useState } from 'react';
+import Loader from '../Loader/Loader.jsx';
 
 const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
   const adoptionPrice = 5;
 
   const { setPurchase, purchase } = useLand();
+  const [loadingSimulated, setLoadingSimulated] = useState(false);
   const { isAuth } = useUser();
 
   const getQuantityTree = (id) => {
@@ -84,12 +87,17 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
     });
   };
 
-  const handleCompraClick = () => {
+  const handleCompraClick = async () => {
     if (purchase.length < 1) return;
 
     if (isAuth) {
       // Enviar información al backend y realizar la compra
-      navigate('/adoptioncar');
+      setLoadingSimulated(true);
+      const loadingSim = await setTimeout(() => {
+        setLoadingSimulated(false);
+        clearTimeout(loadingSim);
+        navigate('/adoptioncar');
+      }, 1000);
     } else {
       // Mostrar formulario de registro o inicio de sesión
       navigate('/login');
@@ -100,6 +108,7 @@ const TreePurchaseForm = ({ type_tree, max_amount, placeId }) => {
   return (
     <>
       <div className={styles.containerTree}>
+        {loadingSimulated && <Loader fullscreen={true} />}
         {type_tree.map((type) => (
           <div key={type.id} className={styles.treeContainer}>
             <div>

@@ -17,8 +17,14 @@ const AdoptionCard = ({ adoption }) => {
         className={styles.cardImage}
       />
       <div className={styles.cardContent}>
-        <h2 className={styles.cardTitle}>Nombre árbol</h2>
-        <p className={styles.cardDescription}>{adoption.typeName}</p>
+        <h2 className={styles.cardTitle}>{adoption.typeName}</h2>
+
+        {adoption.customName ? (
+          <h4>{adoption.customName}</h4>
+        ) : (
+          <em className={styles.cardDefaulName}>Sin nombre</em>
+        )}
+
         <p className={styles.cardDescription}>
           Fecha de adopción: {adoption.adoptionDate}
         </p>
