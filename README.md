@@ -16,19 +16,19 @@ https://guardianesdelbosque.vercel.app/
 
 | Rol               | Nombre              | Redes                                                                                                                    |
 | :---------------- | :------------------ | :----------------------------------------------------------------------------------------------------------------------- |
-| `UX/UI Designer`  | Camila Gallardo          | [![behance]](https://www.behance.net/) [![linkedin]](https://www.linkedin.com/in/)                                        |
-| `Front End`       | Leo Flores               | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)                            |
-| `Front End`       | Andrea Cambra              | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)                       |
-| `Front End`       | Vane Sánchez           | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)                       |
-| `Back End`        | Agustin Ribotta       | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)            |
+| `UX/UI Designer`  | Camila Gallardo          | [![behance]](https://www.behance.net/camigallardo) [![linkedin]](https://www.linkedin.com/in/camila-gallardo-360a131b9/)                                        |
+| `Front End`       | Leo Flores               | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/lFavian)                            |
+| `Front End`       | Andrea Cambra              | [![behance]](https://www.behance.net/andycambra) [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/andy-cambra-06b2045/)                       |
+| `Front End`       | Vane Sánchez           | [![GitHub]](https://github.com/NezziY) [![linkedin]](https://www.linkedin.com/in/bertha-vanessa-s%C3%A1nchez-posadas-5b05a9208/)                       |
+| `Back End`        | Agustin Ribotta       | [![GitHub]](https://github.com/AgustinRibotta) [![linkedin]](https://www.linkedin.com/feed/)            |
 | `Back End`        | Santiago Aquino         | [![GitHub]](https://github.com/Santiago-Aquino) [![linkedin]](https://www.linkedin.com/in/santiagoaquino-desarrollador/) |
-| `Back End`        | jorgehn        | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
-| `Back End`        | Sergio Eduardo Caro Layton        | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
-| `Back End`        | Jose Jan         | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
-| `Testing`        | Daniel Cazabat  | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
-| `Testing`        | Fede Origlia | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
-| `Testing`        | Malvina Christiansen | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
-| `Testing`        | nena martinez  | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
+| `Back End`        | jorgehn        | [![GitHub]](https://github.com/jorgea-hn) [![linkedin]](https://www.linkedin.com/in/jorge-henriquez-novoa/)      |
+| `Back End`        | Sergio Eduardo Caro Layton        | [![GitHub]](https://github.com/scarolayton/) [![linkedin]](https://www.linkedin.com/in/sergio-eduardo-caro-layton/)      |
+| `Back End`        | Jose Jan         | [![GitHub]](https://github.com/JoseJan21) [![linkedin]](https://www.linkedin.com/in/josejan/)      |
+| `Testing`        | Daniel Cazabat  | [![GitHub]](https://github.com/dcazabat) [![linkedin]](https://www.linkedin.com/in/dacazabat/)      |
+| `Testing`        | Fede Origlia | [![GitHub]](https://github.com/FedeOriglia) [![linkedin]](https://www.linkedin.com/in/fedeoriglia/)      |
+| `Testing`        | Malvina Christiansen | [![GitHub]](https://github.com/) [![linkedin]](http://www.linkedin.com/in/malvina-christiansen)      |
+| `Testing`        | nena martinez  | [![GitHub]](https://github.com/nenasofiamartinez64) [![linkedin]](http://www.linkedin.com/in/nena-martinezdemendez)      |
 | `Testing`        | rene silva  | [![GitHub]](https://github.com/) [![linkedin]](https://www.linkedin.com/in/)      |
 
 ## Stack Tecnológico
