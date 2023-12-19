@@ -1,7 +1,7 @@
-import ImgType5 from '../assets/TreeTypes/type5.png';
-import ImgType6 from '../assets/TreeTypes/type6.png';
-import ImgType7 from '../assets/TreeTypes/type7.png';
-import ImgType8 from '../assets/TreeTypes/type8.png';
+import ImgType5 from '../assets/TreeTypes/maiten.jpg';
+import ImgType6 from '../assets/TreeTypes/coihue.jpg';
+import ImgType7 from '../assets/TreeTypes/algarrobo.jpg';
+import ImgType8 from '../assets/TreeTypes/palma.jpg';
 
 export const treeImages = {
   5: ImgType5,
