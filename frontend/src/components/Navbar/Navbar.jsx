@@ -2,6 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa6';
 import styles from './Navbar.module.css';
 import { useUser } from '../../context/UserContext';
+import Swal from 'sweetalert2';
+
 
 const Navbar = ({ handleCloseMenu, openMenu, isHomePage }) => {
   const { setIsAuth, isAuth, setUser } = useUser();
@@ -10,13 +12,24 @@ const Navbar = ({ handleCloseMenu, openMenu, isHomePage }) => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    const confirm = window.confirm('¿Estas seguro de salir?');
-    if (confirm) {
-      setUser(null);
-      setIsAuth(false);
-      localStorage.removeItem('userData');
-      navigate('/');
-    }
+
+    Swal.fire({
+      title: '¿Estás seguro de salir?',
+      text: 'Esta acción cerrará tu sesión',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, salir',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setUser(null);
+        setIsAuth(false);
+        localStorage.removeItem('userData');
+        navigate('/');
+      }
+    });
   };
 
   const menuItems = isAuth
