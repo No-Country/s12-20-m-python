@@ -6,7 +6,7 @@ const categoryText=[
     {id: 2, quatity: 'De 11 a 50 ejemplares', category: "Guardián de Hierro"},
     {id: 3, quatity: 'De 51 a 100 ejemplares', category: "Guardián de Plata"},
     {id: 4, quatity: 'De 101 a 200 ejemplares', category: "Guardián de Oro"},
-    {id: 5, quatity: 'De 201 a 500 ejemplares', category: "Guardián de Platino"}
+    {id: 5, quatity: 'Más de 200 ejemplares', category: "Guardián de Platino"}
 ]
 let categoryLevel = 1;
 
@@ -18,6 +18,12 @@ const UserCategory = ({adoptionNumber}) => {
         categoryLevel = 1;
     } else if (adoptionNumber > 10 && adoptionNumber <= 50) {
         categoryLevel = 2;
+    }else if (adoptionNumber > 51 && adoptionNumber <= 100) {
+        categoryLevel = 3;
+    }else if (adoptionNumber > 101 && adoptionNumber <= 200) {
+        categoryLevel = 4;
+    }else if (adoptionNumber > 201 ) {
+        categoryLevel = 5;
     }
 
   return (
