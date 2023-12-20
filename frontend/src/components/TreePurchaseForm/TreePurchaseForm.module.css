@@ -1,0 +1,83 @@
+.imgAdoption {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+}
+
+.containerTree {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  gap: 20px;
+  justify-items: center;
+  justify-content: center;
+}
+
+.treeContainer {
+  padding: 10px;
+  text-align: center;
+}
+
+.typeName,
+.typePrice {
+  font-size: 1rem;
+}
+
+.counterContainer {
+  display: flex;
+  font-size: large;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.counterContainer button {
+  background-color: transparent;
+  border: none;
+}
+
+.buttonCounterMinus {
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+
+.buttonCounterPlus {
+  margin-left: 0.5em;
+  cursor: pointer;
+}
+
+.confirmContainer {
+  width: 80%;
+  margin: 1rem auto 0;
+}
+
+.confirmContainer {
+  text-align: center;
+}
+
+.confirmContainer h4 {
+  text-align: left;
+}
+
+.purchaseButton {
+  background-color: #31572c;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 328px;
+  margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .containerTree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .purchaseButton {
+    width: 200px;
+  }
+}

@@ -48,12 +48,18 @@ LOCAL_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "rest_framework.authtoken",
     'corsheaders',
-    'drf_yasg'
+    'drf_yasg',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -123,3 +129,6 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #
+
+MEDIA_URL = '/staticfiles/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/media')

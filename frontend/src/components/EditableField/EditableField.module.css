@@ -1,0 +1,25 @@
+.editableFieldContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editableFieldContainer h5,
+.editableFieldContainer input {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.editableFieldContainer input {
+  border-radius: 20px;
+  padding: 5px;
+  border: 1px solid var(--primary);
+}
+
+.editableFieldButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  cursor: pointer;
+}

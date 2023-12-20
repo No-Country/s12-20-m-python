@@ -1,0 +1,37 @@
+.adoptionCard {
+  display: flex;
+  max-width: 400px;
+  margin: 10px;
+  padding: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5fcd1;
+  cursor: pointer;
+}
+
+.cardImage {
+  width: 150px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.card-Description {
+  font-size: 1rem;
+  color: #666;
+}
+
+.cardDefaulName {
+  font-size: 18px;
+  color: var(--grayA);
+}

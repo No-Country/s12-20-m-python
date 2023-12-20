@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from 'react';
-import { getLand } from '../api/land';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { getJson, getLand } from '../api/land';
+import { json } from 'react-router-dom';
 
 export const LandContext = createContext();
 
@@ -14,7 +15,48 @@ export const useLand = () => {
 };
 
 export const LandProvider = ({ children }) => {
-  const [land, setLand] = useState({ name: 'land1' });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [land, setLand] = useState(null);
+  const [purchase, setPurchase] = useState([]);
+  const [adoptionData, setAdoptionData] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('adoptionData') && adoptionData === null) {
+      const data = JSON.parse(localStorage.getItem('adoptionData'));
+      setAdoptionData(data);
+    }
+
+    if (adoptionData !== null)
+      localStorage.setItem('adoptionData', JSON.stringify(adoptionData));
+  }, [adoptionData]);
+
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await getLand();
+        // const res = await getJson();
+        if (res.status === 200) {
+          setLand(res.data);
+        }
+      } catch (error) {
+        if (error.response) {
+          setError({
+            status: error.response.status,
+            message: error.response.statusMessage || 'Error...',
+          });
+        } else {
+          console.error(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getData();
+  }, []);
 
   const getLandReq = async () => {
     try {
@@ -25,7 +67,16 @@ export const LandProvider = ({ children }) => {
     }
   };
 
-  const values = { land, getLandReq };
+  const values = {
+    adoptionData,
+    setAdoptionData,
+    getLandReq,
+    land,
+    loading,
+    error,
+    purchase,
+    setPurchase,
+  };
 
   return <LandContext.Provider value={values}>{children}</LandContext.Provider>;
 };

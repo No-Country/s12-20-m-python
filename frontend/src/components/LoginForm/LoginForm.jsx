@@ -1,28 +1,58 @@
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import styles from './LoginForm.module.css';
+import { useUser } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isValid },
   } = useForm();
 
-  const onSubmit = handleSubmit((data) => {
-    alert(`datos : ${JSON.stringify(data)}`);
-    console.log(data);
-    reset();
+  const navigate = useNavigate();
+
+  const { loginReq, loading, error } = useUser();
+
+  const onSubmit = handleSubmit(async (data) => {
+    const success = await loginReq(data);
+
+    if (success) {
+      navigate('/profile');
+    }
   });
 
-  const submitButtonClass = isValid ? styles.submitButtonValid : styles.submitButton;
+  const submitButtonClass = isValid
+    ? styles.submitButtonValid
+    : styles.submitButton;
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Iniciar sesión</h3>
-      <label htmlFor='email'>
-       
+
+      {loading && <Loader fullscreen={true} />}
+      {error && <ErrorMessage message={error.error} />}
+
+      <label htmlFor='username'>
+        <input
+          id='username'
+          type='text'
+          name='username'
+          placeholder='Nombre de Usuario'
+          {...register('username', {
+            validate: {
+              required: (value) =>
+                value !== '' || 'Nombre de Usuario es requerido',
+            },
+          })}
+        />
+        {errors.username && <p>{errors.username.message}</p>}
+      </label>
+
+      {/* <label htmlFor='email'>
         <input
           id='email'
           type='email'
@@ -38,10 +68,9 @@ const LoginForm = () => {
           })}
         />
         {errors.email && <p>{errors.email.message}</p>}
-      </label>
+      </label> */}
 
       <label htmlFor='password'>
-      
         <input
           id='password'
           type='password'
@@ -59,10 +88,15 @@ const LoginForm = () => {
         />
         {errors.password && <p>{errors.password.message}</p>}
       </label>
-          <p className={styles.forget}>Olvidé mi contraseña</p>
-      <input type='submit' value={'Iniciar sesión'} className={submitButtonClass}/>
+      <p className={styles.forget}>Olvidé mi contraseña</p>
+      <input
+        type='submit'
+        value={'Iniciar sesión'}
+        className={submitButtonClass}
+        disabled={loading}
+      />
       <p className={styles.goToRegister}>
-        ¿Sos un usuario nuevo?  <Link to={'/register'}>Registrate</Link>
+        ¿Sos un usuario nuevo? <Link to={'/register'}>Registrate</Link>
       </p>
     </form>
   );

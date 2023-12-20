@@ -15,6 +15,14 @@ class TypeTree (TimeStampedModel):
     common_name = models.CharField(max_length=70)
     scientific_name = models.CharField(max_length=70)
 
+    img = models.ImageField(
+        'Image',
+        upload_to='tree',
+        default='static/tree/default.jpg'
+    )
+
+    co2 = models.IntegerField(default=20)
+
     class Meta:
         """Meta definition for Type Tree."""
 
@@ -38,9 +46,7 @@ class Land (TimeStampedModel):
     img = models.ImageField(
         'Image',
         upload_to='land',
-        default='land/default.jpg',
-        blank=True,
-        null=True
+        default='static/land/default.jpg'
     )
     description = models.TextField('Description')
     latitude = models.DecimalField(
@@ -92,6 +98,8 @@ class Tree (TimeStampedModel):
         'type of trees',
         max_length=50
     )
+
+    description = models.CharField(max_length=50)
 
     class Meta:
         """Meta definition for Tree."""

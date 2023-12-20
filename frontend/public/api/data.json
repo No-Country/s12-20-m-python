@@ -1,0 +1,136 @@
+[
+    {
+        "id": 2,
+        "created": "2023-12-12T12:34:35.010803Z",
+        "place": "Zona A",
+        "ammount": 32,
+        "img": "/media/land/default.jpg",
+        "description": "descripción de zona A",
+        "get_coordinated": [
+        -26.6108307,
+        -63.4426811
+        ],
+        "count_tree": 0,
+        "tree": [],
+        "count_typetree": 1,
+        "type_tree": [
+            {
+                "id": 3,
+                "name": "Palmera",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":10
+            },
+
+            {
+                "id": 5,
+                "name": "Pino",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":35
+            },
+
+            {
+                "id": 9,
+                "name": "Acacia",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":15
+            }
+        ]
+    },
+
+    {
+        "id": 5,
+        "created": "2023-12-12T12:34:35.010803Z",
+        "place": "Zona B",
+        "ammount": 45,
+        "img": "/media/land/default.jpg",
+        "description": "descripcion de zona b",
+        "get_coordinated": [
+        -36.7341787,
+        -62.4330971
+        ],
+        "count_tree": 0,
+        "tree": [],
+        "count_typetree": 1,
+
+        "type_tree": [
+            {
+                "id": 13,
+                "name": "Nogal",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":30
+            },
+
+            {
+                "id": 55,
+                "name": "Sauce",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":5
+            },
+
+            {
+                "id": 96,
+                "name": "Almendro",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":25
+            }
+        ]
+
+    },
+
+    {
+        "id": 9,
+        "created": "2023-12-12T12:34:35.010803Z",
+        "place": "Zona C",
+        "ammount": 20,
+        "img": "/media/land/default.jpg",
+        "description": "descripcion de zona C",
+        "get_coordinated": [
+        -43.5522762,
+        -68.9404509
+        ],
+        "count_tree": 0,
+        "tree": [],
+        "count_typetree": 1,
+        "type_tree": [
+            {
+                "id": 3,
+                "name": "Cerezo",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":20
+            },
+
+            {
+                "id": 5,
+                "name": "Olmo",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":15
+            },
+
+            {
+                "id": 9,
+                "name": "Roble",
+                "common_name": "Palmeraa",
+                "scientific_name": "PArlmeprapalmera",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc6d34XqoJmjQ2LwJJa3jDi7l9DlT48s3_w8yPN68QtA&s",
+                "price":5
+            }
+        ]
+    }
+
+]

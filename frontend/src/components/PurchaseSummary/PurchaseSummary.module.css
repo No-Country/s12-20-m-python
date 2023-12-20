@@ -1,0 +1,23 @@
+.purchaseResume {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.purchaseResume img {
+  /* max-width: 40px; */
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.purchaseTotal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.purchaseTotal span {
+  font-weight: bold;
+}

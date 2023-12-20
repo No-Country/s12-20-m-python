@@ -1,0 +1,91 @@
+.adoptionInfoContainer {
+  padding-top: 100px;
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto 4rem;
+}
+
+.adoptionInfoBackBtn {
+  text-decoration: none;
+  color: var(--primary);
+}
+.totalCont {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.adoptionInfoContent {
+  display: flex;
+  gap: 1rem;
+}
+
+.adoptionInfoImgCont {
+  width: 50%;
+}
+
+.adoptionInfoImgCont img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.adoptionInfoText {
+  width: 80%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.adoptionInfoText h4 {
+  font-size: 20px;
+}
+.text {
+  margin-bottom: 1rem;
+  font-size: 12px;
+}
+.textZone {
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+.customNameContainer {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .adoptionInfoContent {
+    flex-direction: column;
+    margin: 0;
+  }
+  .totalCont {
+    flex-direction: column;
+  }
+  .adoptionInfoImgCont {
+    flex-direction: column;
+    width: 100%;
+  }
+  .adoptionInfoImgCont img {
+    width: 100%;
+  }
+  .adoptionInfoText {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .adoptionInfoImgCont {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .adoptionInfoContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adoptionInfoText {
+    width: 100%;
+  }
+  .adoptionInfoImgCont {
+    width: 100%;
+  }
+}

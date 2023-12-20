@@ -14,24 +14,18 @@ const Header = () => {
   const handleCloseMenu = () => setOpenMenu(false);
 
   const location = useLocation();
-  const isHomePage = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register';
-  
+  const isHomePage =
+    location.pathname === '/' ||
+    location.pathname === '/login' ||
+    location.pathname === '/register';
+
   return (
     <header
       className={`${styles.header} ${!isHomePage && styles.headerBackground} `}
     >
       <section className={styles.headerContent}>
         <div>
-          <h3>LOGO</h3>
-
-          <div>
-            {isAuth ? (
-              <button onClick={logout}>logout</button>
-            ) : (
-              <button onClick={login}>login</button>
-            )}
-            <div>{JSON.stringify(isAuth)}</div>
-          </div>
+        <h2 className={`${!isHomePage? styles.logo: styles.whiteLogo}`}>Guardianes del Bosque</h2>
         </div>
         <Navbar
           handleCloseMenu={handleCloseMenu}

@@ -1,15 +1,14 @@
 import Map from '../../components/Map/Map';
+import SiembraImg from '../../assets/tree-amico.png';
 import { useState } from 'react';
 import styles from './Adoption.module.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import TreePurchaseForm from '../../components/TreePurchaseForm/TreePurchaseForm';
-import { useUser } from '../../context/UserContext';
 import { useLand } from '../../context/LandContext';
+import PlaceInfo from '../../components/PlaceInfo/PlaceInfo';
 
 const Adoption = () => {
-  // const { user } = useContext(UserContext);
-  const { user } = useUser();
-  const { land } = useLand();
+  const [place, setPlace] = useState(null);
+  const { land, setPurchase } = useLand();
 
   const handleSearch = (term) => {
     //lógica del buscador
@@ -21,73 +20,47 @@ const Adoption = () => {
   const handleClick = () => {
     setShowDetail(true);
   };
-  const mainLocation = {
-    location: {
-      lat: '-32.607455',
-      lng: '-63.850605',
-    },
-    zoom: 7,
+
+  const placeFound = (id) => {
+    const found = land.find((place) => place.id === id);
+    setPlace(found);
+
+    if (place && id !== place.id) setPurchase([]);
   };
 
-  const places = [
-    {
-      name: 'Calamuchita',
-      trees: 'olmos, algarrobos, ñires',
-      location: {
-        lat: '-32.130287',
-        lng: '-64.688381',
-      },
-    },
-    {
-      name: 'Punta del Agua',
-      trees: 'cedros, álamos, espinillos',
-      location: {
-        lat: '-32.605444',
-        lng: '-63.792494',
-      },
-    },
-    {
-      name: 'Carrilobo',
-      trees: 'robles, álamos, lapachos',
-      location: {
-        lat: '-31.964673',
-        lng: '-63.208347',
-      },
-    },
-  ];
-
   return (
-    <div className={styles.adoptioncontainer}>
-      <div className={styles.leftcontainer}>
-        <h1>Adopta un Árbol</h1>
-        <h2>{user.name}</h2>
-        <h2>{land.name}</h2>
+    <div className={styles.adoptionContainer}>
+      <section className={styles.adoptionContainerHeader}>
+        <h1>Adoptá un Árbol</h1>
         <SearchInput onSearch={handleSearch} />
-        <p>Seleccioná un árbol y mirá donde estamos reforestando.</p>
-
-        <Map
-          mainLocation={mainLocation}
-          places={places}
-          handleClick={handleClick}
-        />
-
-        <div className={styles.loremtree}>
-          <h2>Lorem ipsum</h2>
-          <h4>Tipos de árboles:</h4>
-          <p>Arboles plantados</p>
+        <p>
+          Seleccioná un árbol en el mapa para obtener más información sobre la
+          zona donde estamos reforestando.
+        </p>
+      </section>
+      <div className={styles.adoptionContent}>
+        <div className={styles.leftAdoptionContainer}>
+          <Map handleClick={handleClick} placeFound={placeFound} />
         </div>
-      </div>
-      <div className={styles.rigthcontainer}>
-        <h3>Zona elegida:</h3>
-        {showDetail === true && (
-          <div className={styles.whyadopt}>
-            <h4>*Zona Elegida*</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <h3>Elegí tus árboles:</h3>
-          </div>
-        )}
 
-        <TreePurchaseForm />
+        <div className={styles.rightContainer}>
+          <div className={styles.rightAdoptionContainer}>
+            {showDetail ? (
+              <PlaceInfo place={place} />
+            ) : (
+              <section className={styles.defaultInfo}>
+                <h3>¡Planta esperanza adoptando un árbol!</h3>
+                <p>
+                  Con tu compromiso, puedes marcar la diferencia en la lucha
+                  contra la deforestación. Adopta un árbol y sé testigo de cómo
+                  florece, purifica el aire y protege nuestro entorno. ¡Juntos,
+                  podemos crear un mundo más verde y saludable para todos!
+                </p>
+                <img src={SiembraImg} alt='imagen siembra de árbol' />
+              </section>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

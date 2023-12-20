@@ -1,5 +1,8 @@
 import { useForm } from 'react-hook-form';
 import styles from './RegisterForm.module.css';
+import { useUser } from '../../context/UserContext';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const RegisterForm = () => {
   const {
@@ -10,19 +13,27 @@ const RegisterForm = () => {
     formState: { errors, isValid },
   } = useForm();
 
-  const submitButtonClass = isValid ? styles.submitButtonValid : styles.submitButton;
+  const { registerReq, loading, error, regOk } = useUser();
 
-  const onSubmit = handleSubmit((data) => {
+  const submitButtonClass = isValid
+    ? styles.submitButtonValid
+    : styles.submitButton;
+
+  const onSubmit = handleSubmit(async (data) => {
     const newData = {
-      name: trimmedValue(data.name),
-      lastName: trimmedValue(data.lastName),
-      email: data.email,
-      birthday: data.birth,
-      password: data.password,
+      user: {
+        username: data.username,
+        first_name: trimmedValue(data.name),
+        last_name: trimmedValue(data.lastName),
+        email: data.email,
+        password: data.password,
+      },
+      birthdate: data.birthdate,
       country: data.country,
     };
-    alert(`datos: ${JSON.stringify(newData)}`);
-    console.log(newData);
+
+    await registerReq(newData);
+
     reset();
   });
 
@@ -31,46 +42,25 @@ const RegisterForm = () => {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <h3>Registro</h3>
-       <div className={styles.firstAndLastName}>
-     <label htmlFor='name'>
-        <input
-          id='name'
-          type='text'
-          name='name'
-          placeholder='Nombre'
-          {...register('name', {
-            validate: {
-              required: (value) =>
-                trimmedValue(value) !== '' || 'Campo nombre es requerido',
-              onlyLetter: (value) =>
-                !/[0-9]/.test(value) ||
-                'No se permiten números para este campo',
-              minLength: (value) =>
-                trimmedValue(value).length >= 3 ||
-                'El minimo de caracteres permitidos es 3',
-              maxLength: (value) =>
-                trimmedValue(value).length <= 200 ||
-                'El máximo de caracteres permitidos es 200',
-            },
-          })}
-        />
-        {errors.name && <p>{errors.name.message}</p>}
-      </label>
 
-      <label htmlFor='lastName'>
-      
+      {loading && <Loader fullscreen={true} />}
+      {error && <ErrorMessage message={error.error} />}
+
+      {regOk && <div>Registro Exitoso!</div>}
+
+      <label htmlFor='username'>
         <input
-          id='lastName'
+          id='username'
           type='text'
-          name='lastName'
-          placeholder='Apellido'
-          {...register('lastName', {
+          name='username'
+          placeholder='Nombre de Usuario'
+          {...register('username', {
             validate: {
               required: (value) =>
-                trimmedValue(value) !== '' || 'Campo apellido es requerido',
-              onlyLetter: (value) =>
-                !/[0-9]/.test(value) ||
-                'No se permiten números para este campo',
+                trimmedValue(value) !== '' || 'Nombre de Usuario es requerido',
+              usernameValid: (value) =>
+                /^[a-zA-Z][a-zA-Z0-9]*$/.test(value) ||
+                'Este campo solo acepta números y letras, debe comenzar con una letra.',
               minLength: (value) =>
                 trimmedValue(value).length >= 3 ||
                 'El minimo de caracteres permitidos es 3',
@@ -80,8 +70,58 @@ const RegisterForm = () => {
             },
           })}
         />
-        {errors.lastName && <p>{errors.lastName.message}</p>}
+        {errors.username && <p>{errors.username.message}</p>}
       </label>
+      <div className={styles.firstAndLastName}>
+        <label htmlFor='name'>
+          <input
+            id='name'
+            type='text'
+            name='name'
+            placeholder='Nombre'
+            {...register('name', {
+              validate: {
+                required: (value) =>
+                  trimmedValue(value) !== '' || 'Campo nombre es requerido',
+                onlyLetter: (value) =>
+                  !/[0-9]/.test(value) ||
+                  'No se permiten números para este campo',
+                minLength: (value) =>
+                  trimmedValue(value).length >= 3 ||
+                  'El minimo de caracteres permitidos es 3',
+                maxLength: (value) =>
+                  trimmedValue(value).length <= 200 ||
+                  'El máximo de caracteres permitidos es 200',
+              },
+            })}
+          />
+          {errors.name && <p>{errors.name.message}</p>}
+        </label>
+
+        <label htmlFor='lastName'>
+          <input
+            id='lastName'
+            type='text'
+            name='lastName'
+            placeholder='Apellido'
+            {...register('lastName', {
+              validate: {
+                required: (value) =>
+                  trimmedValue(value) !== '' || 'Campo apellido es requerido',
+                onlyLetter: (value) =>
+                  !/[0-9]/.test(value) ||
+                  'No se permiten números para este campo',
+                minLength: (value) =>
+                  trimmedValue(value).length >= 3 ||
+                  'El minimo de caracteres permitidos es 3',
+                maxLength: (value) =>
+                  trimmedValue(value).length <= 200 ||
+                  'El máximo de caracteres permitidos es 200',
+              },
+            })}
+          />
+          {errors.lastName && <p>{errors.lastName.message}</p>}
+        </label>
       </div>
       <label htmlFor='email'>
         <input
@@ -102,22 +142,22 @@ const RegisterForm = () => {
         {errors.email && <p>{errors.email.message}</p>}
       </label>
 
-      <label htmlFor='birth'>
+      <label htmlFor='birthdate'>
         <input
-          id='birth'
+          id='birthdate'
           type='date'
-          name='birth'
+          name='birthdate'
           placeholder='Fecha de nacimiento'
-          {...register('birth', {
+          {...register('birthdate', {
             validate: {
               required: (value) =>
                 trimmedValue(value) !== '' ||
                 'Fecha de nacimiento es requerida',
               validAge: (value) => {
                 const currentDate = new Date();
-                const birthday = new Date(value);
+                const birthdate = new Date(value);
                 const differenceTime =
-                  currentDate.getTime() - birthday.getTime();
+                  currentDate.getTime() - birthdate.getTime();
                 const age = Math.floor(
                   differenceTime / (1000 * 60 * 60 * 24 * 365.25),
                 );
@@ -128,17 +168,24 @@ const RegisterForm = () => {
             },
           })}
         />
-        {errors.birth && <p>{errors.birth.message}</p>}
+        {errors.birthdate && <p>{errors.birthdate.message}</p>}
       </label>
+
       <label htmlFor='pais'>
-        <select id='pais' name='country' {...register('country')}>
-          <option value="" >País</option>
-          <option value='AR'>Argentina</option>
+        <select
+          id='pais'
+          name='country'
+          {...register('country', {
+            required: 'País es requerido',
+          })}
+        >
+          <option value=''>País</option>
+          <option value='1'>Argentina</option>
         </select>
+        {errors.country && <p>{errors.country.message}</p>}
       </label>
 
       <label htmlFor='password'>
-        
         <input
           id='password'
           type='password'
@@ -207,7 +254,6 @@ const RegisterForm = () => {
       </label>
 
       <label htmlFor='confirmPassword'>
-      
         <input
           id='confirmPassword'
           type='password'
@@ -225,11 +271,14 @@ const RegisterForm = () => {
         />
         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       </label>
-      
-     
+
       <div className={styles.buttons}>
         {/* <input type='reset' value={'Limpiar'} /> */}
-        <input type='submit' value={'Registrarse'} className={submitButtonClass}/>
+        <input
+          type='submit'
+          value={'Registrarse'}
+          className={submitButtonClass}
+        />
       </div>
       {/* <div>{JSON.stringify(watch())}</div> */}
     </form>

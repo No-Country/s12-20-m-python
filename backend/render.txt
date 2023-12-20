@@ -1,0 +1,7 @@
+RENDER ACCESO
+
+host: dpg-cltnsila73kc73f4bh50-a.oregon-postgres.render.com
+port: 5432
+database: guardianes_99m6
+username: guardianesdelbosque
+password: doa4Q1xPRBzg0y8n71ZMlXpTwbiVITv0

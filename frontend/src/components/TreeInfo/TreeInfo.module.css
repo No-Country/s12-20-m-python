@@ -1,0 +1,75 @@
+.dataBox{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;  
+}
+
+.treeData{
+    background-color: #F5FCD1;
+    text-align: center;
+    padding: .5rem 1.5rem;
+    border-radius: 15px ;
+    color:#31572C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 24%;
+    
+}
+.treeData div{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin: .2rem 0 0;
+}
+.rulerRotate{
+    rotate: 90deg;
+    color: #31572C;
+
+}
+.icon{
+    color: #31572C;
+}
+.messures{
+    font-weight: 400;
+    font-size: 14px;
+    color: #31572C;
+    line-height: 14px;
+    margin-bottom: .3rem;
+}
+.numbers{
+    font-weight: 600;
+    font-size: 13px;
+    color: #31572C;
+    line-height: 22px;
+}
+.leave{
+    padding-top: .3rem;
+    margin: 0;
+    line-height: 0;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+    .messures{
+        font-size: 13px;
+    }
+    .numbers{
+        font-size: 14px;
+    }
+    .treeData{
+        padding: .5rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .messures{
+        font-size: 12px;
+    }
+    .numbers{
+        font-size: 12px;
+    }
+    .treeData{
+        padding: .5rem;
+    }
+
+}

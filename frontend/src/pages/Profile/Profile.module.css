@@ -1,0 +1,30 @@
+.profileBox{
+  display: flex;
+ margin: 0 3.2rem ;
+ padding-top: 100px;
+}
+.profileContainer {
+  
+  width: 70%;
+  
+}
+.profileContainer h2{
+  padding-bottom: 1rem;
+}
+
+.profileContainer button{
+  background: white;
+  padding: 5px 8px;
+  border-radius: 15px;
+  border: 0.5px solid #5b5b5b;
+  margin-bottom: 1em;
+}
+
+@media screen and (max-width: 767px) {
+  .profileBox{
+    flex-direction: column;
+  }
+  .profileContainer{
+    width: 100%;
+  }
+}
