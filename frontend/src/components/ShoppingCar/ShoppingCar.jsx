@@ -24,7 +24,8 @@ const ShoppingCar = () => {
 
   const { handleSubmit, control } = useForm();
 
-  if (!isAuth) return <Navigate to={'/login'} />;
+  // console.log(isAuth)
+  // if (!isAuth) return <Navigate to={'/login'} />;
 
   const onSubmit = async (data) => {
     // envío de email
@@ -85,7 +86,9 @@ const ShoppingCar = () => {
 
       return [...prev, ...adoptionData];
     });
+
     setPurchase([]);
+    localStorage.setItem('purchaseData', JSON.stringify([]));
 
     setLoadingSimulated(true);
     const loadingSim = await setTimeout(() => {

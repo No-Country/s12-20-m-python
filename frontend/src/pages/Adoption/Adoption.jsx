@@ -1,14 +1,23 @@
 import Map from '../../components/Map/Map';
 import SiembraImg from '../../assets/tree-amico.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Adoption.module.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import { useLand } from '../../context/LandContext';
 import PlaceInfo from '../../components/PlaceInfo/PlaceInfo';
 
 const Adoption = () => {
+  
+
   const [place, setPlace] = useState(null);
   const { land, setPurchase } = useLand();
+
+  useEffect(() => {
+    
+    localStorage.setItem('purchaseData', JSON.stringify([]));
+    setPurchase([]);  
+  },[])
+  
 
   const handleSearch = (term) => {
     //lógica del buscador

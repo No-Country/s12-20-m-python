@@ -31,6 +31,25 @@ export const LandProvider = ({ children }) => {
       localStorage.setItem('adoptionData', JSON.stringify(adoptionData));
   }, [adoptionData]);
 
+
+  useEffect(() => {
+
+    if (localStorage.getItem('purchaseData')) {
+      const data = JSON.parse(localStorage.getItem('purchaseData'));
+      setPurchase(data);
+    }
+
+  }, []);
+
+  useEffect(() => {
+    
+    if(purchase.length > 0 ){
+      localStorage.setItem('purchaseData', JSON.stringify(purchase));
+    }
+
+  }, [purchase]);
+  
+
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
