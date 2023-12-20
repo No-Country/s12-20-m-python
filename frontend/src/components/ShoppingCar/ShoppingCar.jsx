@@ -45,7 +45,7 @@ const ShoppingCar = () => {
     emailjs
       .send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
-        console.log('envío email exitoso', response);
+        // console.log('envío email exitoso', response);
 
         Swal.fire({
           title: '¡Correo enviado!',
@@ -59,7 +59,7 @@ const ShoppingCar = () => {
         setMessage('');
       })
       .catch((error) => {
-        console.error('error en el envío de mail', error);
+        // console.error('error en el envío de mail', error);
 
         Swal.fire({
           title: 'Error',
@@ -206,28 +206,31 @@ const ShoppingCar = () => {
           </div>
 
           <div className={styles.cardDni}>
-        <div>
-          <Controller
-            name='dni'
-            control={control}
-            defaultValue=''
-            rules={{
-              required: true,
-              pattern: /^[A-Za-z0-9]{7,9}$/, 
-            }}
-            render={({ field }) => (
-              <input
-                {...field}
-                type='text'
-                id='dni'
-                placeholder='DNI'
-                onInput={(e) => {
-                  e.target.value = e.target.value.replace(/[^A-Za-z0-9]/g, '');
+            <div>
+              <Controller
+                name='dni'
+                control={control}
+                defaultValue=''
+                rules={{
+                  required: true,
+                  pattern: /^[A-Za-z0-9]{7,9}$/,
                 }}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type='text'
+                    id='dni'
+                    placeholder='DNI'
+                    onInput={(e) => {
+                      e.target.value = e.target.value.replace(
+                        /[^A-Za-z0-9]/g,
+                        '',
+                      );
+                    }}
+                  />
+                )}
               />
-            )}
-          />
-        </div>
+            </div>
 
             <div>
               <Controller
