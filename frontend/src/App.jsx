@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { HashRouter, Link, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
@@ -21,29 +21,25 @@ function App() {
   return (
     <LandProvider>
       <UserProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Header />
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/adoption' element={<Adoption />} />
             <Route exact path='/about' element={<About />} />
-            <Route exact path='/activities' element={<Activities />} />
+            <Route path='/activities' element={<Activities />} />
             <Route element={<PrivateRoutes />}>
-              <Route exact path='/profile' element={<Profile />} />
-              <Route
-                exact
-                path='/adoption-info/:id'
-                element={<AdoptionInfo />}
-              />
-              <Route exact path='/adoptioncar' element={<ShoppingCar />} />
-              <Route exact path='/success' element={<SuccessAdoption />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/adoption-info/:id' element={<AdoptionInfo />} />
+              <Route path='/adoptioncar' element={<ShoppingCar />} />
+              <Route path='/success' element={<SuccessAdoption />} />
             </Route>
             <Route exact path='/register' element={<Register />} />
             <Route exact path='/login' element={<Login />} />
             <Route path='*' element={<ErrorPage />} />
           </Routes>
           <Footer />
-        </BrowserRouter>
+        </HashRouter>
       </UserProvider>
     </LandProvider>
   );
