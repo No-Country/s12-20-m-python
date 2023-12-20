@@ -8,12 +8,14 @@ import { useLand } from '../../context/LandContext';
 import TimeLine from '../TimeLine/TimeLine';
 import TreeInfo from '../TreeInfo/TreeInfo';
 import EditableField from '../EditableField/EditableField.jsx';
+import Loader from '../Loader/Loader.jsx';
 
 const AdoptionInfo = () => {
   const { adoptions } = useUser();
   const { land } = useLand();
-
   const { id } = useParams();
+
+  if (!land) return <Loader fullscreen={true} />;
 
   const adoptionData = adoptions.find((item) => item.adoptionId === id);
 
