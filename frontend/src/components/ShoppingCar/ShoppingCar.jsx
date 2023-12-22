@@ -45,7 +45,7 @@ const ShoppingCar = () => {
     emailjs
       .send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
-        console.log('envío email exitoso', response);
+        // console.log('envío email exitoso', response);
 
         Swal.fire({
           title: '¡Correo enviado!',
@@ -59,7 +59,7 @@ const ShoppingCar = () => {
         setMessage('');
       })
       .catch((error) => {
-        console.error('error en el envío de mail', error);
+        // console.error('error en el envío de mail', error);
 
         Swal.fire({
           title: 'Error',
@@ -247,6 +247,7 @@ const ShoppingCar = () => {
                 />
               </div>
             </div>
+
 
             <button type='submit'>Confirmar Adopción</button>
           </form>
